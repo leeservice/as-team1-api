@@ -45,4 +45,8 @@ buildNumber.properties
 out/
 .idea/
 
+# database properties
 db.properties
+
+# OS X
+.DS_Store
