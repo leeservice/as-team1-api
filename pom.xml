@@ -16,15 +16,12 @@
 
     <build>
         <plugins>
-            <!--  ... Other plugins   -->
             <plugin>
                 <groupId>io.github.dathin</groupId>
                 <artifactId>jhusky</artifactId>
-                <version>1.0.9</version> <!--  Currently this is the latest version  -->
+                <version>1.0.9</version>
             </plugin>
-            <!--  ... Other plugins  -->
         </plugins>
-        <!--  ... Other build configs  -->
     </build>
     
 </project>
