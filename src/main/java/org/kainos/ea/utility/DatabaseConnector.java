@@ -8,7 +8,7 @@ import org.kainos.ea.exceptions.DatabaseConnectionException;
 public class DatabaseConnector {
 
   private static Connection conn;
-  private static DbCredentials dbCredentials;
+  private DbCredentials dbCredentials;
 
   public Connection getConnection() throws DatabaseConnectionException, SQLException {
     String user;
