@@ -30,8 +30,25 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
       
-    - name: Apply spotless maven linting to repository to check code and reformat if required.
-      run: |
-        mvn spotless:check
-        mvn spotless:apply
-        mvn spotless:check
+#     - name: Apply spotless maven linting to repository to check code and reformat if required.
+#       run: |
+#         mvn spotless:check
+#         mvn spotless:apply
+#         mvn spotless:check
+
+
+  spotless:
+    name: Check Spotless
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java_version: [11]
+        distribution: ["temurin"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Check spotless
+        run: ./gradlew spotlessCheck -S
