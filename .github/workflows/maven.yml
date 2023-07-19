@@ -43,9 +43,9 @@ jobs:
           cache: maven
           
       - name: Install Maven
-        run: mvn clean install
-      - name: Check spotless
-        run: mvn spotless:check
+        run: mvn clean install && mvn spotless:check
+#       - name: Check spotless
+#         run: mvn spotless:check
         
       - name: Apply spotless
         run: mvn spotless:apply
