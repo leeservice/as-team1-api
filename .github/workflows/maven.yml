@@ -47,6 +47,8 @@ jobs:
         
       - name: Check spotless
         run: | 
-          mvn spotless:apply && mvn spotless:check
-          git status
+          mvn spotless:check
+          
+          
+      
         
