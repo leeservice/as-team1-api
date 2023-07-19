@@ -1,16 +1,26 @@
 package org.kainos.ea.model;
 
 public class JobRoleRequest {
+    private int id;
     private String name;
     private String specificationDesc;
     private String bandLevel;
     private String capability;
 
-    public JobRoleRequest(String name, String specificationDesc, String bandLevel, String capability) {
+    public JobRoleRequest(int id, String name, String specificationDesc, String bandLevel, String capability) {
+        setId(id);
         setName(name);
         setSpecificationDesc(specificationDesc);
         setBandLevel(bandLevel);
         setCapability(capability);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -48,7 +58,8 @@ public class JobRoleRequest {
     @Override
     public String toString() {
         return "JobRoleRequest{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", specificationDesc='" + specificationDesc + '\'' +
                 ", bandLevel='" + bandLevel + '\'' +
                 ", capability='" + capability + '\'' +

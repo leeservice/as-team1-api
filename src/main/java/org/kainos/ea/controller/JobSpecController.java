@@ -5,7 +5,7 @@ import javax.ws.rs.Path;
 import org.kainos.ea.service.JobSpecService;
 import org.kainos.ea.validator.JobSpecValidator;
 
-@Api("Kainos Job Application")
+@Api("Commit Connoisseurs API")
 @Path("/job-specification")
 public class JobSpecController {
 

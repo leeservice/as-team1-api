@@ -6,18 +6,18 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.kainos.ea</groupId>
-    <artifactId>commitConnoisseursBackend</artifactId>
+    <groupId>com.kainos.ea</groupId>
+    <artifactId>JavaWebService</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>commitConnoisseursBackend</name>
+    <name>WebService</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dropwizard.version>2.0.23</dropwizard.version>
-        <mainClass>org.kainos.ea.trueApplication</mainClass>
+        <mainClass>com.kainos.ea.WebServiceApplication</mainClass>
     </properties>
 
     <dependencyManagement>
@@ -34,15 +34,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.28</version>
-        </dependency>
-        <dependency>
-            <groupId>io.dropwizard</groupId>
-            <artifactId>dropwizard-core</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.smoketurner</groupId>
             <artifactId>dropwizard-swagger</artifactId>
             <version>2.0.0-1</version>
@@ -52,6 +43,10 @@
                     <artifactId>validation-api</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -64,6 +59,33 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.21</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>2.23.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-testing</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
@@ -124,6 +146,28 @@
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>integration-test</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <phase>integration-test</phase>
+                        <configuration>
+                            <excludes>
+                                <exclude>none</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
