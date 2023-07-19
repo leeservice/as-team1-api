@@ -31,8 +31,6 @@ public class trueApplication extends Application<trueConfiguration> {
   @Override
   public void run(final trueConfiguration configuration,
       final Environment environment) {
-    // TODO: implement application
     environment.jersey().register(new JobSpecController());
   }
-
 }
