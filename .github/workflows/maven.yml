@@ -46,4 +46,7 @@ jobs:
         run: mvn clean install
         
       - name: Check spotless
-        run: mvn spotless:check && mvn spotless:apply && mvn spotless:check
+        run: | 
+          mvn spotless:apply && mvn spotless:check
+          git status
+        
