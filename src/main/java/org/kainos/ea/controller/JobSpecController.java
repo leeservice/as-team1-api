@@ -14,10 +14,5 @@ public class JobSpecController {
   private static JobSpecValidator jobSpecValidator;
 
   public JobSpecController() {
-    DatabaseConnector databaseConnector = new DatabaseConnector();
-//    jobSpecService = new JobSpecService(new JobSpecDao(), databaseConnector);
-    jobSpecValidator = new JobSpecValidator();
   }
-
-
 }
