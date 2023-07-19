@@ -5,7 +5,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.federecio.dropwizard.swagger.SwaggerBundle;
 import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
-import org.kainos.ea.controller.JobSpecController;
+import org.kainos.ea.controller.JobRoleController;
 
 public class trueApplication extends Application<trueConfiguration> {
 
@@ -15,7 +15,7 @@ public class trueApplication extends Application<trueConfiguration> {
 
   @Override
   public String getName() {
-    return "Kainos Job Application";
+    return "commitConnoisseursBackend";
   }
 
   @Override
@@ -31,6 +31,6 @@ public class trueApplication extends Application<trueConfiguration> {
   @Override
   public void run(final trueConfiguration configuration,
       final Environment environment) {
-    environment.jersey().register(new JobSpecController());
+    environment.jersey().register(new JobRoleController());
   }
 }
