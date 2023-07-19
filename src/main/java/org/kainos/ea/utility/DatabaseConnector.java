@@ -8,6 +8,7 @@ import org.kainos.ea.exceptions.DatabaseConnectionException;
 public class DatabaseConnector {
 
   private static Connection conn;
+  private static DbCredentials dbCredentials;
 
   public Connection getConnection() throws DatabaseConnectionException, SQLException {
     String user;
@@ -20,10 +21,10 @@ public class DatabaseConnector {
     }
 
     try {
-      user            = System.getenv("DB_USERNAME");
-      password        = System.getenv("DB_PASSWORD");
-      host            = System.getenv("DB_HOST");
-      database        = System.getenv("DB_NAME");
+            user = dbCredentials.getDbUser();
+            password = dbCredentials.getDbPassword();
+            host = dbCredentials.getDbHost();
+            database = dbCredentials.getDbName();
 
       if (user == null || password == null || host == null)
         throw new IllegalArgumentException(
