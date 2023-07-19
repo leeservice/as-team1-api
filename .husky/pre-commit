@@ -1,0 +1,3 @@
+mvn spotless:check
+mvn spotless:apply
+mvn spotless:check
