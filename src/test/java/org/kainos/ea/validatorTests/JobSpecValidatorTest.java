@@ -1,5 +1,3 @@
 package org.kainos.ea.validatorTests;
 
-public class JobSpecValidatorTest {
-
-}
+public class JobSpecValidatorTest {}

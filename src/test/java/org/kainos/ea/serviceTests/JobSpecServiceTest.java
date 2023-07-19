@@ -1,5 +1,3 @@
 package org.kainos.ea.serviceTests;
 
-public class JobSpecServiceTest {
-
-}
+public class JobSpecServiceTest {}
