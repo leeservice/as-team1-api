@@ -1,13 +1,13 @@
 public class JobRole {
     private int id;
     private String name;
-    private String description;
+    private String specificationDesc;
     private int bandId;
 
-    public JobRole(int id, String name, String description, int bandId) {
+    public JobRole(int id, String name, String specificationDesc, int bandId) {
         setId(id);
         setName(name);
-        setDescription(description);
+        setSpecificationDesc(specificationDesc);
         setBandId(bandId);
     }
 
@@ -27,14 +27,6 @@ public class JobRole {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public int getBandId() {
         return bandId;
     }
@@ -43,12 +35,20 @@ public class JobRole {
         this.bandId = bandId;
     }
 
+    public String getSpecificationDesc() {
+        return specificationDesc;
+    }
+
+    public void setSpecificationDesc(String specificationDesc) {
+        this.specificationDesc = specificationDesc;
+    }
+
     @Override
     public String toString() {
         return "JobRole{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+                ", description='" + specificationDesc + '\'' +
                 ", bandId=" + bandId +
                 '}';
     }
