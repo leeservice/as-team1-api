@@ -31,6 +31,7 @@ jobs:
       run: mvn -B package --file pom.xml
       
     - name: Apply spotless maven linting to check code and reformat if required.
+      run: |
         mvn spotless:check
         mvn spotless:apply
         mvn spotless:check
