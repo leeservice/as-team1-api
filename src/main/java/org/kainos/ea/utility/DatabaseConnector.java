@@ -21,6 +21,7 @@ public class DatabaseConnector {
     }
 
     try {
+            dbCredentials = new DbCredentials();
             user = dbCredentials.getDbUser();
             password = dbCredentials.getDbPassword();
             host = dbCredentials.getDbHost();
