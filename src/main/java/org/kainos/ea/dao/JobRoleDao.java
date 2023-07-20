@@ -13,8 +13,7 @@ import java.util.List;
 public class JobRoleDao {
     private DatabaseConnector databaseConnector = new DatabaseConnector();
 
-    public List<JobRoleRequest> getAllJobRoles() throws SQLException {
-        Connection c = databaseConnector.getConnection();
+    public List<JobRoleRequest> getAllJobRoles(Connection c) throws SQLException {
         Statement st = c.createStatement();
 
         ResultSet rs = st.executeQuery("SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name', description AS 'Specification Description'," +
