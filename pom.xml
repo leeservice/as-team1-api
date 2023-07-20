@@ -155,31 +155,43 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <!-- Configure maven-surefire-plugin for unit tests -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
-                    <excludes>
-                        <exclude>**/integrationTests/**</exclude>
-                    </excludes>
+                    <!-- By default, includes test classes with *Test.java naming convention -->
+                    <includes>
+                        <include>**/serviceTests/**</include>
+                    </includes>
+                    <!-- Other configuration options for maven-surefire-plugin -->
                 </configuration>
+            </plugin>
+
+            <!-- Configure maven-failsafe-plugin for integration tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.2</version>
                 <executions>
                     <execution>
-                        <id>integration-test</id>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
+                        <!-- Bind the plugin to the integration-test phase -->
+                        <id>integration-tests</id>
                         <phase>integration-test</phase>
-                        <configuration>
-                            <excludes>
-                                <exclude>none</exclude>
-                            </excludes>
-                            <includes>
-                                <include>**/integrationTests/**</include>
-                            </includes>
-                        </configuration>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <!-- By default, includes test classes with *IT.java naming convention -->
+                    <includes>
+                        <include>**/integrationTests/**</include>
+                    </includes>
+                    <!-- Other configuration options for maven-failsafe-plugin -->
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
