@@ -17,7 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dropwizard.version>2.0.23</dropwizard.version>
-        <mainClass>com.kainos.ea.WebServiceApplication</mainClass>
+        <mainClass>com.kainos.ea.trueApplication</mainClass>
     </properties>
 
     <dependencyManagement>
@@ -69,6 +69,17 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.12.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.11.13</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -127,28 +138,6 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
-                    <formats>
-                        <format>
-                            <includes>
-                                <include>*.md</include>
-                                <include>.gitignore</include>
-                            </includes>
-                            <trimTrailingWhitespace/>
-                            <endWithNewline/>
-                            <indent>
-                                <tabs>true</tabs>
-                                <spacesPerTab>4</spacesPerTab>
-                            </indent>
-                        </format>
-                    </formats>
-                    <java>
-                        <googleJavaFormat>
-                            <version>1.8</version>
-                            <style>AOSP</style>
-                            <reflowLongStrings>true</reflowLongStrings>
-                        </googleJavaFormat>
-                    </java>
-
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
@@ -171,7 +160,7 @@
                 <version>2.22.2</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/integrationTests/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -186,7 +175,7 @@
                                 <exclude>none</exclude>
                             </excludes>
                             <includes>
-                                <include>**/*IntegrationTest.java</include>
+                                <include>**/integrationTests/**</include>
                             </includes>
                         </configuration>
                     </execution>
