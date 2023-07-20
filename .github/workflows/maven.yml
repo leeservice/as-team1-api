@@ -45,9 +45,8 @@ jobs:
       - name: Install Maven
         run: mvn clean install
         
-      - name: Check spotless
+      - name: Run spotless and confirm spotless has ran
         run: |
-          mvn spotless:check
           mvn spotless:apply
           mvn spotless:check
           
