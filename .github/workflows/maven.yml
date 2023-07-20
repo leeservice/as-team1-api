@@ -30,7 +30,7 @@ jobs:
       run: mvn -B package --file pom.xml
 
   spotless:
-      name: Check Spotless
+      name: Apply Spotless
       runs-on: ubuntu-latest
     
       steps:
