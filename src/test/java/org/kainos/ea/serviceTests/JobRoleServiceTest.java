@@ -25,32 +25,34 @@ public class JobRoleServiceTest {
     JobRoleService jobRoleService = new JobRoleService(jobRoleDao, databaseConnector);
     Connection conn;
 
-//    @Test
-//    void getJobRoles_shouldThrowFailedToGetJobRoleException_whenDaoThrowsSQLException() throws SQLException, DatabaseConnectionException {
-//        when(databaseConnector.getConnection()).thenReturn(conn);
-//        when(jobRoleDao.getAllJobRoles(conn)).thenThrow(SQLException.class);
-//
-//        assertThrows(FailedToGetJobRoleException.class,
-//                () -> jobRoleService.getAllJobRoles());
-//    }
-//
-//    @Test
-//    void getJobRoles_shouldThrowFailedToGetJobRoleException_whenDaoThrowsDatabaseConnectionException() throws SQLException, DatabaseConnectionException {
-//        when(databaseConnector.getConnection()).thenReturn(conn);
-//        when(jobRoleDao.getAllJobRoles(conn)).thenThrow(DatabaseConnectionException.class);
-//
-//        assertThrows(FailedToGetJobRoleException.class,
-//            () -> jobRoleService.getAllJobRoles());
-//    }
-
+    //    @Test
+    //    void getJobRoles_shouldThrowFailedToGetJobRoleException_whenDaoThrowsSQLException() throws
+    // SQLException, DatabaseConnectionException {
+    //        when(databaseConnector.getConnection()).thenReturn(conn);
+    //        when(jobRoleDao.getAllJobRoles(conn)).thenThrow(SQLException.class);
+    //
+    //        assertThrows(FailedToGetJobRoleException.class,
+    //                () -> jobRoleService.getAllJobRoles());
+    //    }
+    //
+    //    @Test
+    //    void
+    // getJobRoles_shouldThrowFailedToGetJobRoleException_whenDaoThrowsDatabaseConnectionException()
+    // throws SQLException, DatabaseConnectionException {
+    //        when(databaseConnector.getConnection()).thenReturn(conn);
+    //        when(jobRoleDao.getAllJobRoles(conn)).thenThrow(DatabaseConnectionException.class);
+    //
+    //        assertThrows(FailedToGetJobRoleException.class,
+    //            () -> jobRoleService.getAllJobRoles());
+    //    }
 
     @Test
-    void getJobRoles_shouldReturnJobRoles_whenDaoReturnsJobRoles() throws DatabaseConnectionException, SQLException, FailedToGetJobRoleException {
+    void getJobRoles_shouldReturnJobRoles_whenDaoReturnsJobRoles()
+            throws DatabaseConnectionException, SQLException, FailedToGetJobRoleException {
         List<JobRole> jobRole = new ArrayList<JobRole>();
         when(databaseConnector.getConnection()).thenReturn(conn);
         when(jobRoleDao.getAllJobRoles(conn)).thenReturn(jobRole);
         List<JobRole> result = jobRoleService.getAllJobRoles();
         assertEquals(jobRole, result);
     }
-
 }

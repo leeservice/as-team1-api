@@ -18,30 +18,35 @@ import org.kainos.ea.trueConfiguration;
 @ExtendWith(DropwizardExtensionsSupport.class)
 public class JobRoleControllerTest {
 
-    static final DropwizardAppExtension<trueConfiguration> APP = new DropwizardAppExtension<>(trueApplication.class, null, new ResourceConfigurationSourceProvider());
+    static final DropwizardAppExtension<trueConfiguration> APP =
+            new DropwizardAppExtension<>(
+                    trueApplication.class, null, new ResourceConfigurationSourceProvider());
     JobRoleController jobRoleController = new JobRoleController();
+
     @Test
     void getJobRoles_shouldReturnListOfJobRoles() {
-        List<JobRole> response = APP.client().target("http://localhost:8080/api/job-roles").request().get(List.class);
+        List<JobRole> response =
+                APP.client()
+                        .target("http://localhost:8080/api/job-roles")
+                        .request()
+                        .get(List.class);
         Assertions.assertTrue(response.size() > 0);
     }
 
-
     @Test
-    void getJobRoles_shouldReturn200_whenJobRoleListReturned(){
-        Response response = APP.client().target("http://localhost:8080/api/job-roles")
-            .request()
-            .get();
+    void getJobRoles_shouldReturn200_whenJobRoleListReturned() {
+        Response response =
+                APP.client().target("http://localhost:8080/api/job-roles").request().get();
         assertEquals(200, response.getStatus());
     }
 
-//    @Test
-//    void getJobRoles_shouldThrowFailedToGetJobRoleException_whenJobRoleServiceFailsToGetJobRoleException() {
-//        List<JobRole> jobRoleList = APP.client().target("http://localhost:8080/api/job-roles")
-//            .request().get(List.class);
-//        assertThrows(FailedToGetJobRoleException.class,
-//            () -> jobRoleController.getJobRoles());
-//    }
+    //    @Test
+    //    void
+    // getJobRoles_shouldThrowFailedToGetJobRoleException_whenJobRoleServiceFailsToGetJobRoleException() {
+    //        List<JobRole> jobRoleList = APP.client().target("http://localhost:8080/api/job-roles")
+    //            .request().get(List.class);
+    //        assertThrows(FailedToGetJobRoleException.class,
+    //            () -> jobRoleController.getJobRoles());
+    //    }
 
 }
-
