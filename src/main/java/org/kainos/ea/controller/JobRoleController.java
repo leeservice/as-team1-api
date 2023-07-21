@@ -20,9 +20,7 @@ public class JobRoleController {
     private static JobRoleValidator jobRoleValidator;
 
     public JobRoleController() {
-        DatabaseConnector databaseConnector = new DatabaseConnector();
-        jobRoleService = new JobRoleService(new JobRoleDao(), databaseConnector);
-        jobRoleValidator = new JobRoleValidator();
+        jobRoleService = new JobRoleService(new JobRoleDao(), new DatabaseConnector());
     }
 
     @GET
