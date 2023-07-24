@@ -37,11 +37,8 @@ public class JobRoleServiceTest {
     }
 
     @Test
-    void getJobRoles_shouldThrowFailedToGetJobRoleException_whenDaoThrowsDatabaseConnectionException() throws SQLException, DatabaseConnectionException {
-        when(databaseConnector.getConnection()).thenReturn(conn);
-        given(jobRoleDao.getAllJobRoles(conn)).willAnswer(invocationOnMock -> {
-            throw new DatabaseConnectionException();
-        });
+    void getJobRoles_shouldThrowFailedToGetJobRoleException_whenDatabaseConnectorThrowsDatabaseConnectionException() throws SQLException, DatabaseConnectionException {
+        when(databaseConnector.getConnection()).thenThrow(DatabaseConnectionException.class);
         assertThrows(FailedToGetJobRoleException.class, () -> jobRoleService.getAllJobRoles());
     }
 
