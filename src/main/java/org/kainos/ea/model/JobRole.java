@@ -6,11 +6,22 @@ public class JobRole {
     private String specificationDesc;
     private int bandId;
 
-    public JobRole(int id, String name, String specificationDesc, int bandId) {
+    private int capabilityId;
+
+    public int getCapabilityId() {
+        return capabilityId;
+    }
+
+    public void setCapabilityId(int capabilityId) {
+        this.capabilityId = capabilityId;
+    }
+
+    public JobRole(int id, String name, String specificationDesc, int bandId, int capabilityId) {
         setId(id);
         setName(name);
         setSpecificationDesc(specificationDesc);
         setBandId(bandId);
+        setCapabilityId(capabilityId);
     }
 
     public int getId() {
@@ -47,11 +58,12 @@ public class JobRole {
 
     @Override
     public String toString() {
-        return "JobRole{" +
+        return "JobRoleRequest{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + specificationDesc + '\'' +
-                ", bandId=" + bandId +
+                ", specificationDesc='" + specificationDesc + '\'' +
+                ", bandId='" + bandId + '\'' +
+                ", capabilityId='" + capabilityId + '\'' +
                 '}';
     }
 }

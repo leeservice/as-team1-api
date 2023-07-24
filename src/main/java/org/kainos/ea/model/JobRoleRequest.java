@@ -5,9 +5,9 @@ public class JobRoleRequest {
     private String name;
     private String specificationDesc;
     private String bandLevel;
-    private String capability;
+    private int capabilityId;
 
-    public JobRoleRequest(int id, String name, String specificationDesc, String bandLevel, String capability) {
+    public JobRoleRequest(int id, String name, String specificationDesc, String bandLevel, int capability) {
         setId(id);
         setName(name);
         setSpecificationDesc(specificationDesc);
@@ -47,12 +47,12 @@ public class JobRoleRequest {
         this.bandLevel = bandLevel;
     }
 
-    public String getCapability() {
-        return capability;
+    public int getCapability() {
+        return capabilityId;
     }
 
-    public void setCapability(String capability) {
-        this.capability = capability;
+    public void setCapability(int capability) {
+        this.capabilityId = capability;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class JobRoleRequest {
                 ", name='" + name + '\'' +
                 ", specificationDesc='" + specificationDesc + '\'' +
                 ", bandLevel='" + bandLevel + '\'' +
-                ", capability='" + capability + '\'' +
+                ", capabilityId='" + capabilityId + '\'' +
                 '}';
     }
 }
