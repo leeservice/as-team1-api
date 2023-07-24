@@ -2,16 +2,17 @@ package org.kainos.ea.controller;
 
 import io.swagger.annotations.Api;
 import org.kainos.ea.dao.JobRoleDao;
+import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
+import org.kainos.ea.exceptions.JobRoleDoesNotExistException;
 import org.kainos.ea.service.JobRoleService;
 import org.kainos.ea.utility.DatabaseConnector;
 import org.kainos.ea.validator.JobRoleValidator;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.sql.SQLException;
 
 @Api("Commit Connoisseurs API")
 @Path("/api")
@@ -24,13 +25,31 @@ public class JobRoleController {
         jobRoleService = new JobRoleService(new JobRoleDao(), databaseConnector);
         jobRoleValidator = new JobRoleValidator();
     }
-
+    public JobRoleController(JobRoleService service) {
+        jobRoleService = service;
+    }
     @GET
     @Path("/job-roles")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getJobRoles() {
         try {
             return Response.ok(jobRoleService.getAllJobRoles()).build();
+        } catch (FailedToGetJobRoleException e) {
+            System.err.println(e.getMessage());
+            return Response.serverError().build();
+        }
+    }
+    @DELETE
+    @Path("/job-roles/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteJobRole(@PathParam("id") int id)
+    {
+        try {
+            jobRoleService.deleteJob(id);
+            return Response.ok().build();
+        } catch (JobRoleDoesNotExistException e) {
+            System.err.println(e.getMessage());
+            return  Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
         } catch (FailedToGetJobRoleException e) {
             System.err.println(e.getMessage());
             return Response.serverError().build();

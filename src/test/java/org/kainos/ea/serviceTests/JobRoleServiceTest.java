@@ -17,10 +17,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.kainos.ea.dao.JobRoleDao;
 import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
+import org.kainos.ea.exceptions.JobRoleDoesNotExistException;
 import org.kainos.ea.model.JobRole;
 import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.service.JobRoleService;
 import org.kainos.ea.utility.DatabaseConnector;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 public class JobRoleServiceTest {
@@ -28,6 +30,7 @@ public class JobRoleServiceTest {
     DatabaseConnector databaseConnector = mock(DatabaseConnector.class);
     JobRoleService jobRoleService = new JobRoleService(jobRoleDao, databaseConnector);
     Connection conn;
+
     @Test
     void getJobRoles_shouldThrowFailedToGetJobRoleException_whenDaoThrowsSQLException() throws SQLException, DatabaseConnectionException {
         when(databaseConnector.getConnection()).thenReturn(conn);
@@ -44,12 +47,37 @@ public class JobRoleServiceTest {
         });
         assertThrows(FailedToGetJobRoleException.class, () -> jobRoleService.getAllJobRoles());
     }
+
     @Test
     void getJobRoles_shouldReturnJobRoles_whenDaoReturnsJobRoles() throws DatabaseConnectionException, SQLException, FailedToGetJobRoleException {
         List<JobRoleRequest> jobRole = new ArrayList<>();
         when(databaseConnector.getConnection()).thenReturn(conn);
         when(jobRoleDao.getAllJobRoles(conn)).thenReturn(jobRole);
         List<JobRoleRequest> result = jobRoleService.getAllJobRoles();
+        assertEquals(jobRole, result);
+    }
+
+    @Test
+    void deleteJobRole_whenDaoReturnsNull() throws  SQLException, DatabaseConnectionException {
+        Mockito.when(databaseConnector.getConnection()).thenReturn(null);
+        Mockito.when(jobRoleDao.getJobRoleByIdO(0, conn)).thenReturn(null);
+        assertThrows(JobRoleDoesNotExistException.class, () -> jobRoleService.deleteJob(0));
+    }
+    @Test
+    void deleteJobRole_shouldThrowFailedToGetJobRoleException_whenDaoThrowsSQLException() throws  SQLException, DatabaseConnectionException {
+        when(databaseConnector.getConnection()).thenReturn(conn);
+
+        when(jobRoleDao.getJobRoleByIdO(1,conn)).thenThrow(SQLException.class);
+
+        assertThrows(FailedToGetJobRoleException.class, () ->jobRoleService.deleteJob(1));
+    }
+    @Test
+    void deleteJobRole_shouldReturnJobRoles_whenDaoReturnsJobRoles() throws  SQLException, DatabaseConnectionException {
+
+        JobRole jobRole = new JobRole(1, "great", "Wow",1,1);
+        when(databaseConnector.getConnection()).thenReturn(conn);
+        when(jobRoleDao.getJobRoleByIdO(1,conn)).thenReturn(jobRole);
+        JobRole result = jobRoleDao.getJobRoleByIdO(1,conn);
         assertEquals(jobRole, result);
     }
 }
