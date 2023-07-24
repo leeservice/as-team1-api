@@ -20,7 +20,7 @@ public class JobRoleControllerTest {
     static final DropwizardAppExtension<trueConfiguration> APP = new DropwizardAppExtension<>(trueApplication.class, null, new ResourceConfigurationSourceProvider());
 
     @Test
-    void getJobRoles_shouldReturnListOfJobRoles() {
+    void getAllJobRoles_shouldReturnListOfJobRoles() {
         Response response = APP.client().target("http://localhost:8080/api/job-roles").request().get();
 
         //Checks for 200 response code

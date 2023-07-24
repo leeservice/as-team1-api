@@ -18,10 +18,13 @@ import org.kainos.ea.validator.JobRoleValidator;
 @Path("/api")
 public class JobRoleController {
     private static JobRoleService jobRoleService;
-    private static JobRoleValidator jobRoleValidator;
 
     public JobRoleController() {
         jobRoleService = new JobRoleService(new JobRoleDao(), new DatabaseConnector());
+    }
+
+    public JobRoleController(JobRoleService service) {
+        jobRoleService = service;
     }
 
     @GET
