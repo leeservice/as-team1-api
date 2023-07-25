@@ -37,8 +37,7 @@ public class JobRoleService {
     public int createJobRole(JobRoleRequest jobRoleRequest) throws FailedToCreateJobRoleException, InvalidJobRoleException {
         JobRoleValidator validator = new JobRoleValidator();
         try {
-            if (validator.isValidJobRole(jobRoleRequest) == false) {
-                System.out.println(validator.isValidJobRole(jobRoleRequest));
+            if (!validator.isValidJobRole(jobRoleRequest)) {
                 throw new InvalidJobRoleException();
             }
             int id = jobRoleDao.createJobRole(jobRoleRequest, databaseConnector.getConnection());
