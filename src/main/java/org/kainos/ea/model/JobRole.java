@@ -32,7 +32,6 @@ public class JobRole {
     public void setUrlLink(String urlLink) {
         this.urlLink = urlLink;
     }
-
     public int getId() {
         return id;
     }
@@ -48,7 +47,6 @@ public class JobRole {
     public void setName(String name) {
         this.name = name;
     }
-
     public int getBandId() {
         return bandId;
     }

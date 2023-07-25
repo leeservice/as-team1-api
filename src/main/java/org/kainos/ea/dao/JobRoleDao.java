@@ -1,15 +1,12 @@
 package org.kainos.ea.dao;
-
 import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.utility.DatabaseConnector;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 public class JobRoleDao {
     private DatabaseConnector databaseConnector = new DatabaseConnector();
 
@@ -37,6 +34,7 @@ public class JobRoleDao {
             );
             jobRoleList.add(jobRoleRequest);
         }
-        return jobRoleList;
+        return null;
     }
+
 }

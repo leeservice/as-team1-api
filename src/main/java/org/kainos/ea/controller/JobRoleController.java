@@ -12,7 +12,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 @Api("Commit Connoisseurs API")
 @Path("/api")
 public class JobRoleController {
@@ -31,7 +30,7 @@ public class JobRoleController {
     @GET
     @Path("/job-roles")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getJobRoles() {
+    public Response getAllJobRoles() {
         try {
             return Response.ok(jobRoleService.getAllJobRoles()).build();
         } catch (FailedToGetJobRoleException e) {
