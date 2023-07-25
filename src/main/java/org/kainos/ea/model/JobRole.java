@@ -1,9 +1,10 @@
 package org.kainos.ea.model;
-
 public class JobRole {
     private int id;
     private String name;
     private String specificationDesc;
+    private String urlLink;
+
     private int bandId;
 
     private int capabilityId;
@@ -16,12 +17,20 @@ public class JobRole {
         this.capabilityId = capabilityId;
     }
 
-    public JobRole(int id, String name, String specificationDesc, int bandId, int capabilityId) {
+    public JobRole(int id, String name, String specificationDesc, String urlLink, int bandId, int capabilityId) {
         setId(id);
         setName(name);
         setSpecificationDesc(specificationDesc);
+        setUrlLink(urlLink);
         setBandId(bandId);
         setCapabilityId(capabilityId);
+    }
+    public String getUrlLink() {
+        return urlLink;
+    }
+
+    public void setUrlLink(String urlLink) {
+        this.urlLink = urlLink;
     }
 
     public int getId() {
@@ -62,6 +71,7 @@ public class JobRole {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", specificationDesc='" + specificationDesc + '\'' +
+                ", urlLink='" + urlLink + '\'' +
                 ", bandId='" + bandId + '\'' +
                 ", capabilityId='" + capabilityId + '\'' +
                 '}';

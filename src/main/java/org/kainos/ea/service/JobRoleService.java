@@ -10,8 +10,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+
+
 public class JobRoleService {
-    public JobRoleDao jobRoleDao = new JobRoleDao();
+
+    public JobRoleDao jobRoleDao;
     public DatabaseConnector databaseConnector;
 
     public JobRoleService(JobRoleDao jobRoleDao, DatabaseConnector databaseConnector) {
