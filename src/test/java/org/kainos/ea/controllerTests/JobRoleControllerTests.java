@@ -34,7 +34,7 @@ import static org.mockito.Mockito.when;
         @Test
         void getAllJobRoles_shouldReturn500_whenJobRoleServiceThrowsFailedToGetJobRoleException() throws FailedToGetJobRoleException {
             when(jobRoleService.getAllJobRoles()).thenThrow(FailedToGetJobRoleException.class);
-            assertEquals(500, jobRoleController.getJobRoles().getStatus());
+            assertEquals(500, jobRoleController.getAllJobRoles().getStatus());
         }
 
     }
