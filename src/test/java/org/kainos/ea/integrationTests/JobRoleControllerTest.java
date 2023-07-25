@@ -28,5 +28,7 @@ public class JobRoleControllerTest {
         List<JobRole> jobRoles = response.readEntity(List.class);
         //Checks if list returned has a size greater than 0
         assertTrue(jobRoles.size() > 0);
+
+
     }
 }
