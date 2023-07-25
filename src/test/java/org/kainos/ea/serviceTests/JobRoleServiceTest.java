@@ -17,6 +17,7 @@ import org.kainos.ea.dao.JobRoleDao;
 import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
 import org.kainos.ea.model.JobRole;
+import org.kainos.ea.model.JobRoleGetRequest;
 import org.kainos.ea.service.JobRoleService;
 import org.kainos.ea.utility.DatabaseConnector;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -44,10 +45,10 @@ public class JobRoleServiceTest {
 
     @Test
     void getAllJobRoles_shouldReturnJobRoles_whenDaoReturnsJobRoles() throws DatabaseConnectionException, SQLException, FailedToGetJobRoleException {
-        List<JobRole> jobRole = new ArrayList<JobRole>();
+        List<JobRoleGetRequest> jobRole = new ArrayList<JobRoleGetRequest>();
         when(databaseConnector.getConnection()).thenReturn(conn);
         when(jobRoleDao.getAllJobRoles(conn)).thenReturn(jobRole);
-        List<JobRole> result = jobRoleService.getAllJobRoles();
+        List<JobRoleGetRequest> result = jobRoleService.getAllJobRoles();
         assertEquals(jobRole, result);
     }
 }
