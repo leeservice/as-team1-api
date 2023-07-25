@@ -4,15 +4,24 @@ public class JobRoleRequest {
     private int id;
     private String name;
     private String specificationDesc;
+    private String urlLink;
     private String bandLevel;
-    private int capabilityId;
+    private String capability;
 
-    public JobRoleRequest(int id, String name, String specificationDesc, String bandLevel, int capability) {
+    public JobRoleRequest(int id, String name, String specificationDesc, String urlLink, String bandLevel, String capability) {
         setId(id);
         setName(name);
         setSpecificationDesc(specificationDesc);
+        setUrlLink(urlLink);
         setBandLevel(bandLevel);
         setCapability(capability);
+    }
+    public String getUrlLink() {
+        return urlLink;
+    }
+
+    public void setUrlLink(String urlLink) {
+        this.urlLink = urlLink;
     }
 
     public int getId() {
@@ -47,12 +56,12 @@ public class JobRoleRequest {
         this.bandLevel = bandLevel;
     }
 
-    public int getCapability() {
-        return capabilityId;
+    public String getCapability() {
+        return capability;
     }
 
-    public void setCapability(int capability) {
-        this.capabilityId = capability;
+    public void setCapability(String capability) {
+        this.capability = capability;
     }
 
     @Override
@@ -61,8 +70,9 @@ public class JobRoleRequest {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", specificationDesc='" + specificationDesc + '\'' +
+                ", url_link='" + urlLink + '\'' +
                 ", bandLevel='" + bandLevel + '\'' +
-                ", capabilityId='" + capabilityId + '\'' +
+                ", capability='" + capability + '\'' +
                 '}';
     }
 }
