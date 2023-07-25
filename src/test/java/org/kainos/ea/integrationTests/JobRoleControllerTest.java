@@ -1,5 +1,6 @@
 package org.kainos.ea.integrationTests;
 
+
 import io.dropwizard.configuration.ResourceConfigurationSourceProvider;
 import io.dropwizard.testing.junit5.DropwizardAppExtension;
 import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
@@ -27,14 +28,25 @@ public class JobRoleControllerTest {
 
     @Test
     void DeleteJobRole_shouldReturnDeletionJobRoles() throws DatabaseConnectionException, SQLException {
-        JobRoleNoId job = new JobRoleNoId("Engineer","Amazing",
-                "https://kainossoftwareltd.sharepoint.com/people/Job%20Specifications/Forms/AllItems.aspx?id=%2Fpeople%2FJob%20Specifications%2FEngineering%2FJob%20Profile%20%2D%20Principal%20Architect%20%28Principal%29%2Epdf&parent=%2Fpeople%2FJob%20Specifications%2FEngineering&p=true&ga=1",1,1);
+        JobRoleNoId job = new JobRoleNoId("Engineer", "Amazing",
+                "https://kainossoftwareltd.sharepoint.com/people/Job%20Specifications/Forms/AllItems.aspx?id=%2Fpeople%2FJob%20Specifications%2FEngineering%2FJob%20Profile%20%2D%20Principal%20Architect%20%28Principal%29%2Epdf&parent=%2Fpeople%2FJob%20Specifications%2FEngineering&p=true&ga=1", 1, 1);
         DatabaseConnector databaseConnector = new DatabaseConnector();
         JobRoleDao dao = new JobRoleDao();
-       int JobID = dao.createJobRoleToDelete(job, databaseConnector.getConnection());
+        int JobID = dao.createJobRoleToDelete(job, databaseConnector.getConnection());
         Response response = APP.client().target("http://localhost:8080/api/job-roles/" + JobID).request().delete();
 
         assertEquals(200, response.getStatus());
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+    }
+    @Test
+    void getAllJobRoles_shouldReturnListOfJobRoles() {
+        Response response = APP.client().target("http://localhost:8080/api/job-roles").request().get();
+
+        //Checks for 200 response code
+        assertEquals(200, response.getStatus());
+        List<JobRole> jobRoles = response.readEntity(List.class);
+        //Checks if list returned has a size greater than 0
+        assertTrue(jobRoles.size() > 0);
+
     }
 }

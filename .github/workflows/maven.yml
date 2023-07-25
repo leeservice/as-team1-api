@@ -13,11 +13,19 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+<<<<<<< HEAD
+=======
+
+>>>>>>> c42ba9ac65a91f8ba3eb550ae719fbe249f2f073
 env:
   DB_NAME: ${{ secrets.DB_NAME }}
   DB_USERNAME: ${{ secrets.DB_USERNAME }}
   DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
   DB_HOST: ${{ secrets.DB_HOST }}
+<<<<<<< HEAD
+=======
+
+>>>>>>> c42ba9ac65a91f8ba3eb550ae719fbe249f2f073
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,9 +44,10 @@ jobs:
   spotless:
       name: Apply Spotless
       runs-on: ubuntu-latest
-    
+          
       steps:
       - uses: actions/checkout@v3
+      
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:

@@ -33,6 +33,7 @@ public class JobRole {
     public void setUrlLink(String urlLink) {
         this.urlLink = urlLink;
     }
+
     public int getId() {
         return id;
     }
