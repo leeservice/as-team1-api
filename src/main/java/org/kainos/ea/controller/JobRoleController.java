@@ -24,9 +24,8 @@ public class JobRoleController {
         jobRoleService = new JobRoleService(new JobRoleDao(), databaseConnector);
         jobRoleValidator = new JobRoleValidator();
     }
-    public JobRoleController(JobRoleService jobRoleService)
-    {
-
+    public JobRoleController(JobRoleService service) {
+        jobRoleService = service;
     }
 
     @GET
