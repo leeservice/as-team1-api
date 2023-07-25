@@ -34,7 +34,6 @@ public class JobRoleDao {
             );
             jobRoleList.add(jobRoleRequest);
         }
-        return null;
+        return jobRoleList;
     }
-
 }

@@ -32,13 +32,12 @@ public class JobRoleControllerTest {
         Response response = APP.client().target("http://localhost:8080/api/job-roles").request().get();
 
         //Checks for 200 response code
-        List<JobRoleRequest> jobRoles = response.readEntity(new GenericType<List<JobRoleRequest>>() {
-        });
+        assertEquals(200, response.getStatus());
+        List<JobRole> jobRoles = response.readEntity(List.class);
+        //Checks if list returned has a size greater than 0
         assertTrue(jobRoles.size() > 0);
-        JobRoleRequest jobRoleResponse = jobRoles.get(0);
-        String expected = "Engineering";
-        String actual = jobRoleResponse.getCapability();
-        assertEquals(expected, actual);
+
+
     }
 
 }

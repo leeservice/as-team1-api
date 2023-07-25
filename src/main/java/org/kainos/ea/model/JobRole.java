@@ -16,7 +16,6 @@ public class JobRole {
     public void setCapabilityId(int capabilityId) {
         this.capabilityId = capabilityId;
     }
-
     public JobRole(int id, String name, String specificationDesc, String urlLink, int bandId, int capabilityId) {
         setId(id);
         setName(name);
@@ -32,6 +31,7 @@ public class JobRole {
     public void setUrlLink(String urlLink) {
         this.urlLink = urlLink;
     }
+
     public int getId() {
         return id;
     }
@@ -47,6 +47,7 @@ public class JobRole {
     public void setName(String name) {
         this.name = name;
     }
+
     public int getBandId() {
         return bandId;
     }
