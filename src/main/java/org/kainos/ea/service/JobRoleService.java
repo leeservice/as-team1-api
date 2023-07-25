@@ -6,6 +6,7 @@ import org.kainos.ea.dao.JobRoleDao;
 import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
 import org.kainos.ea.model.JobRole;
+import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.utility.DatabaseConnector;
 
 public class JobRoleService {
@@ -18,14 +19,14 @@ public class JobRoleService {
         this.databaseConnector = databaseConnector;
     }
 
-    public List<JobRole> getAllJobRoles() throws FailedToGetJobRoleException {
-        List<JobRole> jobRoleList = null;
+    public List<JobRoleRequest> getAllJobRoles() throws FailedToGetJobRoleException {
+        List<JobRoleRequest> jobRoleRequestList = null;
         try {
-            jobRoleList = jobRoleDao.getAllJobRoles(databaseConnector.getConnection());
+            jobRoleRequestList = jobRoleDao.getAllJobRoles(databaseConnector.getConnection());
         } catch (SQLException | DatabaseConnectionException e) {
             System.err.println(e.getMessage());
             throw new FailedToGetJobRoleException();
         }
-        return jobRoleList;
+        return jobRoleRequestList;
     }
 }

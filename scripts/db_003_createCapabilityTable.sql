@@ -3,6 +3,7 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS create_capabilityTable_003 $$
 CREATE PROCEDURE create_capabilityTable_003()
 BEGIN
+DROP TABLE Capability;
 
 -- Creates Capability table
 CREATE TABLE IF NOT EXISTS Capability (
@@ -13,11 +14,8 @@ CREATE TABLE IF NOT EXISTS Capability (
 
 -- Adds capability column to Job_Roles table
 ALTER TABLE Job_Roles
-ADD COLUMN capability_id TINYINT NOT NULL;
-
-ALTER TABLE Job_Roles
-ADD CONSTRAINT fk_capability FOREIGN KEY (capability_id) REFERENCES Capability(id);
-
+ADD COLUMN capability_id TINYINT,
+ADD CONSTRAINT FOREIGN KEY (capability_id) REFERENCES Capability(id);
 
 END $$
 DELIMITER ;
