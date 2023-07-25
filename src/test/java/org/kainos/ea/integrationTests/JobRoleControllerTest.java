@@ -27,7 +27,7 @@ public class JobRoleControllerTest {
 
     @Test
     void DeleteJobRole_shouldReturnDeletionJobRoles() throws DatabaseConnectionException, SQLException {
-        JobRoleNoId job = new JobRoleNoId("Engineer","Amazing","Select * from Job_Roles\n" +
+        JobRoleNoId job = new JobRoleNoId("Engineer","Amazing",
                 "https://kainossoftwareltd.sharepoint.com/people/Job%20Specifications/Forms/AllItems.aspx?id=%2Fpeople%2FJob%20Specifications%2FEngineering%2FJob%20Profile%20%2D%20Principal%20Architect%20%28Principal%29%2Epdf&parent=%2Fpeople%2FJob%20Specifications%2FEngineering&p=true&ga=1",1,1);
         DatabaseConnector databaseConnector = new DatabaseConnector();
         JobRoleDao dao = new JobRoleDao();
