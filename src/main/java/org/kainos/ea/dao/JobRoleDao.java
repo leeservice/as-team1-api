@@ -19,7 +19,7 @@ public class JobRoleDao {
 
         ResultSet rs = st.executeQuery("SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name', specification_description AS 'Specification Description'," +
                 "url_link AS 'URL Link'," +
-                " level_of_band AS 'Band Level', Capability.`name` AS 'Capability '" +
+                " level_of_band AS 'Band Level', Capability.`name` AS 'Capability'" +
                 " FROM Job_Roles" +
                 " INNER JOIN Banding ON Job_Roles.band_id = Banding.id"
                 +
