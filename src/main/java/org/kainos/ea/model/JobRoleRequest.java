@@ -1,5 +1,7 @@
 package org.kainos.ea.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class JobRoleRequest {
     private int id;
     private String name;
@@ -8,7 +10,7 @@ public class JobRoleRequest {
     private String bandLevel;
     private String capability;
 
-    public JobRoleRequest(int id, String name, String specificationDesc, String urlLink, String bandLevel, String capability) {
+    public JobRoleRequest(@JsonProperty("JobRoleId")int id, @JsonProperty("Name")String name, @JsonProperty("Specification_Description")String specificationDesc,@JsonProperty("URL") String urlLink, @JsonProperty("BandLevel")String bandLevel, @JsonProperty("Capability")String capability) {
         setId(id);
         setName(name);
         setSpecificationDesc(specificationDesc);
