@@ -1,8 +1,6 @@
 package org.kainos.ea.serviceTests;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.BDDMockito.given;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -16,8 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.kainos.ea.dao.JobRoleDao;
 import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
-import org.kainos.ea.model.JobRole;
-import org.kainos.ea.model.JobRoleGetRequest;
+import org.kainos.ea.model.JobRoleResponse;
 import org.kainos.ea.service.JobRoleService;
 import org.kainos.ea.utility.DatabaseConnector;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -45,10 +42,17 @@ public class JobRoleServiceTest {
 
     @Test
     void getAllJobRoles_shouldReturnJobRoles_whenDaoReturnsJobRoles() throws DatabaseConnectionException, SQLException, FailedToGetJobRoleException {
-        List<JobRoleGetRequest> jobRole = new ArrayList<JobRoleGetRequest>();
+        List<JobRoleResponse> jobRoleResponseList = new ArrayList<>();
         when(databaseConnector.getConnection()).thenReturn(conn);
-        when(jobRoleDao.getAllJobRoles(conn)).thenReturn(jobRole);
-        List<JobRoleGetRequest> result = jobRoleService.getAllJobRoles();
-        assertEquals(jobRole, result);
+        when(jobRoleDao.getAllJobRoles(conn)).thenReturn(jobRoleResponseList);
+        List<JobRoleResponse> result = jobRoleService.getAllJobRoles();
+        assertEquals(jobRoleResponseList, result);
+
+        // Test capability is displayed
+        JobRoleResponse jobRoleResponse = new JobRoleResponse(1, "Technology Leader", "Engineering");
+        result.add(jobRoleResponse);
+        String expected = "Engineering";
+        String actual = result.get(0).getCapability();
+        assertEquals(expected, actual);
     }
 }

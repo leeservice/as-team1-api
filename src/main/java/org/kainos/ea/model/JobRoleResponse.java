@@ -1,11 +1,15 @@
 package org.kainos.ea.model;
 
-public class JobRoleGetRequest {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class JobRoleResponse {
     private int id;
     private String name;
     private String capability;
 
-    public JobRoleGetRequest(int id, String name, String capability) {
+    public JobRoleResponse(@JsonProperty("id") int id,
+                           @JsonProperty("name") String name,
+                           @JsonProperty("capability") String capability) {
         setId(id);
         setName(name);
         setCapability(capability);
@@ -37,7 +41,7 @@ public class JobRoleGetRequest {
 
     @Override
     public String toString() {
-        return "JobRoleGetRequest{" +
+        return "JobRoleResponse{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", capability=" + capability +

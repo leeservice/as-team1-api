@@ -3,8 +3,6 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS create_capabilityTable_003 $$
 CREATE PROCEDURE create_capabilityTable_003()
 BEGIN
-DROP TABLE Capability;
-
 -- Creates Capability table
 CREATE TABLE IF NOT EXISTS Capability (
     id TINYINT NOT NULL AUTO_INCREMENT,
