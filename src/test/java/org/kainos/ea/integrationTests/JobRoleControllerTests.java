@@ -19,7 +19,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class JobRoleControllerTest {
+public class JobRoleControllerTests {
     JobRoleService jobRoleService = mock(JobRoleService.class);
     JobRoleController jobRoleController = new JobRoleController(jobRoleService);
 
@@ -31,16 +31,4 @@ public class JobRoleControllerTest {
 
 }
 
-
-    @Test
-    void getAllJobRoles_shouldReturnListOfJobRoles() {
-        Response response = APP.client().target("http://localhost:8080/api/job-roles").request().get();
-
-        //Checks for 200 response code
-        assertEquals(200, response.getStatus());
-        List<JobRole> jobRoles = response.readEntity(List.class);
-        //Checks if list returned has a size greater than 0
-        assertTrue(jobRoles.size() > 0);
-
-    }
 }
