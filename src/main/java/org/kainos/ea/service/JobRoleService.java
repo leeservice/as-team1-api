@@ -9,10 +9,9 @@ import org.kainos.ea.exceptions.FailedToCreateJobRoleException;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
 import org.kainos.ea.exceptions.InvalidJobRoleException;
 import org.kainos.ea.model.JobRole;
-import org.kainos.ea.model.JobRolePostRequest;
+import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.utility.DatabaseConnector;
 import org.kainos.ea.validator.JobRoleValidator;
-import sun.tools.jps.Jps;
 
 public class JobRoleService {
 
@@ -35,13 +34,13 @@ public class JobRoleService {
         return jobRoleList;
     }
 
-    public int createJobRole(JobRolePostRequest jobRolePostRequest) throws FailedToCreateJobRoleException, InvalidJobRoleException {
+    public int createJobRole(JobRoleRequest jobRoleRequest) throws FailedToCreateJobRoleException, InvalidJobRoleException {
         JobRoleValidator validator = new JobRoleValidator();
         try {
-            if (!validator.isValidJobRole(jobRolePostRequest)) {
+            if (!validator.isValidJobRole(jobRoleRequest)) {
                 throw new InvalidJobRoleException();
             }
-            int id = jobRoleDao.addJobRole(jobRolePostRequest, databaseConnector.getConnection());
+            int id = jobRoleDao.addJobRole(jobRoleRequest, databaseConnector.getConnection());
             if (id == -1) {
                 throw new FailedToCreateJobRoleException();
             }

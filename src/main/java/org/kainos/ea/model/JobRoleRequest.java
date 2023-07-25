@@ -3,7 +3,7 @@ package org.kainos.ea.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class JobRolePostRequest {
+public class JobRoleRequest {
     private String name;
     private String specificationDesc;
     private int capability_id;
@@ -11,7 +11,7 @@ public class JobRolePostRequest {
     private String url;
 
     @JsonCreator
-    public JobRolePostRequest(@JsonProperty("name") String name, @JsonProperty("specificationDesc") String specificationDesc, @JsonProperty("capability_id") int capability_id, @JsonProperty("band_id") int band_id, @JsonProperty("url") String url) {
+    public JobRoleRequest(@JsonProperty("name") String name, @JsonProperty("specificationDesc") String specificationDesc, @JsonProperty("capability_id") int capability_id, @JsonProperty("band_id") int band_id, @JsonProperty("url") String url) {
         setName(name);
         setName(specificationDesc);
         setCapability_id(capability_id);
@@ -61,6 +61,6 @@ public class JobRolePostRequest {
 
     @Override
     public String toString() {
-        return "JobRolePostRequest{" + "name='" + name + '\'' + ", specificationDesc='" + specificationDesc + '\'' + ", capability_id=" + capability_id + ", band_id=" + band_id + ", url='" + url + '\'' + '}';
+        return "JobRoleRequest{" + "name='" + name + '\'' + ", specificationDesc='" + specificationDesc + '\'' + ", capability_id=" + capability_id + ", band_id=" + band_id + ", url='" + url + '\'' + '}';
     }
 }

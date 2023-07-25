@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.kainos.ea.model.JobRole;
-import org.kainos.ea.model.JobRolePostRequest;
+import org.kainos.ea.model.JobRoleRequest;
 
 public class JobRoleDao {
     public List<JobRole> getAllJobRoles(Connection c) throws SQLException {
@@ -22,14 +22,14 @@ public class JobRoleDao {
         return jobRoleList;
     }
 
-    public int addJobRole(JobRolePostRequest jobRolePostRequest, Connection c) throws SQLException {
+    public int addJobRole(JobRoleRequest jobRoleRequest, Connection c) throws SQLException {
         String statement = "INSERT INTO Job_Roles(name, specification_description, url_link, capability_id, band_id" + " VALUES(?,?,?,?,?)";
         PreparedStatement st = c.prepareStatement(statement, Statement.RETURN_GENERATED_KEYS);
-        st.setString(1, jobRolePostRequest.getName());
-        st.setString(2, jobRolePostRequest.getSpecificationDesc());
-        st.setString(3, jobRolePostRequest.getUrl());
-        st.setInt(4, jobRolePostRequest.getCapability_id());
-        st.setInt(5, jobRolePostRequest.getBand_id());
+        st.setString(1, jobRoleRequest.getName());
+        st.setString(2, jobRoleRequest.getSpecificationDesc());
+        st.setString(3, jobRoleRequest.getUrl());
+        st.setInt(4, jobRoleRequest.getCapability_id());
+        st.setInt(5, jobRoleRequest.getBand_id());
 
         st.executeUpdate();
         ResultSet rs = st.getGeneratedKeys();
