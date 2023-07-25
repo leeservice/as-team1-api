@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.model.JobRoleResponse;
+import org.kainos.ea.model.JobRolePostRequest;
 
 public class JobRoleDao {
     public List<JobRoleResponse> getAllJobRoles(Connection c) throws SQLException {
@@ -32,7 +33,6 @@ public class JobRoleDao {
         }
         return jobRoleResponseList;
     }
-
     public int createJobRole(JobRoleRequest jobRoleRequest, Connection c) throws SQLException {
         String statement = "INSERT INTO Job_Roles(`name`, specification_description, url_link, capability_id, band_id)" + " VALUES(?,?,?,?,?)";
         PreparedStatement st = c.prepareStatement(statement, Statement.RETURN_GENERATED_KEYS);
