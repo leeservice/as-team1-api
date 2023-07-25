@@ -24,6 +24,10 @@ public class JobRoleController {
         jobRoleService = new JobRoleService(new JobRoleDao(), databaseConnector);
         jobRoleValidator = new JobRoleValidator();
     }
+    public JobRoleController(JobRoleService jobRoleService)
+    {
+
+    }
 
     @GET
     @Path("/job-roles")
