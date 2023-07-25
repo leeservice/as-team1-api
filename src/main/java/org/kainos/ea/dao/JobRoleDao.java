@@ -15,7 +15,7 @@ public class JobRoleDao {
     public List<JobRoleRequest> getAllJobRoles(Connection c) throws SQLException {
         Statement st = c.createStatement();
 
-        ResultSet rs = st.executeQuery("SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name', specfication_description AS 'Specification Description'," +
+        ResultSet rs = st.executeQuery("SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name', specification_description AS 'Specification Description'," +
                 "url_link AS 'URL Link'," +
                 " level_of_band AS 'Band Level', Capability.`name` AS 'Capability '" +
                 " FROM Job_Roles" +
@@ -47,10 +47,10 @@ public class JobRoleDao {
     public JobRole getJobRoleByIdO(int id, Connection c) throws SQLException {
         Statement st = c.createStatement();
 
-        ResultSet rs = st.executeQuery("SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name', description AS 'Specification Description'," +
+        ResultSet rs = st.executeQuery("SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name', specification_description AS 'Specification Description'," +
                 "url_link AS 'URL Link'," +
                 " Job_Roles.band_id AS 'Band Id', Job_Roles.capability_id AS 'Capability Id'" +
-                " FROM Job_Roles where ID = ?");
+                " FROM Job_Roles where ID = "+ id +";");
         while (rs.next()) {
             return new JobRole(
                     rs.getInt("ID"),

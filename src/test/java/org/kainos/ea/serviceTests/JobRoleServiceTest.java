@@ -74,7 +74,7 @@ public class JobRoleServiceTest {
     @Test
     void deleteJobRole_shouldReturnJobRoles_whenDaoReturnsJobRoles() throws  SQLException, DatabaseConnectionException {
 
-        JobRole jobRole = new JobRole(1, "great", "Wow",1,1);
+        JobRole jobRole = new JobRole(1, "great", "Wow","https://kainossoftwareltd.sharepoint.com/people/Job%20Specifications/Forms/AllItems.aspx?id=%2Fpeople%2FJob%20Specifications%2FEngineering%2FJob%20Profile%20%2D%20Technology%20Leader%2Epdf&parent=%2Fpeople%2FJob%20Specifications%2FEngineering&p=true&ga=",1,1);
         when(databaseConnector.getConnection()).thenReturn(conn);
         when(jobRoleDao.getJobRoleByIdO(1,conn)).thenReturn(jobRole);
         JobRole result = jobRoleDao.getJobRoleByIdO(1,conn);

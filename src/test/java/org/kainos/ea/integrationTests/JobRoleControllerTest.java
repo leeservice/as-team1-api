@@ -22,7 +22,7 @@ public class JobRoleControllerTest {
 
     @Test
     void DeleteJobRole_shouldReturnDeletionJobRoles() {
-        Response response = APP.client().target("http://localhost:8080/api/job-roles/1").request().delete();
+        Response response = APP.client().target("http://localhost:8080/api/job-roles/15").request().delete();
 
         assertEquals(200, response.getStatus());
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
