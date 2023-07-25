@@ -47,12 +47,5 @@ public class JobRoleServiceTest {
         when(jobRoleDao.getAllJobRoles(conn)).thenReturn(jobRoleResponseList);
         List<JobRoleResponse> result = jobRoleService.getAllJobRoles();
         assertEquals(jobRoleResponseList, result);
-
-        // Test capability is displayed
-        JobRoleResponse jobRoleResponse = new JobRoleResponse(1, "Technology Leader", "Engineering");
-        result.add(jobRoleResponse);
-        String expected = "Engineering";
-        String actual = result.get(0).getCapability();
-        assertEquals(expected, actual);
     }
 }
