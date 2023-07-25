@@ -48,5 +48,6 @@ public class JobRoleControllerTest {
         //Checks if list returned has a size greater than 0
         assertTrue(jobRoles.size() > 0);
 
+
     }
 }

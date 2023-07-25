@@ -51,6 +51,7 @@ public class JobRoleServiceTest {
         when(jobRoleDao.getAllJobRoles(conn)).thenReturn(jobRole);
         List<JobRoleRequest> result = jobRoleService.getAllJobRoles();
         assertEquals(jobRole, result);
+
     }
 
     @Test
