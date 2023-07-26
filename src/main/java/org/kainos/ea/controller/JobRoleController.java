@@ -10,7 +10,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.kainos.ea.dao.JobRoleDao;
+import org.kainos.ea.exceptions.FailedToCreateJobRoleException;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
+import org.kainos.ea.exceptions.InvalidJobRoleException;
 import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.service.JobRoleService;
 import org.kainos.ea.utility.DatabaseConnector;
@@ -43,6 +45,15 @@ public class JobRoleController {
     @POST
     @Path("/job-roles")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addJobRole(JobRoleRequest) {
+    public Response createJobRole(JobRoleRequest jobRoleRequest) {
+        try {
+            return Response.status(Response.Status.CREATED).entity(jobRoleService.createJobRole(jobRoleRequest)).build();
+        } catch (FailedToCreateJobRoleException e) {
+            System.err.println(e.getMessage());
+            return Response.serverError().build();
+        } catch (InvalidJobRoleException e) {
+            System.err.println(e.getMessage());
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }
     }
 }

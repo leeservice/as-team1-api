@@ -23,7 +23,7 @@ public class JobRoleDao {
     }
 
     public int addJobRole(JobRoleRequest jobRoleRequest, Connection c) throws SQLException {
-        String statement = "INSERT INTO Job_Roles(name, specification_description, url_link, capability_id, band_id" + " VALUES(?,?,?,?,?)";
+        String statement = "INSERT INTO Job_Roles(`name`, specification_description, url_link, capability_id, band_id)" + " VALUES(?,?,?,?,?)";
         PreparedStatement st = c.prepareStatement(statement, Statement.RETURN_GENERATED_KEYS);
         st.setString(1, jobRoleRequest.getName());
         st.setString(2, jobRoleRequest.getSpecificationDesc());

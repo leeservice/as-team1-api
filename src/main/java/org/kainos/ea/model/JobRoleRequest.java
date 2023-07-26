@@ -16,6 +16,7 @@ public class JobRoleRequest {
         setName(specificationDesc);
         setCapability_id(capability_id);
         setBand_id(band_id);
+        setSpecificationDesc(specificationDesc);
         setUrl(url);
     }
 
