@@ -11,17 +11,19 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.kainos.ea.dao.CapabilityDao;
 import org.kainos.ea.dao.JobRoleDao;
-import org.kainos.ea.exceptions.DatabaseConnectionException;
-import org.kainos.ea.exceptions.FailedToCreateJobRoleException;
-import org.kainos.ea.exceptions.FailedToGetJobRoleException;
-import org.kainos.ea.exceptions.InvalidJobRoleException;
+import org.kainos.ea.exceptions.*;
+import org.kainos.ea.model.Capability;
 import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.model.JobRoleResponse;
+import org.kainos.ea.service.CapabilityService;
 import org.kainos.ea.service.JobRoleService;
 import org.kainos.ea.utility.DatabaseConnector;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import javax.xml.crypto.Data;
 
 @ExtendWith(MockitoExtension.class)
 public class JobRoleServiceTest {
@@ -37,7 +39,6 @@ public class JobRoleServiceTest {
             1,
             "https://kainos.com"
     );
-
     @Test
     void getAllJobRoles_shouldThrowFailedToGetJobRoleException_whenDaoThrowsSQLException() throws SQLException, DatabaseConnectionException {
         when(databaseConnector.getConnection()).thenReturn(conn);

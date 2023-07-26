@@ -3,10 +3,8 @@ package org.kainos.ea.controllerTests;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.kainos.ea.controller.JobRoleController;
-import org.kainos.ea.dao.JobRoleDao;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
 import org.kainos.ea.service.JobRoleService;
-import org.kainos.ea.utility.DatabaseConnector;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -17,7 +17,7 @@ import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.service.JobRoleService;
 import org.kainos.ea.utility.DatabaseConnector;
 
-@Api("Commit Connoisseurs API")
+@Api("Job Role API")
 @Path("/api")
 public class JobRoleController {
     private static JobRoleService jobRoleService;
