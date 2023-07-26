@@ -8,8 +8,8 @@ import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
 
 import java.util.List;
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
@@ -70,5 +70,4 @@ public class JobRoleControllerTest {
         Response response = APP.client().target("http://localhost:8080/api/job-roles").request().post(Entity.entity(jobRoleRequest, MediaType.APPLICATION_JSON_TYPE));
         assertEquals(400, response.getStatus());
     }
-
 }

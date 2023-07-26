@@ -38,5 +38,7 @@ public class JobRoleDao {
             return rs.getInt(1);
         }
         return -1;
+        }
+        return jobRoleResponseList;
     }
 }
