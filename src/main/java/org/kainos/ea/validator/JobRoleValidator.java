@@ -7,6 +7,12 @@ public class JobRoleValidator {
         if (jobRoleRequest.getName().length() > 50) {
             return false;
         }
+        if (jobRoleRequest.getName().trim() == "" || jobRoleRequest.getName() == null) {
+            return false;
+        }
+        if (jobRoleRequest.getUrl().length() > 500) {
+            return false;
+        }
         return true;
     }
 }

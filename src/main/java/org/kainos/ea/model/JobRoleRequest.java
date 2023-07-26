@@ -13,7 +13,6 @@ public class JobRoleRequest {
     @JsonCreator
     public JobRoleRequest(@JsonProperty("name") String name, @JsonProperty("specificationDesc") String specificationDesc, @JsonProperty("capability_id") int capability_id, @JsonProperty("band_id") int band_id, @JsonProperty("url") String url) {
         setName(name);
-        setName(specificationDesc);
         setCapability_id(capability_id);
         setBand_id(band_id);
         setSpecificationDesc(specificationDesc);
