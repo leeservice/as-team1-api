@@ -25,6 +25,7 @@ public class JobRoleResponse {
     public void setUrlLink(String urlLink) {
         this.urlLink = urlLink;
     }
+    private String capability;
 
     public int getId() {
         return id;
@@ -57,7 +58,6 @@ public class JobRoleResponse {
     public void setBandLevel(String bandLevel) {
         this.bandLevel = bandLevel;
     }
-
     public String getCapability() {
         return capability;
     }

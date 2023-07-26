@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.kainos.ea.model.JobRoleResponse;
+
 public class JobRoleDao {
     public List<JobRoleResponse> getAllJobRoles(Connection c) throws SQLException {
         Statement st = c.createStatement();
@@ -31,7 +33,10 @@ public class JobRoleDao {
                     rs.getString("Capability")
             );
             jobRoleList.add(jobRoleResponse);
-        }
+        ResultSet rs = st.executeQuery("SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name', Capability.id AS 'Capability ID', Capability.`name` AS 'Capability Name'" +
+                " FROM Job_Roles" +
+                " INNER JOIN Capability ON Job_Roles.capability_id = Capability.id;");
+
         return jobRoleList;
     }
 }

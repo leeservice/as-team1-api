@@ -18,16 +18,13 @@ public class JobRoleService {
             this.jobRoleDao = jobRoleDao;
             this.databaseConnector = databaseConnector;
         }
-
-        public List<JobRoleResponse> getAllJobRoles() throws FailedToGetJobRoleException {
-            List<JobRoleResponse> jobRoleList = null;
-            try {
-                jobRoleList = jobRoleDao.getAllJobRoles(databaseConnector.getConnection());
-            } catch (SQLException | DatabaseConnectionException e) {
-                System.err.println(e.getMessage());
-                throw new FailedToGetJobRoleException();
-            }
-            return jobRoleList;
+    public List<JobRoleResponse> getAllJobRoles() throws FailedToGetJobRoleException {
+        List<JobRoleResponse> jobRoleList = null;
+        try {
+            jobRoleList = jobRoleDao.getAllJobRoles(databaseConnector.getConnection());
+        } catch (SQLException | DatabaseConnectionException e) {
+            System.err.println(e.getMessage());
+            throw new FailedToGetJobRoleException();
         }
     }
 
