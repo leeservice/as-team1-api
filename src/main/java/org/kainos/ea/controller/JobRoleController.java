@@ -16,8 +16,8 @@ import javax.ws.rs.core.Response;
 @Api("Commit Connoisseurs API")
 @Path("/api")
 public class JobRoleController {
-    private static JobRoleService jobRoleService;
-    private static JobRoleValidator jobRoleValidator;
+    private  JobRoleService jobRoleService;
+    private  JobRoleValidator jobRoleValidator;
 
     public JobRoleController() {
         DatabaseConnector databaseConnector = new DatabaseConnector();
