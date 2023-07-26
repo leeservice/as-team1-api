@@ -11,28 +11,25 @@ import java.util.List;
 public class JobRoleDao {
     public List<JobRoleResponse> getAllJobRoles(Connection c) throws SQLException {
         Statement st = c.createStatement();
-
-        ResultSet rs = st.executeQuery("SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name', specification_description AS 'Specification Description'," +
-                "url_link AS 'URL Link'," +
-                " level_of_band AS 'Band Level', Capability.`name` AS 'Capability'" +
-                " FROM Job_Roles" +
-                " INNER JOIN Banding ON Job_Roles.band_id = Banding.id"
-                +
-                " INNER JOIN Capability ON Job_Roles.capability_id = Capability.id");
+        ResultSet rs =
+                st.executeQuery(
+                        "SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name',Capability.id AS"
+                            + " 'Capability ID', Capability.`name` AS 'Capability Name',"
+                            + " Job_Roles.specification_description AS 'Job Description',"
+                            + " Job_Roles.url_link AS 'URL' FROM Job_Roles INNER JOIN Capability"
+                            + " ON Job_Roles.capability_id = Capability.id;");
 
         List<JobRoleResponse> jobRoleList = new ArrayList<>();
 
         while (rs.next()) {
-            JobRoleResponse jobRoleResponse = new JobRoleResponse(
-                    rs.getInt("ID"),
-                    rs.getString("Name"),
-                    rs.getString("Specification Description"),
-                    rs.getString("URL Link"),
-                    rs.getString("Band Level"),
-                    rs.getString("Capability")
-            );
-            jobRoleList.add(jobRoleResponse);
-
+            JobRoleResponse jobRoleResponse =
+                    new JobRoleResponse(
+                            rs.getInt("ID"),
+                            rs.getString("Name"),
+                            rs.getString("Capability Name"),
+                            rs.getString("URL"),
+                            rs.getString("Job Description"));
+            jobRoleResponseList.add(jobRoleResponse);
         }
         return jobRoleList;
     }

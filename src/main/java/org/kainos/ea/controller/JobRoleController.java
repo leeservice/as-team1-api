@@ -6,7 +6,6 @@ import org.kainos.ea.exceptions.FailedToGetJobRoleException;
 import org.kainos.ea.service.JobRoleService;
 import org.kainos.ea.utility.DatabaseConnector;
 import org.kainos.ea.validator.JobRoleValidator;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;

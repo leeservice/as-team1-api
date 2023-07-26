@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.kainos.ea.dao.JobRoleDao;
@@ -27,7 +26,8 @@ public class JobRoleServiceTest {
     JobRoleService jobRoleService = new JobRoleService(jobRoleDao, databaseConnector);
     Connection conn;
     @Test
-    void getAllJobRoles_shouldThrowFailedToGetJobRoleException_whenDaoThrowsSQLException() throws SQLException, DatabaseConnectionException {
+    void getAllJobRoles_shouldThrowFailedToGetJobRoleException_whenDaoThrowsSQLException()
+            throws SQLException, DatabaseConnectionException {
         when(databaseConnector.getConnection()).thenReturn(conn);
         when(jobRoleDao.getAllJobRoles(conn)).thenThrow(SQLException.class);
         assertThrows(FailedToGetJobRoleException.class, () -> jobRoleService.getAllJobRoles());
@@ -35,14 +35,16 @@ public class JobRoleServiceTest {
 
 
     @Test
-    void getJobRoles_shouldThrowFailedToGetJobRoleException_whenDaoThrowsDatabaseConnectionException() throws SQLException, DatabaseConnectionException, FailedToGetJobRoleException {
+    void getAllJobRoles_shouldThrowFailedToGetJobRoleException_whenDatabaseConnectorThrowsDatabaseConnectionException()
+                    throws SQLException, DatabaseConnectionException {
         when(databaseConnector.getConnection()).thenThrow(DatabaseConnectionException.class);
         assertThrows(FailedToGetJobRoleException.class, () -> jobRoleService.getAllJobRoles());
     }
 
     @Test
-    void getJobRoles_shouldReturnJobRoles_whenDaoReturnsJobRoles() throws DatabaseConnectionException, SQLException, FailedToGetJobRoleException {
-        List<JobRoleResponse> jobRole = new ArrayList<>();
+    void getAllJobRoles_shouldReturnJobRoles_whenDaoReturnsJobRoles()
+            throws DatabaseConnectionException, SQLException, FailedToGetJobRoleException {
+        List<JobRoleResponse> jobRoleResponseList = new ArrayList<>();
         when(databaseConnector.getConnection()).thenReturn(conn);
         when(jobRoleDao.getAllJobRoles(conn)).thenReturn(jobRole);
         List<JobRoleResponse> result = jobRoleService.getAllJobRoles();

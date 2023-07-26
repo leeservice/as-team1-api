@@ -1,5 +1,6 @@
 package org.kainos.ea.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JobRoleResponse {
@@ -9,14 +10,18 @@ public class JobRoleResponse {
     private String urlLink;
     private String bandLevel;
     private String capability;
-
     public JobRoleResponse(@JsonProperty("JobRoleId")int id, @JsonProperty("Name")String name, @JsonProperty("Specification_Description")String specificationDesc, @JsonProperty("URL") String urlLink, @JsonProperty("BandLevel")String bandLevel, @JsonProperty("Capability")String capability) {
+
+    @JsonCreator
+    public JobRoleResponse(
         setId(id);
         setName(name);
         setSpecificationDesc(specificationDesc);
         setUrlLink(urlLink);
         setBandLevel(bandLevel);
         setCapability(capability);
+        setSpecificationDescription(specificationDescription);
+        setUrlLink(urlLink);
     }
     public String getUrlLink() {
         return urlLink;
@@ -63,6 +68,22 @@ public class JobRoleResponse {
 
     public void setCapability(String capability) {
         this.capability = capability;
+    }
+
+    public String getUrlLink() {
+        return urlLink;
+    }
+
+    public void setUrlLink(String urlLink) {
+        this.urlLink = urlLink;
+    }
+
+    public String getSpecificationDescription() {
+        return specificationDescription;
+    }
+
+    public void setSpecificationDescription(String specificationDescription) {
+        this.specificationDescription = specificationDescription;
     }
 
     @Override

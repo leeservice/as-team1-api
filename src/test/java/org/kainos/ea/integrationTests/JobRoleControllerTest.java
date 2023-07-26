@@ -20,13 +20,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ExtendWith(DropwizardExtensionsSupport.class)
 public class JobRoleControllerTest {
     static final DropwizardAppExtension<trueConfiguration> APP = new DropwizardAppExtension<>(trueApplication.class, null, new ResourceConfigurationSourceProvider());
-
     @Test
-    void getAllJobRoles_shouldReturnListOfJobRolesCheckingCapability() {
-        Response response = APP.client().target("http://localhost:8080/api/job-roles").request().get();
+    void getAllJobRoles_shouldReturnListOfJobRoles() {
+        Response response =
+                APP.client().target("http://localhost:8080/api/job-roles").request().get();
         assertEquals(200, response.getStatus());
-        List<JobRoleResponse> jobRoles = response.readEntity(new GenericType<List<JobRoleResponse>>() {
-        });
+        List<JobRoleResponse> jobRoles =
+                response.readEntity(new GenericType<List<JobRoleResponse>>() {});
         assertTrue(jobRoles.size() > 0);
         JobRoleResponse jobRoleResponse = jobRoles.get(0);
         String expected = "Operations";
@@ -45,6 +45,5 @@ public class JobRoleControllerTest {
         String actual = jobRoleResponse.getBandLevel();
         assertEquals(expected, actual);
     }
-
 }
 
