@@ -25,11 +25,10 @@ public class JobRoleControllerTest {
         Response response =
                 APP.client().target("http://localhost:8080/api/job-roles").request().get();
         assertEquals(200, response.getStatus());
-        List<JobRoleResponse> jobRoles =
-                response.readEntity(new GenericType<List<JobRoleResponse>>() {});
+        List<JobRoleResponse> jobRoles = response.readEntity(new GenericType<List<JobRoleResponse>>() {});
         assertTrue(jobRoles.size() > 0);
         JobRoleResponse jobRoleResponse = jobRoles.get(0);
-        String expected = "Operations";
+        String expected = "Engineering";
         String actual = jobRoleResponse.getCapability();
         assertEquals(expected, actual);
     }

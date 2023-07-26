@@ -46,9 +46,9 @@ public class JobRoleServiceTest {
             throws DatabaseConnectionException, SQLException, FailedToGetJobRoleException {
         List<JobRoleResponse> jobRoleResponseList = new ArrayList<>();
         when(databaseConnector.getConnection()).thenReturn(conn);
-        when(jobRoleDao.getAllJobRoles(conn)).thenReturn(jobRole);
+        when(jobRoleDao.getAllJobRoles(conn)).thenReturn(jobRoleResponseList);
         List<JobRoleResponse> result = jobRoleService.getAllJobRoles();
-        assertEquals(jobRole, result);
+        assertEquals(jobRoleResponseList, result);
     }
 
 }

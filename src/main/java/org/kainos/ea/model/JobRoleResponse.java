@@ -10,27 +10,21 @@ public class JobRoleResponse {
     private String urlLink;
     private String bandLevel;
     private String capability;
-    public JobRoleResponse(@JsonProperty("JobRoleId")int id, @JsonProperty("Name")String name, @JsonProperty("Specification_Description")String specificationDesc, @JsonProperty("URL") String urlLink, @JsonProperty("BandLevel")String bandLevel, @JsonProperty("Capability")String capability) {
-
     @JsonCreator
     public JobRoleResponse(
+            @JsonProperty("id") int id,
+            @JsonProperty("name") String name,
+            @JsonProperty("specificationDescription") String specificationDescription,
+            @JsonProperty("urlLink") String urlLink,
+            @JsonProperty("capability") String capability,
+            @JsonProperty("bandLevel") String bandLevel) {
         setId(id);
         setName(name);
-        setSpecificationDesc(specificationDesc);
+        setSpecificationDesc(specificationDescription);
         setUrlLink(urlLink);
         setBandLevel(bandLevel);
         setCapability(capability);
-        setSpecificationDescription(specificationDescription);
-        setUrlLink(urlLink);
     }
-    public String getUrlLink() {
-        return urlLink;
-    }
-
-    public void setUrlLink(String urlLink) {
-        this.urlLink = urlLink;
-    }
-
     public int getId() {
         return id;
     }
@@ -78,13 +72,6 @@ public class JobRoleResponse {
         this.urlLink = urlLink;
     }
 
-    public String getSpecificationDescription() {
-        return specificationDescription;
-    }
-
-    public void setSpecificationDescription(String specificationDescription) {
-        this.specificationDescription = specificationDescription;
-    }
 
     @Override
     public String toString() {
