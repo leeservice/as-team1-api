@@ -1,5 +1,6 @@
 package org.kainos.ea.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JobRoleResponse {
@@ -7,12 +8,21 @@ public class JobRoleResponse {
     private String name;
     private String capability;
 
-    public JobRoleResponse(@JsonProperty("id") int id,
-                           @JsonProperty("name") String name,
-                           @JsonProperty("capability") String capability) {
+    private String urlLink;
+    private String specificationDescription;
+
+    @JsonCreator
+    public JobRoleResponse(
+            @JsonProperty("id") int id,
+            @JsonProperty("name") String name,
+            @JsonProperty("capability") String capability,
+            @JsonProperty("urlLink") String urlLink,
+            @JsonProperty("specificationDescription") String specificationDescription) {
         setId(id);
         setName(name);
         setCapability(capability);
+        setSpecificationDescription(specificationDescription);
+        setUrlLink(urlLink);
     }
 
     public int getId() {
@@ -39,12 +49,39 @@ public class JobRoleResponse {
         this.capability = capability;
     }
 
+    public String getUrlLink() {
+        return urlLink;
+    }
+
+    public void setUrlLink(String urlLink) {
+        this.urlLink = urlLink;
+    }
+
+    public String getSpecificationDescription() {
+        return specificationDescription;
+    }
+
+    public void setSpecificationDescription(String specificationDescription) {
+        this.specificationDescription = specificationDescription;
+    }
+
     @Override
     public String toString() {
-        return "JobRoleResponse{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", capability=" + capability +
-                '}';
+        return "JobRoleResponse{"
+                + "id="
+                + id
+                + ", name='"
+                + name
+                + '\''
+                + ", capability='"
+                + capability
+                + '\''
+                + ", urlLink='"
+                + urlLink
+                + '\''
+                + ", specificationDescription='"
+                + specificationDescription
+                + '\''
+                + '}';
     }
 }
