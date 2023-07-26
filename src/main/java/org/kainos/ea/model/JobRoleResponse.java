@@ -7,7 +7,6 @@ public class JobRoleResponse {
     private int id;
     private String name;
     private String capability;
-
     private String urlLink;
     private String specificationDescription;
 
@@ -67,21 +66,12 @@ public class JobRoleResponse {
 
     @Override
     public String toString() {
-        return "JobRoleResponse{"
-                + "id="
-                + id
-                + ", name='"
-                + name
-                + '\''
-                + ", capability='"
-                + capability
-                + '\''
-                + ", urlLink='"
-                + urlLink
-                + '\''
-                + ", specificationDescription='"
-                + specificationDescription
-                + '\''
-                + '}';
+        return "JobRoleResponse{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", capability='" + capability + '\'' +
+                ", urlLink='" + urlLink + '\'' +
+                ", specificationDescription='" + specificationDescription + '\'' +
+                '}';
     }
 }
