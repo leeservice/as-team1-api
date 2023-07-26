@@ -1,5 +1,6 @@
 package org.kainos.ea.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JobRoleResponse {
@@ -10,6 +11,7 @@ public class JobRoleResponse {
     private String urlLink;
     private String specificationDescription;
 
+    @JsonCreator
     public JobRoleResponse(
             @JsonProperty("id") int id,
             @JsonProperty("name") String name,
