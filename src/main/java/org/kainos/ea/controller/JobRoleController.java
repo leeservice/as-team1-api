@@ -17,12 +17,10 @@ import javax.ws.rs.core.Response;
 @Path("/api")
 public class JobRoleController {
     private  JobRoleService jobRoleService;
-    private  JobRoleValidator jobRoleValidator;
 
     public JobRoleController() {
         DatabaseConnector databaseConnector = new DatabaseConnector();
         jobRoleService = new JobRoleService(new JobRoleDao(), databaseConnector);
-        jobRoleValidator = new JobRoleValidator();
     }
     public JobRoleController(JobRoleService service) {
         jobRoleService = service;

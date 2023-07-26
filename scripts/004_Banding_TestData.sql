@@ -6,13 +6,10 @@ BEGIN
 
 START TRANSACTION;
 
--- Insert test data into Capability table
+-- Insert test data into Banding table
 INSERT INTO Banding(`level_of_band`)
 VALUES('Manager'),
 ('Executive');
-INSERT INTO Banding(`training_available`)
-VALUES('Yes'),
-('No');
 
 -- Insert Capability IDs into Job_Roles table
 UPDATE Job_Roles

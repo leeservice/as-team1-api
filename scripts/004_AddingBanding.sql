@@ -8,11 +8,10 @@ BEGIN
 CREATE TABLE IF NOT EXISTS Banding (
     id TINYINT NOT NULL AUTO_INCREMENT,
     level_of_band VARCHAR(50) NOT NULL,
-    training_available VARCHAR(50) NOT NULL,
     PRIMARY KEY (id)
 );
 
--- Adds capability column to Job_Roles table
+-- Adds Banding column to Job_Roles table
 ALTER TABLE Job_Roles
 ADD COLUMN band_id TINYINT  ,
 ADD CONSTRAINT FOREIGN KEY (band_id) REFERENCES Banding(id);
