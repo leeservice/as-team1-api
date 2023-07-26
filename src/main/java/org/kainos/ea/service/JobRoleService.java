@@ -14,10 +14,11 @@ public class JobRoleService {
     public JobRoleDao jobRoleDao;
     public DatabaseConnector databaseConnector;
 
-        public JobRoleService(JobRoleDao jobRoleDao, DatabaseConnector databaseConnector) {
-            this.jobRoleDao = jobRoleDao;
-            this.databaseConnector = databaseConnector;
-        }
+    public JobRoleService(JobRoleDao jobRoleDao, DatabaseConnector databaseConnector) {
+        this.jobRoleDao = jobRoleDao;
+        this.databaseConnector = databaseConnector;
+    }
+
     public List<JobRoleResponse> getAllJobRoles() throws FailedToGetJobRoleException {
         List<JobRoleResponse> jobRoleList = null;
         try {
@@ -26,5 +27,7 @@ public class JobRoleService {
             System.err.println(e.getMessage());
             throw new FailedToGetJobRoleException();
         }
+        return jobRoleList;
     }
+}
 

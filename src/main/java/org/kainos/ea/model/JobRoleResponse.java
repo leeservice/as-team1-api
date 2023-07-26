@@ -25,7 +25,6 @@ public class JobRoleResponse {
     public void setUrlLink(String urlLink) {
         this.urlLink = urlLink;
     }
-    private String capability;
 
     public int getId() {
         return id;

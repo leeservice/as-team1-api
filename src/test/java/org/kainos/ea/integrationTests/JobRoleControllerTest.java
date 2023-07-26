@@ -29,7 +29,7 @@ public class JobRoleControllerTest {
         });
         assertTrue(jobRoles.size() > 0);
         JobRoleResponse jobRoleResponse = jobRoles.get(0);
-        String expected = "Engineering";
+        String expected = "Operations";
         String actual = jobRoleResponse.getCapability();
         assertEquals(expected, actual);
     }
