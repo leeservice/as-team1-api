@@ -76,4 +76,10 @@ public class JobRoleServiceTest {
         when(jobRoleDao.createJobRole(jobRoleRequest, conn)).thenThrow(SQLException.class);
         assertThrows(FailedToCreateJobRoleException.class, () -> jobRoleService.createJobRole(jobRoleRequest));
     }
+
+    @Test
+    void createJobRole_shouldThrowFailedToCreateJobRoleException_whenDatabaseConnectorThrowsDatabaseConnectionException() throws DatabaseConnectionException, SQLException {
+        when(databaseConnector.getConnection()).thenThrow(DatabaseConnectionException.class);
+        assertThrows(FailedToCreateJobRoleException.class, () -> jobRoleService.createJobRole(jobRoleRequest));
+    }
 }
