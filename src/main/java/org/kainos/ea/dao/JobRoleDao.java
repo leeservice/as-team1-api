@@ -3,10 +3,8 @@ package org.kainos.ea.dao;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.model.JobRoleResponse;
-
 public class JobRoleDao {
     public List<JobRoleResponse> getAllJobRoles(Connection c) throws SQLException {
         Statement st = c.createStatement();
