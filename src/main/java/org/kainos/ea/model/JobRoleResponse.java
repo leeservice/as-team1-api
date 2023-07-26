@@ -7,15 +7,15 @@ public class JobRoleResponse {
     private String name;
     private String capability;
 
-
-
     private String urlLink;
     private String specificationDescription;
 
-    public JobRoleResponse(@JsonProperty("id") int id,
-                           @JsonProperty("name") String name,
-                           @JsonProperty("capability") String capability,
-    @JsonProperty("urlLink") String urlLink, @JsonProperty("specificationDescription") String specificationDescription) {
+    public JobRoleResponse(
+            @JsonProperty("id") int id,
+            @JsonProperty("name") String name,
+            @JsonProperty("capability") String capability,
+            @JsonProperty("urlLink") String urlLink,
+            @JsonProperty("specificationDescription") String specificationDescription) {
         setId(id);
         setName(name);
         setCapability(capability);
@@ -65,12 +65,21 @@ public class JobRoleResponse {
 
     @Override
     public String toString() {
-        return "JobRoleResponse{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", capability='" + capability + '\'' +
-            ", urlLink='" + urlLink + '\'' +
-            ", specificationDescription='" + specificationDescription + '\'' +
-            '}';
+        return "JobRoleResponse{"
+                + "id="
+                + id
+                + ", name='"
+                + name
+                + '\''
+                + ", capability='"
+                + capability
+                + '\''
+                + ", urlLink='"
+                + urlLink
+                + '\''
+                + ", specificationDescription='"
+                + specificationDescription
+                + '\''
+                + '}';
     }
 }
