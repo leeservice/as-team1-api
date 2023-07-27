@@ -1,11 +1,11 @@
-<h1>as-team1-api project</h1>
+<h1>as-team1-api project</h1> 
 
 <h2>PROBLEM STATEMENT</h2>
 <p>Currently, within Kainos there is not one source of truth
-to view job roles and the relevant information attached
-(e.g. job descriptions, capability, competencies, banding etc)
-this can be confusing and time-consuming for employees to retrieve
-the relevant job role information.</p>
+ to view job roles and the relevant information attached
+ (e.g. job descriptions, capability, competencies, banding etc)
+ this can be confusing and time-consuming for employees to retrieve
+ the relevant job role information.</p>
 
 <h2>VISION</h2>
 <p>An online job application that serves both Kainos employees and
