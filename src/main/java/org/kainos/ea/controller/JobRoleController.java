@@ -1,14 +1,12 @@
 package org.kainos.ea.controller;
 
 import io.swagger.annotations.Api;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 import org.kainos.ea.dao.JobRoleDao;
 import org.kainos.ea.exceptions.FailedToCreateJobRoleException;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
@@ -16,7 +14,6 @@ import org.kainos.ea.exceptions.InvalidJobRoleException;
 import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.service.JobRoleService;
 import org.kainos.ea.utility.DatabaseConnector;
-import org.kainos.ea.validator.JobRoleValidator;
 
 @Api("Job Role API")
 @Path("/api")
