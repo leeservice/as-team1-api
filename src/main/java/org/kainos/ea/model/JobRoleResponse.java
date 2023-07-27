@@ -7,7 +7,7 @@ public class JobRoleResponse {
     private int id;
     private String name;
     private String specificationDesc;
-    private String urlLink;
+    private String URL;
     private String bandLevel;
     private String capability;
     @JsonCreator
@@ -15,13 +15,13 @@ public class JobRoleResponse {
             @JsonProperty("id") int id,
             @JsonProperty("name") String name,
             @JsonProperty("specificationDescription") String specificationDescription,
-            @JsonProperty("urlLink") String urlLink,
+            @JsonProperty("URL") String URL,
             @JsonProperty("capability") String capability,
             @JsonProperty("bandLevel") String bandLevel) {
         setId(id);
         setName(name);
         setSpecificationDesc(specificationDescription);
-        setUrlLink(urlLink);
+        setURL(URL);
         setBandLevel(bandLevel);
         setCapability(capability);
     }
@@ -64,22 +64,22 @@ public class JobRoleResponse {
         this.capability = capability;
     }
 
-    public String getUrlLink() {
-        return urlLink;
+    public String getURL() {
+        return URL;
     }
 
-    public void setUrlLink(String urlLink) {
-        this.urlLink = urlLink;
+    public void setURL(String urlLink) {
+        this.URL = urlLink;
     }
 
 
     @Override
     public String toString() {
-        return "JobRoleRequest{" +
+        return "JobRoleResponse{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", specificationDesc='" + specificationDesc + '\'' +
-                ", url_link='" + urlLink + '\'' +
+                ", URL='" + URL + '\'' +
                 ", bandLevel='" + bandLevel + '\'' +
                 ", capability='" + capability + '\'' +
                 '}';
