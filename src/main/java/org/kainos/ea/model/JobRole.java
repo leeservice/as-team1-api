@@ -3,7 +3,7 @@ public class JobRole {
     private int id;
     private String name;
     private String specificationDesc;
-    private String urlLink;
+    private String url;
 
     private int bandId;
 
@@ -13,23 +13,24 @@ public class JobRole {
         return capabilityId;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public void setCapabilityId(int capabilityId) {
         this.capabilityId = capabilityId;
     }
-    public JobRole(int id, String name, String specificationDesc, String urlLink, int bandId, int capabilityId) {
+    public JobRole(int id, String name, String specificationDesc, String url, int bandId, int capabilityId) {
         setId(id);
         setName(name);
         setSpecificationDesc(specificationDesc);
-        setUrlLink(urlLink);
+        setUrl(url);
         setBandId(bandId);
         setCapabilityId(capabilityId);
-    }
-    public String getUrlLink() {
-        return urlLink;
-    }
-
-    public void setUrlLink(String urlLink) {
-        this.urlLink = urlLink;
     }
 
     public int getId() {
@@ -70,7 +71,7 @@ public class JobRole {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", specificationDesc='" + specificationDesc + '\'' +
-                ", urlLink='" + urlLink + '\'' +
+                ", url='" + url + '\'' +
                 ", bandId='" + bandId + '\'' +
                 ", capabilityId='" + capabilityId + '\'' +
                 '}';

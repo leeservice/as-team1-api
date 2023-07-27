@@ -17,12 +17,12 @@ public class JobRoleResponse {
             @JsonProperty("name") String name,
             @JsonProperty("specificationDescription") String specificationDescription,
             @JsonProperty("url") String url,
-            @JsonProperty("capability") String capability,
-            @JsonProperty("bandLevel") String bandLevel) {
+            @JsonProperty("bandLevel") String bandLevel,
+            @JsonProperty("capability") String capability) {
         setId(id);
         setName(name);
         setSpecificationDesc(specificationDescription);
-        setURL(url);
+        setUrl(url);
         setBandLevel(bandLevel);
         setCapability(capability);
     }
@@ -65,11 +65,11 @@ public class JobRoleResponse {
         this.capability = capability;
     }
 
-    public String getURL() {
+    public String getUrl() {
         return url;
     }
 
-    public void setURL(String urlLink) {
+    public void setUrl(String urlLink) {
         this.url = urlLink;
     }
 
