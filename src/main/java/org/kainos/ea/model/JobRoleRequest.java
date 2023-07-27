@@ -10,7 +10,8 @@ public class JobRoleRequest {
     private int bandId;
     private String url;
 
-    public JobRoleRequest(String name, String specificationDesc, int capabilityId, int bandId, String url) {
+    @JsonCreator
+    public JobRoleRequest(@JsonProperty("name") String name, @JsonProperty("specificationDesc") String specificationDesc, @JsonProperty("capabilityId") int capabilityId, @JsonProperty("bandId") int bandId, @JsonProperty("url") String url) {
         setName(name);
         setSpecificationDesc(specificationDesc);
         setCapabilityId(capabilityId);
@@ -60,12 +61,6 @@ public class JobRoleRequest {
 
     @Override
     public String toString() {
-        return "JobRoleRequest{" +
-                "name='" + name + '\'' +
-                ", specificationDesc='" + specificationDesc + '\'' +
-                ", capabilityId=" + capabilityId +
-                ", bandId=" + bandId +
-                ", url='" + url + '\'' +
-                '}';
+        return "JobRoleRequest{" + "name='" + name + '\'' + ", specificationDesc='" + specificationDesc + '\'' + ", capabilityId=" + capabilityId + ", bandId=" + bandId + ", url='" + url + '\'' + '}';
     }
 }
