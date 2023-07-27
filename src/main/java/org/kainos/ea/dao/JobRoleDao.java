@@ -21,13 +21,7 @@ public class JobRoleDao {
         List<JobRoleResponse> jobRoleResponseList = new ArrayList<>();
 
         while (rs.next()) {
-            JobRoleResponse jobRoleResponse =
-                    new JobRoleResponse(
-                            rs.getInt("ID"),
-                            rs.getString("Name"),
-                            rs.getString("Capability Name"),
-                            rs.getString("URL"),
-                            rs.getString("Job Description"));
+            JobRoleResponse jobRoleResponse = new JobRoleResponse(rs.getInt("ID"), rs.getString("Name"), rs.getString("Capability Name"));
             jobRoleResponseList.add(jobRoleResponse);
         }
         return jobRoleResponseList;
