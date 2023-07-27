@@ -4,7 +4,6 @@ package org.kainos.ea.integrationTests;
 import io.dropwizard.configuration.ResourceConfigurationSourceProvider;
 import io.dropwizard.testing.junit5.DropwizardAppExtension;
 import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
-
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +23,8 @@ public class JobRoleControllerTest {
 
     @Test
     void getAllJobRoles_shouldReturnListOfJobRoles() {
-        Response response = APP.client().target("http://localhost:8080/api/job-roles").request().get();
+        Response response =
+                APP.client().target("http://localhost:8080/api/job-roles").request().get();
         assertEquals(200, response.getStatus());
         List<JobRoleResponse> jobRoles = response.readEntity(new GenericType<List<JobRoleResponse>>(){});
         assertTrue(jobRoles.size() > 0);

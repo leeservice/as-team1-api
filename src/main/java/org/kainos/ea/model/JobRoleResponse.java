@@ -10,6 +10,7 @@ public class JobRoleResponse {
     private String url;
     private String bandLevel;
     private String capability;
+
     @JsonCreator
     public JobRoleResponse(
             @JsonProperty("id") int id,
