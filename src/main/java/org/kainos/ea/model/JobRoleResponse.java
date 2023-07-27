@@ -10,67 +10,77 @@ public class JobRoleResponse {
     private String urlLink;
     private String specificationDescription;
 
-    @JsonCreator
-    public JobRoleResponse(
-            @JsonProperty("id") int id,
-            @JsonProperty("name") String name,
-            @JsonProperty("capability") String capability,
-            @JsonProperty("urlLink") String urlLink,
-            @JsonProperty("specificationDescription") String specificationDescription) {
+  @JsonCreator
+  public JobRoleResponse(
+      @JsonProperty("id") int id,
+      @JsonProperty("name") String name,
+      @JsonProperty("capability") String capability,
+      @JsonProperty("urlLink") String urlLink,
+      @JsonProperty("specificationDescription") String specificationDescription) {
+    setId(id);
+    setName(name);
+    setCapability(capability);
+    setSpecificationDescription(specificationDescription);
+    setUrlLink(urlLink);
+  }
 
-        setId(id);
-        setName(name);
-        setCapability(capability);
-    }
+  public int getId() {
+    return id;
+  }
 
-    public int getId() {
-        return id;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getCapability() {
+    return capability;
+  }
 
-    public String getCapability() {
-        return capability;
-    }
+  public void setCapability(String capability) {
+    this.capability = capability;
+  }
 
-    public void setCapability(String capability) {
-        this.capability = capability;
-    }
+  public String getUrlLink() {
+    return urlLink;
+  }
 
-    public String getUrlLink() {
-        return urlLink;
-    }
+  public void setUrlLink(String urlLink) {
+    this.urlLink = urlLink;
+  }
 
-    public void setUrlLink(String urlLink) {
-        this.urlLink = urlLink;
-    }
+  public String getSpecificationDescription() {
+    return specificationDescription;
+  }
 
-    public String getSpecificationDescription() {
-        return specificationDescription;
-    }
-
-    public void setSpecificationDescription(String specificationDescription) {
-        this.specificationDescription = specificationDescription;
-    }
+  public void setSpecificationDescription(String specificationDescription) {
+    this.specificationDescription = specificationDescription;
+  }
 
   @Override
   public String toString() {
-    return "JobRoleResponse{" +
-        "id=" + id +
-        ", name='" + name + '\'' +
-        ", capability='" + capability + '\'' +
-        ", urlLink='" + urlLink + '\'' +
-        ", specificationDescription='" + specificationDescription + '\'' +
-        '}';
+    return "JobRoleResponse{"
+        + "id="
+        + id
+        + ", name='"
+        + name
+        + '\''
+        + ", capability='"
+        + capability
+        + '\''
+        + ", urlLink='"
+        + urlLink
+        + '\''
+        + ", specificationDescription='"
+        + specificationDescription
+        + '\''
+        + '}';
   }
 }
