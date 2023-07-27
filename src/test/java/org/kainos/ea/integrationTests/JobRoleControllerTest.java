@@ -32,18 +32,9 @@ public class JobRoleControllerTest {
         String expected = "Engineering";
         String actual = jobRoleResponse.getCapability();
         assertEquals(expected, actual);
-    }
-      @Test
-    void getAllJobRoles_shouldReturnListOfJobRolesCheckingBandLevel() {
-        Response response = APP.client().target("http://localhost:8080/api/job-roles").request().get();
-        assertEquals(200, response.getStatus());
-        List<JobRoleResponse> jobRoles = response.readEntity(new GenericType<List<JobRoleResponse>>() {
-        });
-        assertTrue(jobRoles.size() > 0);
-        JobRoleResponse jobRoleResponse = jobRoles.get(0);
-        String expected = "Manager";
-        String actual = jobRoleResponse.getBandLevel();
-        assertEquals(expected, actual);
+        String expected2 = "Manager";
+        String actual2 = jobRoleResponse.getBandLevel();
+        assertEquals(expected2, actual2);
     }
 }
 
