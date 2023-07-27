@@ -9,7 +9,7 @@ public class JobRoleResponse {
     private String capability;
     private String url;
     private String specificationDesc;
-
+  
     @JsonCreator
     public JobRoleResponse(@JsonProperty("id") int id, @JsonProperty("name") String name, @JsonProperty("capability") String capability, @JsonProperty("url") String url, @JsonProperty("specificationDescription") String specificationDesc) {
         setId(id);
