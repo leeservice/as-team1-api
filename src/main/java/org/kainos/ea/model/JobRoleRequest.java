@@ -6,16 +6,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class JobRoleRequest {
     private String name;
     private String specificationDesc;
-    private int capability_id;
-    private int band_id;
+    private int capabilityId;
+    private int bandId;
     private String url;
 
-    @JsonCreator
-    public JobRoleRequest(@JsonProperty("name") String name, @JsonProperty("specificationDesc") String specificationDesc, @JsonProperty("capability_id") int capability_id, @JsonProperty("band_id") int band_id, @JsonProperty("url") String url) {
+    public JobRoleRequest(String name, String specificationDesc, int capabilityId, int bandId, String url) {
         setName(name);
-        setCapability_id(capability_id);
-        setBand_id(band_id);
         setSpecificationDesc(specificationDesc);
+        setCapabilityId(capabilityId);
+        setBandId(bandId);
         setUrl(url);
     }
 
@@ -35,20 +34,20 @@ public class JobRoleRequest {
         this.specificationDesc = specificationDesc;
     }
 
-    public int getCapability_id() {
-        return capability_id;
+    public int getCapabilityId() {
+        return capabilityId;
     }
 
-    public void setCapability_id(int capability_id) {
-        this.capability_id = capability_id;
+    public void setCapabilityId(int capabilityId) {
+        this.capabilityId = capabilityId;
     }
 
-    public int getBand_id() {
-        return band_id;
+    public int getBandId() {
+        return bandId;
     }
 
-    public void setBand_id(int band_id) {
-        this.band_id = band_id;
+    public void setBandId(int bandId) {
+        this.bandId = bandId;
     }
 
     public String getUrl() {
@@ -61,6 +60,12 @@ public class JobRoleRequest {
 
     @Override
     public String toString() {
-        return "JobRoleRequest{" + "name='" + name + '\'' + ", specificationDesc='" + specificationDesc + '\'' + ", capability_id=" + capability_id + ", band_id=" + band_id + ", url='" + url + '\'' + '}';
+        return "JobRoleRequest{" +
+                "name='" + name + '\'' +
+                ", specificationDesc='" + specificationDesc + '\'' +
+                ", capabilityId=" + capabilityId +
+                ", bandId=" + bandId +
+                ", url='" + url + '\'' +
+                '}';
     }
 }

@@ -7,21 +7,16 @@ public class JobRoleResponse {
     private int id;
     private String name;
     private String capability;
-    private String urlLink;
-    private String specificationDescription;
+    private String url;
+    private String specificationDesc;
 
     @JsonCreator
-    public JobRoleResponse(
-            @JsonProperty("id") int id,
-            @JsonProperty("name") String name,
-            @JsonProperty("capability") String capability,
-            @JsonProperty("urlLink") String urlLink,
-            @JsonProperty("specificationDescription") String specificationDescription) {
+    public JobRoleResponse(@JsonProperty("id") int id, @JsonProperty("name") String name, @JsonProperty("capability") String capability, @JsonProperty("url") String url, @JsonProperty("specificationDescription") String specificationDesc) {
         setId(id);
         setName(name);
         setCapability(capability);
-        setSpecificationDescription(specificationDescription);
-        setUrlLink(urlLink);
+        setSpecificationDesc(specificationDesc);
+        setUrl(url);
     }
 
     public int getId() {
@@ -48,30 +43,24 @@ public class JobRoleResponse {
         this.capability = capability;
     }
 
-    public String getUrlLink() {
-        return urlLink;
+    public String getUrl() {
+        return url;
     }
 
-    public void setUrlLink(String urlLink) {
-        this.urlLink = urlLink;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getSpecificationDescription() {
-        return specificationDescription;
+    public String getSpecificationDesc() {
+        return specificationDesc;
     }
 
-    public void setSpecificationDescription(String specificationDescription) {
-        this.specificationDescription = specificationDescription;
+    public void setSpecificationDesc(String specificationDesc) {
+        this.specificationDesc = specificationDesc;
     }
 
     @Override
     public String toString() {
-        return "JobRoleResponse{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", capability='" + capability + '\'' +
-                ", urlLink='" + urlLink + '\'' +
-                ", specificationDescription='" + specificationDescription + '\'' +
-                '}';
+        return "JobRoleResponse{" + "id=" + id + ", name='" + name + '\'' + ", capability='" + capability + '\'' + ", url='" + url + '\'' + ", specificationDescription='" + specificationDesc + '\'' + '}';
     }
 }

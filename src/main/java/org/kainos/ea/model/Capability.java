@@ -8,8 +8,7 @@ public class Capability {
     private String name;
 
     @JsonCreator
-    public Capability(@JsonProperty("id") int id,
-                      @JsonProperty("name") String name) {
+    public Capability(@JsonProperty("id") int id, @JsonProperty("name") String name) {
         setId(id);
         setName(name);
     }
@@ -32,9 +31,6 @@ public class Capability {
 
     @Override
     public String toString() {
-        return "Capability{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "Capability{" + "id=" + id + ", name='" + name + '\'' + '}';
     }
 }

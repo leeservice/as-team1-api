@@ -37,8 +37,8 @@ public class JobRoleDao {
         st.setString(1, jobRoleRequest.getName());
         st.setString(2, jobRoleRequest.getSpecificationDesc());
         st.setString(3, jobRoleRequest.getUrl());
-        st.setInt(4, jobRoleRequest.getCapability_id());
-        st.setInt(5, jobRoleRequest.getBand_id());
+        st.setInt(4, jobRoleRequest.getCapabilityId());
+        st.setInt(5, jobRoleRequest.getBandId());
 
         st.executeUpdate();
         ResultSet rs = st.getGeneratedKeys();

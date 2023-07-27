@@ -8,8 +8,7 @@ public class Band {
     private String bandLevel;
 
     @JsonCreator
-    public Band(@JsonProperty("id") int id,
-                @JsonProperty("bandLevel") String bandLevel) {
+    public Band(@JsonProperty("id") int id, @JsonProperty("bandLevel") String bandLevel) {
         setId(id);
         setBandLevel(bandLevel);
     }
@@ -32,9 +31,6 @@ public class Band {
 
     @Override
     public String toString() {
-        return "Band{" +
-                "id=" + id +
-                ", bandLevel='" + bandLevel + '\'' +
-                '}';
+        return "Band{" + "id=" + id + ", bandLevel='" + bandLevel + '\'' + '}';
     }
 }
