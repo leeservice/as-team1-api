@@ -17,11 +17,10 @@ public class JobRoleResponse {
             @JsonProperty("capability") String capability,
             @JsonProperty("urlLink") String urlLink,
             @JsonProperty("specificationDescription") String specificationDescription) {
+
         setId(id);
         setName(name);
         setCapability(capability);
-        setSpecificationDescription(specificationDescription);
-        setUrlLink(urlLink);
     }
 
     public int getId() {
