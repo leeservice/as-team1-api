@@ -31,8 +31,6 @@ public class JobRoleDao {
                             rs.getString("Capability Name"),
                             rs.getString("Band Level"));
             jobRoleList.add(jobRoleResponse);
-            JobRoleResponse jobRoleResponse = new JobRoleResponse(rs.getInt("ID"), rs.getString("Name"), rs.getString("Capability Name"));
-            jobRoleResponseList.add(jobRoleResponse);
         }
         return jobRoleList;
     }
