@@ -1,6 +1,5 @@
 package org.kainos.ea.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JobRoleResponse {
