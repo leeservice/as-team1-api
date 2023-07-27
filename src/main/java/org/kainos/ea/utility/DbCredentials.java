@@ -1,6 +1,7 @@
 package org.kainos.ea.utility;
 
 public class DbCredentials {
+
     private String dbName = System.getenv("DB_NAME");
     private String dbUser = System.getenv("DB_USERNAME");
     private String dbPassword = System.getenv("DB_PASSWORD");
@@ -22,3 +23,4 @@ public class DbCredentials {
         return dbHost;
     }
 }
+
