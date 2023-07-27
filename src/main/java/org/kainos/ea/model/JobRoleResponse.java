@@ -7,7 +7,7 @@ public class JobRoleResponse {
     private int id;
     private String name;
     private String specificationDesc;
-    private String URL;
+    private String URL_Link;
     private String bandLevel;
     private String capability;
     @JsonCreator
@@ -65,11 +65,11 @@ public class JobRoleResponse {
     }
 
     public String getURL() {
-        return URL;
+        return URL_Link;
     }
 
     public void setURL(String urlLink) {
-        this.URL = urlLink;
+        this.URL_Link = urlLink;
     }
 
 
@@ -79,7 +79,7 @@ public class JobRoleResponse {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", specificationDesc='" + specificationDesc + '\'' +
-                ", URL='" + URL + '\'' +
+                ", URL='" + URL_Link + '\'' +
                 ", bandLevel='" + bandLevel + '\'' +
                 ", capability='" + capability + '\'' +
                 '}';
