@@ -17,8 +17,8 @@ public class JobRoleResponse {
             @JsonProperty("name") String name,
             @JsonProperty("specificationDescription") String specificationDescription,
             @JsonProperty("url") String url,
-            @JsonProperty("bandLevel") String bandLevel,
-            @JsonProperty("capability") String capability) {
+            @JsonProperty("capability") String capability,
+            @JsonProperty("bandLevel") String bandLevel) {
         setId(id);
         setName(name);
         setSpecificationDesc(specificationDescription);
