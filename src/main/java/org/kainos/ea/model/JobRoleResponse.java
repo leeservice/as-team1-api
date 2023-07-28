@@ -1,28 +1,29 @@
 package org.kainos.ea.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JobRoleResponse {
     private int id;
     private String name;
+    private String specificationDesc;
+    private String urlLink;
+    private String bandLevel;
     private String capability;
 
-    private String urlLink;
-    private String specificationDescription;
-
-    @JsonCreator
-    public JobRoleResponse(
-            @JsonProperty("id") int id,
-            @JsonProperty("name") String name,
-            @JsonProperty("capability") String capability,
-            @JsonProperty("urlLink") String urlLink,
-            @JsonProperty("specificationDescription") String specificationDescription) {
+    public JobRoleResponse(@JsonProperty("JobRoleId")int id, @JsonProperty("Name")String name, @JsonProperty("Specification_Description")String specificationDesc,@JsonProperty("URL") String urlLink, @JsonProperty("BandLevel")String bandLevel, @JsonProperty("Capability")String capability) {
         setId(id);
         setName(name);
-        setCapability(capability);
-        setSpecificationDescription(specificationDescription);
+        setSpecificationDesc(specificationDesc);
         setUrlLink(urlLink);
+        setBandLevel(bandLevel);
+        setCapability(capability);
+    }
+    public String getUrlLink() {
+        return urlLink;
+    }
+
+    public void setUrlLink(String urlLink) {
+        this.urlLink = urlLink;
     }
 
     public int getId() {
@@ -41,6 +42,22 @@ public class JobRoleResponse {
         this.name = name;
     }
 
+    public String getSpecificationDesc() {
+        return specificationDesc;
+    }
+
+    public void setSpecificationDesc(String specificationDesc) {
+        this.specificationDesc = specificationDesc;
+    }
+
+    public String getBandLevel() {
+        return bandLevel;
+    }
+
+    public void setBandLevel(String bandLevel) {
+        this.bandLevel = bandLevel;
+    }
+
     public String getCapability() {
         return capability;
     }
@@ -49,39 +66,15 @@ public class JobRoleResponse {
         this.capability = capability;
     }
 
-    public String getUrlLink() {
-        return urlLink;
-    }
-
-    public void setUrlLink(String urlLink) {
-        this.urlLink = urlLink;
-    }
-
-    public String getSpecificationDescription() {
-        return specificationDescription;
-    }
-
-    public void setSpecificationDescription(String specificationDescription) {
-        this.specificationDescription = specificationDescription;
-    }
-
     @Override
     public String toString() {
-        return "JobRoleResponse{"
-                + "id="
-                + id
-                + ", name='"
-                + name
-                + '\''
-                + ", capability='"
-                + capability
-                + '\''
-                + ", urlLink='"
-                + urlLink
-                + '\''
-                + ", specificationDescription='"
-                + specificationDescription
-                + '\''
-                + '}';
+        return "JobRoleResponse{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", specificationDesc='" + specificationDesc + '\'' +
+                ", url_link='" + urlLink + '\'' +
+                ", bandLevel='" + bandLevel + '\'' +
+                ", capability='" + capability + '\'' +
+                '}';
     }
 }

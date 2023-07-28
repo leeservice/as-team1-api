@@ -15,7 +15,6 @@ import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
 import org.kainos.ea.exceptions.JobRoleDoesNotExistException;
 import org.kainos.ea.model.JobRole;
-import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.model.JobRoleResponse;
 import org.kainos.ea.service.JobRoleService;
 import org.kainos.ea.utility.DatabaseConnector;
@@ -47,10 +46,10 @@ public class JobRoleServiceTest {
 
     @Test
     void getJobRoles_shouldReturnJobRoles_whenDaoReturnsJobRoles() throws DatabaseConnectionException, SQLException, FailedToGetJobRoleException {
-        List<JobRoleRequest> jobRole = new ArrayList<>();
+        List<JobRoleResponse> jobRole = new ArrayList<>();
         when(databaseConnector.getConnection()).thenReturn(conn);
         when(jobRoleDao.getAllJobRoles(conn)).thenReturn(jobRole);
-        List<JobRoleRequest> result = jobRoleService.getAllJobRoles();
+        List<JobRoleResponse> result = jobRoleService.getAllJobRoles();
         assertEquals(jobRole, result);
 
     }
@@ -77,13 +76,5 @@ public class JobRoleServiceTest {
         when(jobRoleDao.getJobRoleByIdO(1,conn)).thenReturn(jobRole);
         JobRole result = jobRoleDao.getJobRoleByIdO(1,conn);
         assertEquals(jobRole, result);
-    }
-    void getAllJobRoles_shouldReturnJobRoles_whenDaoReturnsJobRoles()
-            throws DatabaseConnectionException, SQLException, FailedToGetJobRoleException {
-        List<JobRoleResponse> jobRoleResponseList = new ArrayList<>();
-        when(databaseConnector.getConnection()).thenReturn(conn);
-        when(jobRoleDao.getAllJobRoles(conn)).thenReturn(jobRoleResponseList);
-        List<JobRoleResponse> result = jobRoleService.getAllJobRoles();
-        assertEquals(jobRoleResponseList, result);
     }
 }

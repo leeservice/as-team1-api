@@ -12,6 +12,8 @@ import org.kainos.ea.model.JobRole;
 import org.kainos.ea.model.JobRoleNoId;
 import java.util.List;
 import javax.ws.rs.core.GenericType;
+
+import org.kainos.ea.model.JobRoleResponse;
 import org.kainos.ea.trueApplication;
 import org.kainos.ea.trueConfiguration;
 import org.kainos.ea.utility.DatabaseConnector;
