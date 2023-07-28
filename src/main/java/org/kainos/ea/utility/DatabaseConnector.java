@@ -1,15 +1,14 @@
 package org.kainos.ea.utility;
 
-import org.kainos.ea.exceptions.DatabaseConnectionException;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import org.kainos.ea.exceptions.DatabaseConnectionException;
 
 public class DatabaseConnector {
 
     private static Connection conn;
-    public DbCredentials dbCredentials;
+    private DbCredentials dbCredentials;
 
     public Connection getConnection() throws SQLException, DatabaseConnectionException {
         String user;
@@ -22,16 +21,24 @@ public class DatabaseConnector {
         }
 
         try {
+            dbCredentials = new DbCredentials();
             user = dbCredentials.getDbUser();
             password = dbCredentials.getDbPassword();
             host = dbCredentials.getDbHost();
             database = dbCredentials.getDbName();
-            if (user == null || password == null || host == null)
-                throw new IllegalArgumentException(
-                        "Environment variables not set.");
 
-            conn = DriverManager.getConnection("jdbc:mysql://"
-                    + host + "/" + database + "?allowPublicKeyRetrieval=true&useSSL=false", user, password);
+            if (user == null || password == null || host == null)
+                throw new IllegalArgumentException("Environment variables not set.");
+
+            conn =
+                    DriverManager.getConnection(
+                            "jdbc:mysql://"
+                                    + host
+                                    + "/"
+                                    + database
+                                    + "?allowPublicKeyRetrieval=true&useSSL=false",
+                            user,
+                            password);
 
             return conn;
         } catch (Exception e) {
