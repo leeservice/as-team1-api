@@ -5,7 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.kainos.ea.dao.CapabilityDao;
 import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.exceptions.FailedToGetCapabilityException;
-import org.kainos.ea.model.Capability;
+import org.kainos.ea.model.CapabilityResponse;
 import org.kainos.ea.service.CapabilityService;
 import org.kainos.ea.utility.DatabaseConnector;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -21,7 +21,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class CapabilityServiceTest {
+public class CapabilityResponseServiceTest {
     DatabaseConnector databaseConnector = mock(DatabaseConnector.class);
     CapabilityDao capabilityDao = mock(CapabilityDao.class);
     CapabilityService capabilityService = new CapabilityService(capabilityDao, databaseConnector);
@@ -42,10 +42,10 @@ public class CapabilityServiceTest {
 
     @Test
     void getAllCapabilities_shouldReturnCapabilities_whenDaoReturnsCapabilities() throws DatabaseConnectionException, SQLException, FailedToGetCapabilityException {
-        List<Capability> capabilityList = new ArrayList<>();
+        List<CapabilityResponse> capabilityResponseList = new ArrayList<>();
         when(databaseConnector.getConnection()).thenReturn(conn);
-        when(capabilityDao.getAllCapabilities(conn)).thenReturn(capabilityList);
-        List<Capability> result = capabilityService.getAllCapabilities();
-        assertEquals(capabilityList, result);
+        when(capabilityDao.getAllCapabilities(conn)).thenReturn(capabilityResponseList);
+        List<CapabilityResponse> result = capabilityService.getAllCapabilities();
+        assertEquals(capabilityResponseList, result);
     }
 }

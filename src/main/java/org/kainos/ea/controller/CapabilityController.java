@@ -11,10 +11,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Api("Capability API")
+@Api("CapabilityResponse API")
 @Path("/api")
 public class CapabilityController {
-    private static CapabilityService capabilityService;
+    private CapabilityService capabilityService;
 
     public CapabilityController() {
         capabilityService = new CapabilityService(new CapabilityDao(), new DatabaseConnector());

@@ -12,10 +12,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Api("Band API")
+@Api("BandResponse API")
 @Path("/api")
 public class BandController {
-    private static BandService bandService;
+    private BandService bandService;
 
     public BandController() {
         bandService = new BandService(new BandDao(), new DatabaseConnector());

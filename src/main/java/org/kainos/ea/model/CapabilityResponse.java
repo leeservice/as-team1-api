@@ -3,11 +3,13 @@ package org.kainos.ea.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class JobRole {
+public class CapabilityResponse {
     private int id;
     private String name;
 
-    public JobRole(int id, String name) {
+    @JsonCreator
+    public CapabilityResponse(@JsonProperty("id") int id,
+                              @JsonProperty("name") String name) {
         setId(id);
         setName(name);
     }
@@ -30,6 +32,6 @@ public class JobRole {
 
     @Override
     public String toString() {
-        return "JobRole{" + "id=" + id + ", name='" + name + '\'' + '}';
+        return "CapabilityResponse{" + "id=" + id + ", name='" + name + '\'' + '}';
     }
 }

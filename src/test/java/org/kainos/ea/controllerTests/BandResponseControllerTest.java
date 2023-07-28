@@ -12,7 +12,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class BandControllerTest {
+public class BandResponseControllerTest {
     BandService bandService = mock(BandService.class);
     BandController bandController = new BandController(bandService);
 

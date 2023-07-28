@@ -12,7 +12,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class CapabilityControllerTest {
+public class CapabilityResponseControllerTest {
     CapabilityService capabilityService = mock(CapabilityService.class);
     CapabilityController capabilityController = new CapabilityController(capabilityService);
 

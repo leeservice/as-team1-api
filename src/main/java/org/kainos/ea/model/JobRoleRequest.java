@@ -11,7 +11,11 @@ public class JobRoleRequest {
     private String url;
 
     @JsonCreator
-    public JobRoleRequest(@JsonProperty("name") String name, @JsonProperty("specificationDesc") String specificationDesc, @JsonProperty("capabilityId") int capabilityId, @JsonProperty("bandId") int bandId, @JsonProperty("url") String url) {
+    public JobRoleRequest(@JsonProperty("name") String name,
+                          @JsonProperty("specificationDesc") String specificationDesc,
+                          @JsonProperty("capabilityId") int capabilityId,
+                          @JsonProperty("bandId") int bandId,
+                          @JsonProperty("url") String url) {
         setName(name);
         setSpecificationDesc(specificationDesc);
         setCapabilityId(capabilityId);

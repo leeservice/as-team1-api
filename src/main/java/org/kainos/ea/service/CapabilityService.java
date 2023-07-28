@@ -3,10 +3,9 @@ package org.kainos.ea.service;
 import org.kainos.ea.dao.CapabilityDao;
 import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.exceptions.FailedToGetCapabilityException;
-import org.kainos.ea.model.Capability;
+import org.kainos.ea.model.CapabilityResponse;
 import org.kainos.ea.utility.DatabaseConnector;
 
-import javax.xml.crypto.Data;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,14 +18,13 @@ public class CapabilityService {
         this.databaseConnector = databaseConnector;
     }
 
-    public List<Capability> getAllCapabilities() throws FailedToGetCapabilityException {
-        List<Capability> capabilityList = null;
+    public List<CapabilityResponse> getAllCapabilities() throws FailedToGetCapabilityException {
+        List<CapabilityResponse> capabilityResponseList = null;
         try {
-            capabilityList = capabilityDao.getAllCapabilities(databaseConnector.getConnection());
+            return capabilityDao.getAllCapabilities(databaseConnector.getConnection());
         } catch (SQLException | DatabaseConnectionException e) {
             System.err.println(e.getMessage());
             throw new FailedToGetCapabilityException();
         }
-        return capabilityList;
     }
 }

@@ -1,6 +1,6 @@
 package org.kainos.ea.dao;
 
-import org.kainos.ea.model.Band;
+import org.kainos.ea.model.BandResponse;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,15 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BandDao {
-    public List<Band> getAllBands(Connection c) throws SQLException {
+    public List<BandResponse> getAllBands(Connection c) throws SQLException {
         Statement st = c.createStatement();
-        ResultSet rs = st.executeQuery("SELECT id AS 'ID', level_of_band AS 'Band Level'"
+        ResultSet rs = st.executeQuery("SELECT id AS 'ID', level_of_band AS 'BandResponse Level'"
                 + " FROM Banding;");
-        List<Band> bandList = new ArrayList<>();
+        List<BandResponse> bandResponseList = new ArrayList<>();
         while (rs.next()) {
-            Band band = new Band(rs.getInt("ID"), rs.getString("Band Level"));
-            bandList.add(band);
+            BandResponse bandResponse = new BandResponse(rs.getInt("ID"), rs.getString("BandResponse Level"));
+            bandResponseList.add(bandResponse);
         }
-        return bandList;
+        return bandResponseList;
     }
 }

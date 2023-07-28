@@ -5,8 +5,7 @@ import io.dropwizard.testing.junit5.DropwizardAppExtension;
 import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.kainos.ea.model.Band;
-import org.kainos.ea.model.Capability;
+import org.kainos.ea.model.BandResponse;
 import org.kainos.ea.trueApplication;
 import org.kainos.ea.trueConfiguration;
 
@@ -18,19 +17,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(DropwizardExtensionsSupport.class)
-public class BandControllerTest {
+public class BandResponseControllerTest {
     static final DropwizardAppExtension<trueConfiguration> APP = new DropwizardAppExtension<>(trueApplication.class, null, new ResourceConfigurationSourceProvider());
 
     @Test
     void getAllBands_shouldReturnListOfBands() {
         Response response = APP.client().target("http://localhost:8080/api/band").request().get();
         assertEquals(200, response.getStatus());
-        List<Band> bandList = response.readEntity(new GenericType<List<Band>>() {
+        List<BandResponse> bandResponseList = response.readEntity(new GenericType<List<BandResponse>>() {
         });
-        assertTrue(bandList.size() > 0);
-        Band band = bandList.get(0);
+        assertTrue(bandResponseList.size() > 0);
+        BandResponse bandResponse = bandResponseList.get(0);
         String expected = "Manager";
-        String actual = band.getBandLevel();
+        String actual = bandResponse.getBandLevel();
         assertEquals(expected, actual);
     }
 

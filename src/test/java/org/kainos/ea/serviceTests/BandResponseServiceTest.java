@@ -5,7 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.kainos.ea.dao.BandDao;
 import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.exceptions.FailedToGetBandException;
-import org.kainos.ea.model.Band;
+import org.kainos.ea.model.BandResponse;
 import org.kainos.ea.service.BandService;
 import org.kainos.ea.utility.DatabaseConnector;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -21,7 +21,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class BandServiceTest {
+public class BandResponseServiceTest {
     DatabaseConnector databaseConnector = mock(DatabaseConnector.class);
     BandDao bandDao = mock(BandDao.class);
     BandService bandService = new BandService(bandDao, databaseConnector);
@@ -42,10 +42,10 @@ public class BandServiceTest {
 
     @Test
     void getAllBands_shouldReturnBands_whenDaoReturnsBands() throws DatabaseConnectionException, SQLException, FailedToGetBandException {
-        List<Band> bandList = new ArrayList<>();
+        List<BandResponse> bandResponseList = new ArrayList<>();
         when(databaseConnector.getConnection()).thenReturn(conn);
-        when(bandDao.getAllBands(conn)).thenReturn(bandList);
-        List<Band> result = bandService.getAllBands();
-        assertEquals(bandList, result);
+        when(bandDao.getAllBands(conn)).thenReturn(bandResponseList);
+        List<BandResponse> result = bandService.getAllBands();
+        assertEquals(bandResponseList, result);
     }
 }

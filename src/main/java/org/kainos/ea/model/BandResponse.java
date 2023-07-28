@@ -3,12 +3,13 @@ package org.kainos.ea.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Band {
+public class BandResponse {
     private int id;
     private String bandLevel;
 
     @JsonCreator
-    public Band(@JsonProperty("id") int id, @JsonProperty("bandLevel") String bandLevel) {
+    public BandResponse(@JsonProperty("id") int id,
+                        @JsonProperty("bandLevel") String bandLevel) {
         setId(id);
         setBandLevel(bandLevel);
     }
@@ -31,6 +32,6 @@ public class Band {
 
     @Override
     public String toString() {
-        return "Band{" + "id=" + id + ", bandLevel='" + bandLevel + '\'' + '}';
+        return "BandResponse{" + "id=" + id + ", bandLevel='" + bandLevel + '\'' + '}';
     }
 }
