@@ -6,6 +6,7 @@ import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.exceptions.FailedToGenerateTokenException;
 import org.kainos.ea.exceptions.FailedToLoginException;
 import org.kainos.ea.model.Login;
+import org.kainos.ea.model.LoginRequest;
 import org.kainos.ea.service.AuthService;
 import org.kainos.ea.utility.DatabaseConnector;
 
@@ -32,9 +33,9 @@ public class AuthController {
     @POST
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response login(Login login) {
+    public Response login(LoginRequest loginRequest) {
         try {
-            return Response.ok(authService.login(login)).build();
+            return Response.ok(authService.login(loginRequest)).build();
         } catch (FailedToLoginException e) {
             System.err.println(e.getMessage());
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
