@@ -5,12 +5,10 @@ CREATE PROCEDURE create_TokenTable_040()
 BEGIN
 
 CREATE TABLE IF NOT EXISTS Token (
-    id INT NOT NULL AUTO_INCREMENT,
-    token VARCHAR(50) NOT NULL,
-    user_id INT NOT NULL,
+    token VARCHAR(150) NOT NULL,
+    user_id SMALLINT NOT NULL,
     expires_at DATETIME NOT NULL,
-    PRIMARY KEY (id),
-    CONSTRAINT FOREIGN KEY (user_id) REFERENCES User(id)
+    CONSTRAINT FOREIGN KEY (user_id) REFERENCES `User`(id)
 );
 
 END $$

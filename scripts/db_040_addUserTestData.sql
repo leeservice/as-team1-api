@@ -6,7 +6,7 @@ BEGIN
 
 START TRANSACTION;
 
-INSERT INTO User(id, email, password, role_id)
+INSERT INTO User(id, email, `password`, role_id)
 VALUES (1, 'admin@kainos.com', 'admin', 1),
 (2, 'user@kainos.com', 'user', 2);
 
