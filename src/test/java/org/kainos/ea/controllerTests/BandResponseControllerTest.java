@@ -15,7 +15,6 @@ import static org.mockito.Mockito.when;
 public class BandResponseControllerTest {
     BandService bandService = mock(BandService.class);
     BandController bandController = new BandController(bandService);
-
     @Test
     void getAllBands_shouldReturn500_whenBandServiceThrowsFailedToGetBandException() throws FailedToGetBandException {
         when(bandService.getAllBands()).thenThrow(FailedToGetBandException.class);
