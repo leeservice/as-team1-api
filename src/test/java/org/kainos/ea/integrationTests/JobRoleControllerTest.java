@@ -10,6 +10,8 @@ import org.kainos.ea.dao.JobRoleDao;
 import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.model.JobRole;
 import org.kainos.ea.model.JobRoleNoId;
+import java.util.List;
+import javax.ws.rs.core.GenericType;
 import org.kainos.ea.trueApplication;
 import org.kainos.ea.trueConfiguration;
 import org.kainos.ea.utility.DatabaseConnector;
@@ -40,14 +42,15 @@ public class JobRoleControllerTest {
     }
     @Test
     void getAllJobRoles_shouldReturnListOfJobRoles() {
-        Response response = APP.client().target("http://localhost:8080/api/job-roles").request().get();
-
-        //Checks for 200 response code
+        Response response =
+                APP.client().target("http://localhost:8080/api/job-roles").request().get();
         assertEquals(200, response.getStatus());
-        List<JobRole> jobRoles = response.readEntity(List.class);
-        //Checks if list returned has a size greater than 0
+        List<JobRoleResponse> jobRoles =
+                response.readEntity(new GenericType<List<JobRoleResponse>>() {});
         assertTrue(jobRoles.size() > 0);
-
-
+        JobRoleResponse jobRoleResponse = jobRoles.get(0);
+        String expected = "Engineering";
+        String actual = jobRoleResponse.getCapability();
+        assertEquals(expected, actual);
     }
 }
