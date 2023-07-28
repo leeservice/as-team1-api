@@ -35,6 +35,7 @@ public class JobRoleControllerTest {
         String expected2 = "Manager";
         String actual2 = jobRoleResponse.getBandLevel();
         assertEquals(expected2, actual2);
+
     }
 }
 
