@@ -1,0 +1,16 @@
+USE Team1_RyanB;
+DELIMITER $$
+DROP PROCEDURE IF EXISTS create_RoleTable_040 $$
+CREATE PROCEDURE create_RoleTable_040()
+BEGIN
+
+CREATE TABLE IF NOT EXISTS Role (
+    id TINYINT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+END $$
+DELIMITER ;
+-- Runs the Procedure
+CALL create_RoleTable_040();
