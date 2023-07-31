@@ -11,11 +11,11 @@ public class JobRoleDao {
 
         ResultSet rs =
                 st.executeQuery(
-                        "SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name',CapabilityResponse.id AS"
-                            + " 'CapabilityResponse ID', CapabilityResponse.`name` AS 'CapabilityResponse Name',"
+                        "SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name',Capability.id AS"
+                            + " 'Capability ID', Capability.`name` AS 'Capability Name',"
                             + " Job_Roles.specification_description AS 'Job Description',"
-                            + " Job_Roles.url_link AS 'URL' FROM Job_Roles INNER JOIN CapabilityResponse"
-                            + " ON Job_Roles.capability_id = CapabilityResponse.id;");
+                            + " Job_Roles.url_link AS 'URL' FROM Job_Roles INNER JOIN Capability"
+                            + " ON Job_Roles.capability_id = Capability.id;");
         List<JobRoleResponse> jobRoleResponseList = new ArrayList<>();
 
         while (rs.next()) {
@@ -23,7 +23,7 @@ public class JobRoleDao {
                     new JobRoleResponse(
                             rs.getInt("ID"),
                             rs.getString("Name"),
-                            rs.getString("CapabilityResponse Name"),
+                            rs.getString("Capability Name"),
                             rs.getString("URL"),
                             rs.getString("Job Description"));
             jobRoleResponseList.add(jobRoleResponse);

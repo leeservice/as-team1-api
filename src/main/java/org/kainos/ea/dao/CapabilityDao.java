@@ -12,7 +12,7 @@ public class CapabilityDao {
         Statement st = c.createStatement();
 
         ResultSet rs = st.executeQuery("SELECT id AS 'ID', `name` AS 'Name'"
-        + " FROM CapabilityResponse;");
+        + " FROM Capability;");
 
         List<CapabilityResponse> capabilityResponseList = new ArrayList<>();
 
