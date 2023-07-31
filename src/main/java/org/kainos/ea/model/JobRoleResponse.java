@@ -10,6 +10,7 @@ public class JobRoleResponse {
     private String urlLink;
     private String specificationDescription;
 
+<<<<<<< HEAD
   @JsonCreator
   public JobRoleResponse(
       @JsonProperty("id") int id,
@@ -23,6 +24,22 @@ public class JobRoleResponse {
     setSpecificationDescription(specificationDescription);
     setUrlLink(urlLink);
   }
+=======
+    @JsonCreator
+    public JobRoleResponse(
+            @JsonProperty("id") int id,
+            @JsonProperty("name") String name,
+            @JsonProperty("capability") String capability,
+            @JsonProperty("urlLink") String urlLink,
+            @JsonProperty("specificationDescription") String specificationDescription) {
+
+        setId(id);
+        setName(name);
+        setCapability(capability);
+        setUrlLink(urlLink);
+        setSpecificationDescription(specificationDescription);
+    }
+>>>>>>> 744573c (added)
 
   public int getId() {
     return id;
@@ -64,6 +81,7 @@ public class JobRoleResponse {
     this.specificationDescription = specificationDescription;
   }
 
+<<<<<<< HEAD
   @Override
   public String toString() {
     return "JobRoleResponse{"
@@ -83,4 +101,16 @@ public class JobRoleResponse {
         + '\''
         + '}';
   }
+=======
+    @Override
+    public String toString() {
+        return "JobRoleResponse{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", capability='" + capability + '\'' +
+            ", urlLink='" + urlLink + '\'' +
+            ", specificationDescription='" + specificationDescription + '\'' +
+            '}';
+    }
+>>>>>>> 744573c (added)
 }

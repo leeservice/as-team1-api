@@ -20,6 +20,7 @@ public class JobRoleDao {
                     + " Job_Roles.url_link AS 'URL' FROM Job_Roles INNER JOIN Capability"
                     + " ON Job_Roles.capability_id = Capability.id;");
 
+
         List<JobRoleResponse> jobRoleResponseList = new ArrayList<>();
 
         while (rs.next()) {
