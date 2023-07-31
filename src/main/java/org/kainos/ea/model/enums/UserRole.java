@@ -16,9 +16,9 @@ public enum UserRole {
     }
 
     public int getRoleId() {
-        if (this.roleString.equals("admin")) {
+        if (this == UserRole.ADMIN) {
             return 1;
-        } else if (this.roleString.equals("employee")) {
+        } else if (this == UserRole.EMPLOYEE) {
             return 2;
         } else {
             return -1;

@@ -28,15 +28,15 @@ public class AuthController {
     @POST
     @Path("/register")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllJobRoles(RegisterUser user) {
+    public Response createLogin(RegisterUser log)
+    {
         try {
-            System.out.println(user.getEmail());
-            System.out.println(user.getRole());
-            authService.registerNewUser(user);
-            return Response.status(201).build();
-        } catch (FailedToRegisterUserException e) {
+            return Response.status(Response.Status.CREATED).entity(authService.Register(log)).build();
+        }
+        catch (FailedToRegisterUserException e) {
+
             System.err.println(e.getMessage());
-            return Response.serverError().build();
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
     }
 

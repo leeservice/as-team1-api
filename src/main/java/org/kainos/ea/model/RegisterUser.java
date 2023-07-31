@@ -1,5 +1,7 @@
 package org.kainos.ea.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.kainos.ea.model.enums.UserRole;
 
 public class RegisterUser {
@@ -9,10 +11,23 @@ public class RegisterUser {
 
     private UserRole role;
 
-    public RegisterUser(String email, String password, UserRole role) {
-        setEmail(email);
-        setPassword(password);
-        setRole(role);
+    @Override
+    public String toString() {
+        return "RegisterUser{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                '}';
+    }
+
+    @JsonCreator
+    public RegisterUser(
+            @JsonProperty("email") String email,
+            @JsonProperty("password") String password,
+            @JsonProperty("role") UserRole role) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 
     public String getEmail() {

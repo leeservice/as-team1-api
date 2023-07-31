@@ -18,14 +18,18 @@ public class AuthService {
         this.databaseConnector = databaseConnector;
     }
 
-    public boolean registerNewUser(RegisterUser user) throws FailedToRegisterUserException {
+    public int Register(RegisterUser log) throws FailedToRegisterUserException {
         try {
-            authDao.registerNewUser(databaseConnector.getConnection(), user);
-        } catch (SQLException | DatabaseConnectionException e) {
-            System.err.println(e.getMessage());
-            throw new FailedToRegisterUserException();
-        }
-        return true;
-    }
+            int id = authDao.Register(log, databaseConnector.getConnection());
+            if (id == 1) {
+                throw new FailedToRegisterUserException();
 
+            }
+            return id;
+        } catch (DatabaseConnectionException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

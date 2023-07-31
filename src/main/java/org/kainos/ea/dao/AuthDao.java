@@ -2,20 +2,26 @@ package org.kainos.ea.dao;
 
 import org.kainos.ea.model.RegisterUser;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class AuthDao {
 
-    public boolean registerNewUser(Connection c, RegisterUser user) throws SQLException {
-        Statement st = c.createStatement();
+    public int Register(RegisterUser login, Connection c) throws SQLException {
+        String insertStatement = "INSERT INTO `User` (email, password, role_id) VALUES (?,?,?)";
+        PreparedStatement st = c.prepareStatement(insertStatement, Statement.RETURN_GENERATED_KEYS);
+        st.setString(1, login.getEmail());
+        st.setString(2, login.getPassword());
+        st.setInt(3, login.getRole().getRoleId());
+        System.out.println(login);
+        st.executeUpdate();
 
-        st.executeQuery("INSERT INTO Users (email, `password`, role_id) VALUES ('" + user.getEmail() + "', '" + user.getPassword() + "', '" + user.getRole().getRoleId() + "');");
 
-        return true;
-
-
+        ResultSet  rs = st.getGeneratedKeys();
+        if(rs.next())
+        {
+            return rs.getInt(1);
+        }
+        return  -1;
     }
 
 }
