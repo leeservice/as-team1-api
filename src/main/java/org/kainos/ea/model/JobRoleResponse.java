@@ -7,7 +7,6 @@ public class JobRoleResponse {
     private int id;
     private String name;
     private String capability;
-
     private String urlLink;
     private String specificationDescription;
 
