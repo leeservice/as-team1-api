@@ -73,7 +73,7 @@ public class JobRoleServiceTest {
     }
 
     @Test
-    void updateJobRole_shouldReturnId_whenDaoReturnsId() throws DatabaseConnectionException, SQLException, InvalidJobRoleException, FailedToCreateJobRoleException {
+    void updateJobRole_shouldReturnId_whenDaoReturnsId() throws DatabaseConnectionException, SQLException, InvalidJobRoleException, FailedToCreateJobRoleException, JobRoleDoesNotExistException {
         int expectedResult = 1;
         int id = 1;
         when(databaseConnector.getConnection()).thenReturn(conn);

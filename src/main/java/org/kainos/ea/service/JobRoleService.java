@@ -47,7 +47,7 @@ public class JobRoleService {
             throw new FailedToCreateJobRoleException();
         }
     }
-    public  int updateJobRole(int id, JobRoleRequest jobRoleRequest) throws FailedToCreateJobRoleException, InvalidJobRoleException  {
+    public  int updateJobRole(int id, JobRoleRequest jobRoleRequest) throws FailedToCreateJobRoleException, InvalidJobRoleException, JobRoleDoesNotExistException {
         JobRoleValidator validator = new JobRoleValidator();
         try {
             if (!validator.isValidJobRole(jobRoleRequest)) {

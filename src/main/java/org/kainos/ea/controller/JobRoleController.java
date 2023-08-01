@@ -9,6 +9,7 @@ import org.kainos.ea.dao.JobRoleDao;
 import org.kainos.ea.exceptions.FailedToCreateJobRoleException;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
 import org.kainos.ea.exceptions.InvalidJobRoleException;
+import org.kainos.ea.exceptions.JobRoleDoesNotExistException;
 import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.service.JobRoleService;
 import org.kainos.ea.utility.DatabaseConnector;
@@ -66,6 +67,9 @@ public class JobRoleController {
         } catch (InvalidJobRoleException e) {
             System.err.println(e.getMessage());
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        } catch (JobRoleDoesNotExistException e) {
+            System.err.println(e.getMessage());
+            return Response.serverError().build();
         }
     }
 }
