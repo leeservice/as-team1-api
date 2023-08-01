@@ -4,11 +4,6 @@ on:
   push:
     branches: [ "us036-deploy-to-aws" ]
 
-  env:
-  
-
-
-
 jobs:
   build:
     runs-on: ubuntu-latest
