@@ -47,4 +47,16 @@ public class JobRoleDao {
         }
         return -1;
     }
+    public int updateJobRole(int id, JobRoleRequest job, Connection c)   throws SQLException {
+        String updateStatement = "UPDATE Job_Roles SET name = ?, specification_description = ?, url_link = ?, capability_id = ?, band_id = ?  Where Job_Roles.id = " + id;
+        PreparedStatement st = c.prepareStatement(updateStatement);
+        st.setString(1, job.getName());
+        st.setString(2, job.getSpecificationDesc());
+        st.setString(3, job.getUrl());
+        st.setInt(4, job.getCapabilityId());
+        st.setInt(5, job.getBandId());
+
+        st.executeUpdate();
+        return id;
+    }
 }

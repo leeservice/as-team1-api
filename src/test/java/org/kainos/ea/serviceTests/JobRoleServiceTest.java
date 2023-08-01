@@ -71,4 +71,29 @@ public class JobRoleServiceTest {
         when(databaseConnector.getConnection()).thenThrow(DatabaseConnectionException.class);
         assertThrows(FailedToCreateJobRoleException.class, () -> jobRoleService.createJobRole(jobRoleRequest));
     }
+
+    @Test
+    void updateJobRole_shouldReturnId_whenDaoReturnsId() throws DatabaseConnectionException, SQLException, InvalidJobRoleException, FailedToCreateJobRoleException {
+        int expectedResult = 1;
+        int id = 1;
+        when(databaseConnector.getConnection()).thenReturn(conn);
+        when(jobRoleDao.updateJobRole(id, jobRoleRequest, conn)).thenReturn(expectedResult);
+        int result = jobRoleService.updateJobRole(id, jobRoleRequest);
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void updateJobRole_shouldThrowFailedToCreateJobRoleException_whenDaoThrowsSQLException() throws DatabaseConnectionException, SQLException {
+        int id = 1;
+        when(databaseConnector.getConnection()).thenReturn(conn);
+        when(jobRoleDao.updateJobRole(id,jobRoleRequest, conn)).thenThrow(SQLException.class);
+        assertThrows(FailedToCreateJobRoleException.class, () -> jobRoleService.updateJobRole(id,jobRoleRequest));
+    }
+
+    @Test
+    void updateJobRole_shouldThrowFailedToCreateJobRoleException_whenDatabaseConnectorThrowsDatabaseConnectionException() throws DatabaseConnectionException, SQLException {
+        int id = 1;
+        when(databaseConnector.getConnection()).thenThrow(DatabaseConnectionException.class);
+        assertThrows(FailedToCreateJobRoleException.class, () -> jobRoleService.updateJobRole(id,jobRoleRequest));
+    }
 }

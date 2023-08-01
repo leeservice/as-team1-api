@@ -1,10 +1,8 @@
 package org.kainos.ea.controller;
 
 import io.swagger.annotations.Api;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.kainos.ea.dao.JobRoleDao;
@@ -47,6 +45,22 @@ public class JobRoleController {
         try {
             return Response.status(Response.Status.CREATED).entity(jobRoleService.createJobRole(jobRoleRequest)).build();
         } catch (FailedToCreateJobRoleException e) {
+            System.err.println(e.getMessage());
+            return Response.serverError().build();
+        } catch (InvalidJobRoleException e) {
+            System.err.println(e.getMessage());
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }
+    }
+    @PUT
+    @Path("/job-roles/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateJobRole(@PathParam("id") int id, JobRoleRequest jobRoleRequest)
+    {
+        try {
+            jobRoleService.updateJobRole(id,jobRoleRequest);
+            return Response.ok().build();
+        }catch (FailedToCreateJobRoleException e) {
             System.err.println(e.getMessage());
             return Response.serverError().build();
         } catch (InvalidJobRoleException e) {

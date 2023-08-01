@@ -4,10 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.kainos.ea.dao.JobRoleDao;
-import org.kainos.ea.exceptions.DatabaseConnectionException;
-import org.kainos.ea.exceptions.FailedToCreateJobRoleException;
-import org.kainos.ea.exceptions.FailedToGetJobRoleException;
-import org.kainos.ea.exceptions.InvalidJobRoleException;
+import org.kainos.ea.exceptions.*;
 import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.model.JobRoleResponse;
 import org.kainos.ea.utility.DatabaseConnector;
@@ -44,6 +41,19 @@ public class JobRoleService {
             if (id == -1) {
                 throw new FailedToCreateJobRoleException();
             }
+            return id;
+        } catch (SQLException | DatabaseConnectionException e) {
+            System.err.println(e.getMessage());
+            throw new FailedToCreateJobRoleException();
+        }
+    }
+    public  int updateJobRole(int id, JobRoleRequest jobRoleRequest) throws FailedToCreateJobRoleException, InvalidJobRoleException  {
+        JobRoleValidator validator = new JobRoleValidator();
+        try {
+            if (!validator.isValidJobRole(jobRoleRequest)) {
+                throw new InvalidJobRoleException();
+            }
+            jobRoleDao.updateJobRole(id, jobRoleRequest, databaseConnector.getConnection());
             return id;
         } catch (SQLException | DatabaseConnectionException e) {
             System.err.println(e.getMessage());
