@@ -33,10 +33,10 @@ public class AuthControllerTest {
     }
 
     @Test
-    void login_shouldReturn400_whenCredentialsInvalid() {
+    void login_shouldReturn401_whenCredentialsInvalid() {
         LoginRequest loginRequest = new LoginRequest("invaliduser@kainos.com", "invaliduser");
         Response response =
                 APP.client().target("http://localhost:8080/api/login").request().post(Entity.entity(loginRequest, MediaType.APPLICATION_JSON_TYPE));
-        assertEquals(400, response.getStatus());
+        assertEquals(401, response.getStatus());
     }
 }

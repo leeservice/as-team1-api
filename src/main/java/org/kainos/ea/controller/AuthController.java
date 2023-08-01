@@ -38,7 +38,7 @@ public class AuthController {
             return Response.ok(authService.login(loginRequest)).build();
         } catch (FailedToLoginException e) {
             System.err.println(e.getMessage());
-            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+            return Response.status(Response.Status.UNAUTHORIZED).entity(e.getMessage()).build();
         } catch (FailedToGenerateTokenException | DatabaseConnectionException | SQLException e) {
             System.err.println(e.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
