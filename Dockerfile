@@ -26,10 +26,3 @@ EXPOSE 8080
 
 #Execute image with params
 CMD ["java","-jar", "/code/target/kainos_academy_as-team1-api-1.0-SNAPSHOT.jar", "server", "/code/config.yml"]
-
-
-
-
-
-
-
