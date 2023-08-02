@@ -5,25 +5,23 @@ import io.dropwizard.configuration.ResourceConfigurationSourceProvider;
 import io.dropwizard.testing.junit5.DropwizardAppExtension;
 import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
 import java.util.List;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.Response;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.kainos.ea.dao.JobRoleDao;
 import org.kainos.ea.exceptions.DatabaseConnectionException;
-import org.kainos.ea.model.JobRole;
-import org.kainos.ea.model.JobRoleNoId;
-import java.util.List;
-import javax.ws.rs.core.GenericType;
 
 import org.kainos.ea.model.JobRoleResponse;
 import org.kainos.ea.trueApplication;
 import org.kainos.ea.trueConfiguration;
 import org.kainos.ea.utility.DatabaseConnector;
-
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
 import java.sql.SQLException;
+import org.kainos.ea.model.JobRoleRequest;
 
+import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 @ExtendWith(DropwizardExtensionsSupport.class)
@@ -31,11 +29,11 @@ public class JobRoleControllerTest {
     static final DropwizardAppExtension<trueConfiguration> APP = new DropwizardAppExtension<>(trueApplication.class, null, new ResourceConfigurationSourceProvider());
     @Test
     void DeleteJobRole_shouldReturnDeletionJobRoles() throws DatabaseConnectionException, SQLException {
-        JobRoleNoId job = new JobRoleNoId("Engineer", "Amazing",
-                "https://kainossoftwareltd.sharepoint.com/people/Job%20Specifications/Forms/AllItems.aspx?id=%2Fpeople%2FJob%20Specifications%2FEngineering%2FJob%20Profile%20%2D%20Principal%20Architect%20%28Principal%29%2Epdf&parent=%2Fpeople%2FJob%20Specifications%2FEngineering&p=true&ga=1", 1, 1);
+        JobRoleRequest job = new JobRoleRequest("Engineer", "Amazing",
+                1, 1, "https://kainossoftwareltd.sharepoint.com/people/Job%20Specifications/Forms/AllItems.aspx?id=%2Fpeople%2FJob%20Specifications%2FEngineering%2FJob%20Profile%20%2D%20Principal%20Architect%20%28Principal%29%2Epdf&parent=%2Fpeople%2FJob%20Specifications%2FEngineering&p=true&ga=1");
         DatabaseConnector databaseConnector = new DatabaseConnector();
         JobRoleDao dao = new JobRoleDao();
-        int JobID = dao.createJobRoleToDelete(job, databaseConnector.getConnection());
+        int JobID = dao.createJobRole(job, databaseConnector.getConnection());
         Response response = APP.client().target("http://localhost:8080/api/job-roles/" + JobID).request().delete();
 
         assertEquals(200, response.getStatus());
@@ -56,6 +54,40 @@ public class JobRoleControllerTest {
         String actual2 = jobRoleResponse.getBandLevel();
         assertEquals(expected2, actual2);
 
+    }
+  
+    @Test
+    void createJobRole_shouldReturnIdOfJobRole() {
+        JobRoleRequest jobRoleRequest = new JobRoleRequest("Test job role", "This is a description.", 1, 1, "https://kainos.com");
+        Response response = APP.client().target("http://localhost:8080/api/job-roles").request().post(Entity.entity(jobRoleRequest, MediaType.APPLICATION_JSON_TYPE));
+        // Check for 201 response code
+        assertEquals(201, response.getStatus());
+        int id = response.readEntity(Integer.class);
+        // Check an integer is returned
+        assertNotNull(id);
+    }
+
+    @Test
+    void createJobRole_shouldReturn400_whenNameTooLong() {
+        String longName = "name".repeat(1000);
+        JobRoleRequest jobRoleRequest = new JobRoleRequest(longName, "This is a description.", 1, 1, "https://kainos.com");
+        Response response = APP.client().target("http://localhost:8080/api/job-roles").request().post(Entity.entity(jobRoleRequest, MediaType.APPLICATION_JSON_TYPE));
+        assertEquals(400, response.getStatus());
+    }
+
+    @Test
+    void createJobRole_shouldReturn400_whenNameIsEmpty() {
+        JobRoleRequest jobRoleRequest = new JobRoleRequest("", "This is a description.", 1, 1, "https://kainos.com");
+        Response response = APP.client().target("http://localhost:8080/api/job-roles").request().post(Entity.entity(jobRoleRequest, MediaType.APPLICATION_JSON_TYPE));
+        assertEquals(400, response.getStatus());
+    }
+
+    @Test
+    void createJobRole_shouldReturn400_whenUrlTooLong() {
+        String longUrl = "https://" + "a".repeat(1000) + ".com";
+        JobRoleRequest jobRoleRequest = new JobRoleRequest("Test Job Role", "This is a description.", 1, 1, longUrl);
+        Response response = APP.client().target("http://localhost:8080/api/job-roles").request().post(Entity.entity(jobRoleRequest, MediaType.APPLICATION_JSON_TYPE));
+        assertEquals(400, response.getStatus());
     }
 }
 
