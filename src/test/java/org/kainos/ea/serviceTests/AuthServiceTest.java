@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.kainos.ea.dao.AuthDao;
 import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.exceptions.FailedToRegisterUserException;
+import org.kainos.ea.exceptions.InvalidUserException;
 import org.kainos.ea.model.RegisterUser;
 import org.kainos.ea.model.enums.UserRole;
 import org.kainos.ea.service.AuthService;
@@ -45,7 +46,7 @@ public class AuthServiceTest {
     }
 
     @Test
-    void registerUser_shouldReturnId_whenUserRegisteredSuccessfully() throws DatabaseConnectionException, SQLException, FailedToRegisterUserException {
+    void registerUser_shouldReturnId_whenUserRegisteredSuccessfully() throws DatabaseConnectionException, SQLException, FailedToRegisterUserException, InvalidUserException {
         int id = 1;
         when(databaseConnector.getConnection()).thenReturn(conn);
         when(authDao.Register(login, conn)).thenReturn(id);
