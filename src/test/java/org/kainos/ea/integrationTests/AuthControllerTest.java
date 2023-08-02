@@ -41,24 +41,28 @@ public class AuthControllerTest {
 
     @Test
     void registerValidUser_shouldReturnAnId() throws SQLException {
+        String sampleEmail = "ryan@kainosmail.com";
+
+        // Post to the endpoint
         Response response = APP.client().target("http://localhost:8080/api/register").request().post(
-                Entity.json("{\"email\":\"ryan@kainosmail.com\",\"password\":\"MYsuperS3cureP@ss\",\"role\":\"admin\"}")
+                Entity.json("{\"email\":\"" + sampleEmail + "\",\"password\":\"MYsuperS3cureP@ss\",\"role\":\"admin\"}")
         );
+
+        //Assert that the correct status code is returned
         assertEquals(201, response.getStatus());
+
+        //The Returned ID of the New user
         int id = response.readEntity(int.class);
 
         // Select new User From DB
-        String selectStatement = "SELECT email, `password` from User WHERE id = " + id + ";";
         Statement st = c.createStatement();
-        ResultSet rs = st.executeQuery(selectStatement);
-
+        ResultSet rs = st.executeQuery("SELECT email, `password` from User WHERE id = " + id + ";");
+        String userInDb = "";
         while (rs.next()){
-            String userInDb = rs.getString("email");
-            System.out.println("USER in DB = " + userInDb);
+            userInDb = rs.getString("email");
         }
-
-
-
+        //Assert that the Id that is returned equates to the new user
+        assertEquals(sampleEmail, userInDb);
 
         //Delete Added User
         String deleteStatement = "DELETE from User WHERE id = ?";
