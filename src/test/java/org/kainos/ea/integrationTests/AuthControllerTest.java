@@ -69,7 +69,37 @@ public class AuthControllerTest {
         PreparedStatement dst = c.prepareStatement(deleteStatement, Statement.RETURN_GENERATED_KEYS);
         dst.setInt(1, id);
         dst.executeUpdate();
+    }
+    @Test
+    void registerInvalidEmail_shouldReturn400() throws SQLException {
+        String sampleEmail = "ryankainosmail.com";
 
+        // Post to the endpoint
+        Response response = APP.client().target("http://localhost:8080/api/register").request().post(
+                Entity.json("{\"email\":\"" + sampleEmail + "\",\"password\":\"MYsuperS3cureP@ss\",\"role\":\"admin\"}")
+        );
+
+        //Assert that the correct status code is returned
+        assertEquals(400, response.getStatus());
+
+        assertEquals("Invalid user - Invalid email.", response.readEntity(String.class));
 
     }
+
+    @Test
+    void registerInvalidPassword_shouldReturn400() throws SQLException {
+        String samplePassword = "Abc12345621";
+
+        // Post to the endpoint
+        Response response = APP.client().target("http://localhost:8080/api/register").request().post(
+                Entity.json("{\"email\":\"ryan@servicemail.com\",\"password\":\"" + samplePassword + "\",\"role\":\"admin\"}")
+        );
+
+        //Assert that the correct status code is returned
+        assertEquals(400, response.getStatus());
+
+        assertEquals("Invalid user - Invalid password.", response.readEntity(String.class));
+
+    }
+
 }
