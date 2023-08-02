@@ -73,5 +73,4 @@ public class JobRoleRequest {
         setBandId(bandId);
         setUrl(url);
     }
-
 }
