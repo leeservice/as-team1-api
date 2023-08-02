@@ -3,6 +3,7 @@ package org.kainos.ea.controller;
 
 import io.swagger.annotations.Api;
 import org.kainos.ea.dao.AuthDao;
+import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
 import org.kainos.ea.exceptions.FailedToRegisterUserException;
 import org.kainos.ea.model.RegisterUser;
@@ -37,6 +38,9 @@ public class AuthController {
 
             System.err.println(e.getMessage());
             return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (DatabaseConnectionException e) {
+            System.err.println(e.getMessage());
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
 
