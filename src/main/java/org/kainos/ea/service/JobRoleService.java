@@ -1,12 +1,13 @@
 package org.kainos.ea.service;
 
-import java.sql.SQLException;
-import java.util.List;
 import org.kainos.ea.dao.JobRoleDao;
 import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
 import org.kainos.ea.model.JobRoleResponse;
 import org.kainos.ea.utility.DatabaseConnector;
+
+import java.sql.SQLException;
+import java.util.List;
 
 public class JobRoleService {
 
@@ -29,3 +30,4 @@ public class JobRoleService {
         return jobRoleList;
     }
 }
+
