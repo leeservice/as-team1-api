@@ -14,10 +14,10 @@ public class trueApplication extends Application<trueConfiguration> {
         new trueApplication().run(args);
     }
 
-    @Override
-    public String getName() {
-        return "commitConnoisseursBackend";
-    }
+  @Override
+  public String getName() {
+    return "commitConnoisseursBackend";
+  }
 
     @Override
     public void initialize(final Bootstrap<trueConfiguration> bootstrap) {
@@ -30,7 +30,6 @@ public class trueApplication extends Application<trueConfiguration> {
                     }
                 });
     }
-
     @Override
     public void run(final trueConfiguration configuration, final Environment environment) {
         environment.jersey().register(new JobRoleController());
