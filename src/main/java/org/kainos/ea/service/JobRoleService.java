@@ -8,8 +8,6 @@ import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.model.JobRoleResponse;
 import org.kainos.ea.utility.DatabaseConnector;
 import org.kainos.ea.validator.JobRoleValidator;
-
-
 public class JobRoleService {
 
     public JobRoleDao jobRoleDao;

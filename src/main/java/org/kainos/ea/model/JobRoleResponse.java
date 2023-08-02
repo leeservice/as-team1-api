@@ -10,7 +10,6 @@ public class JobRoleResponse {
     private String url;
     private String bandLevel;
     private String capability;
-
     @JsonCreator
     public JobRoleResponse(
             @JsonProperty("id") int id,
@@ -42,13 +41,6 @@ public class JobRoleResponse {
         this.name = name;
     }
 
-    public String getSpecificationDesc() {
-        return specificationDesc;
-    }
-
-    public void setSpecificationDesc(String specificationDesc) {
-        this.specificationDesc = specificationDesc;
-    }
 
     public String getBandLevel() {
         return bandLevel;
@@ -72,7 +64,13 @@ public class JobRoleResponse {
         this.url = url;
     }
 
+    public String getSpecificationDesc() {
+        return specificationDesc;
+    }
 
+    public void setSpecificationDesc(String specificationDesc) {
+        this.specificationDesc = specificationDesc;
+    }
     @Override
     public String toString() {
         return "JobRoleResponse{" +

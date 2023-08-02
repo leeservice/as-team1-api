@@ -38,3 +38,4 @@ public class trueApplication extends Application<trueConfiguration> {
         environment.jersey().register(new BandController());
     }
 }
+

@@ -69,7 +69,6 @@ public class JobRoleServiceTest {
         when(databaseConnector.getConnection()).thenThrow(DatabaseConnectionException.class);
         assertThrows(FailedToCreateJobRoleException.class, () -> jobRoleService.createJobRole(jobRoleRequest));
     }
-
     @Test
     void updateJobRole_shouldReturnId_whenDaoReturnsId() throws DatabaseConnectionException, SQLException, InvalidJobRoleException, FailedToCreateJobRoleException, JobRoleDoesNotExistException {
         int expectedResult = 1;
