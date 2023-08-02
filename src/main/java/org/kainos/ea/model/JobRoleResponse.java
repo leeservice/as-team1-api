@@ -6,24 +6,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class JobRoleResponse {
     private int id;
     private String name;
+    private String specificationDesc;
+    private String url;
+    private String bandLevel;
     private String capability;
-    private String urlLink;
-    private String specificationDescription;
 
     @JsonCreator
     public JobRoleResponse(
             @JsonProperty("id") int id,
             @JsonProperty("name") String name,
+            @JsonProperty("specificationDescription") String specificationDescription,
+            @JsonProperty("url") String url,
             @JsonProperty("capability") String capability,
-            @JsonProperty("urlLink") String urlLink,
-            @JsonProperty("specificationDescription") String specificationDescription) {
+            @JsonProperty("bandLevel") String bandLevel) {
         setId(id);
         setName(name);
+        setSpecificationDesc(specificationDescription);
+        setUrl(url);
+        setBandLevel(bandLevel);
         setCapability(capability);
-        setSpecificationDescription(specificationDescription);
-        setUrlLink(urlLink);
     }
-
     public int getId() {
         return id;
     }
@@ -40,6 +42,21 @@ public class JobRoleResponse {
         this.name = name;
     }
 
+    public String getSpecificationDesc() {
+        return specificationDesc;
+    }
+
+    public void setSpecificationDesc(String specificationDesc) {
+        this.specificationDesc = specificationDesc;
+    }
+
+    public String getBandLevel() {
+        return bandLevel;
+    }
+
+    public void setBandLevel(String bandLevel) {
+        this.bandLevel = bandLevel;
+    }
     public String getCapability() {
         return capability;
     }
@@ -48,39 +65,24 @@ public class JobRoleResponse {
         this.capability = capability;
     }
 
-    public String getUrlLink() {
-        return urlLink;
+    public String getUrl() {
+        return url;
     }
 
-    public void setUrlLink(String urlLink) {
-        this.urlLink = urlLink;
+    public void setUrl(String urlLink) {
+        this.url = urlLink;
     }
 
-    public String getSpecificationDescription() {
-        return specificationDescription;
-    }
-
-    public void setSpecificationDescription(String specificationDescription) {
-        this.specificationDescription = specificationDescription;
-    }
 
     @Override
     public String toString() {
-        return "JobRoleResponse{"
-                + "id="
-                + id
-                + ", name='"
-                + name
-                + '\''
-                + ", capability='"
-                + capability
-                + '\''
-                + ", urlLink='"
-                + urlLink
-                + '\''
-                + ", specificationDescription='"
-                + specificationDescription
-                + '\''
-                + '}';
+        return "JobRoleResponse{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", specificationDesc='" + specificationDesc + '\'' +
+                ", url='" + url + '\'' +
+                ", bandLevel='" + bandLevel + '\'' +
+                ", capability='" + capability + '\'' +
+                '}';
     }
 }
