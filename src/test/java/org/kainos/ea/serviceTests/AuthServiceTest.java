@@ -30,7 +30,7 @@ public class AuthServiceTest {
     AuthService authService = new AuthService(authDao, databaseConnector);
     Connection conn;
 
-    RegisterUser login = new RegisterUser("JTeague", "Lee@YourService123", UserRole.EMPLOYEE);
+    RegisterUser login = new RegisterUser("JTeague@gmail.com", "Lee@YourService123", UserRole.EMPLOYEE);
 
     @Test
     void registerUser_shouldThrowFailedToRegisterUser_whenDaoThrowsSQLException() throws DatabaseConnectionException, SQLException {
