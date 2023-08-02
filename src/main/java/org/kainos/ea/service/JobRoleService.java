@@ -2,7 +2,6 @@ package org.kainos.ea.service;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import org.kainos.ea.dao.JobRoleDao;
 import org.kainos.ea.exceptions.DatabaseConnectionException;
 import org.kainos.ea.exceptions.FailedToCreateJobRoleException;
@@ -51,3 +50,4 @@ public class JobRoleService {
         }
     }
 }
+

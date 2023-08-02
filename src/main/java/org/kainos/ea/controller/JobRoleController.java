@@ -1,6 +1,7 @@
 package org.kainos.ea.controller;
 
 import io.swagger.annotations.Api;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -14,16 +15,15 @@ import org.kainos.ea.exceptions.InvalidJobRoleException;
 import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.service.JobRoleService;
 import org.kainos.ea.utility.DatabaseConnector;
-
-@Api("Job Role API")
+@Api("Commit Connoisseurs API")
 @Path("/api")
 public class JobRoleController {
-    private static JobRoleService jobRoleService;
+    private  JobRoleService jobRoleService;
 
     public JobRoleController() {
-        jobRoleService = new JobRoleService(new JobRoleDao(), new DatabaseConnector());
+        DatabaseConnector databaseConnector = new DatabaseConnector();
+        jobRoleService = new JobRoleService(new JobRoleDao(), databaseConnector);
     }
-
     public JobRoleController(JobRoleService service) {
         jobRoleService = service;
     }

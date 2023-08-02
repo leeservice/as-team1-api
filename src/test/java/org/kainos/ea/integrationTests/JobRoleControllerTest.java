@@ -1,6 +1,5 @@
 package org.kainos.ea.integrationTests;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 import io.dropwizard.configuration.ResourceConfigurationSourceProvider;
 import io.dropwizard.testing.junit5.DropwizardAppExtension;
@@ -17,25 +16,28 @@ import org.kainos.ea.model.JobRoleResponse;
 import org.kainos.ea.trueApplication;
 import org.kainos.ea.trueConfiguration;
 
+import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 @ExtendWith(DropwizardExtensionsSupport.class)
 public class JobRoleControllerTest {
-
-    static final DropwizardAppExtension<trueConfiguration> APP =
-            new DropwizardAppExtension<>(
-                    trueApplication.class, null, new ResourceConfigurationSourceProvider());
+    static final DropwizardAppExtension<trueConfiguration> APP = new DropwizardAppExtension<>(trueApplication.class, null, new ResourceConfigurationSourceProvider());
 
     @Test
     void getAllJobRoles_shouldReturnListOfJobRoles() {
         Response response =
                 APP.client().target("http://localhost:8080/api/job-roles").request().get();
         assertEquals(200, response.getStatus());
-        List<JobRoleResponse> jobRoles =
-                response.readEntity(new GenericType<List<JobRoleResponse>>() {});
+        List<JobRoleResponse> jobRoles = response.readEntity(new GenericType<List<JobRoleResponse>>(){});
         assertTrue(jobRoles.size() > 0);
         JobRoleResponse jobRoleResponse = jobRoles.get(0);
         String expected = "Engineering";
         String actual = jobRoleResponse.getCapability();
         assertEquals(expected, actual);
+        String expected2 = "Manager";
+        String actual2 = jobRoleResponse.getBandLevel();
+        assertEquals(expected2, actual2);
+
     }
   
     @Test
@@ -72,3 +74,4 @@ public class JobRoleControllerTest {
         assertEquals(400, response.getStatus());
     }
 }
+
