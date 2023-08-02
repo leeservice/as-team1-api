@@ -5,6 +5,8 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.federecio.dropwizard.swagger.SwaggerBundle;
 import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
+import org.kainos.ea.controller.BandController;
+import org.kainos.ea.controller.CapabilityController;
 import org.kainos.ea.controller.JobRoleController;
 
 public class trueApplication extends Application<trueConfiguration> {
@@ -13,10 +15,10 @@ public class trueApplication extends Application<trueConfiguration> {
         new trueApplication().run(args);
     }
 
-  @Override
-  public String getName() {
-    return "commitConnoisseursBackend";
-  }
+    @Override
+    public String getName() {
+        return "commitConnoisseursBackend";
+    }
 
     @Override
     public void initialize(final Bootstrap<trueConfiguration> bootstrap) {
@@ -30,9 +32,10 @@ public class trueApplication extends Application<trueConfiguration> {
                 });
     }
 
-  @Override
-  public void run(final trueConfiguration configuration,
-      final Environment environment) {
-    environment.jersey().register(new JobRoleController());
-  }
+    @Override
+    public void run(final trueConfiguration configuration, final Environment environment) {
+        environment.jersey().register(new JobRoleController());
+        environment.jersey().register(new CapabilityController());
+        environment.jersey().register(new BandController());
+    }
 }
