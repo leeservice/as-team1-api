@@ -1,31 +1,31 @@
 package org.kainos.ea.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JobRoleResponse {
     private int id;
     private String name;
     private String specificationDesc;
-    private String urlLink;
+    private String url;
     private String bandLevel;
     private String capability;
 
-    public JobRoleResponse(@JsonProperty("JobRoleId")int id, @JsonProperty("Name")String name, @JsonProperty("Specification_Description")String specificationDesc,@JsonProperty("URL") String urlLink, @JsonProperty("BandLevel")String bandLevel, @JsonProperty("Capability")String capability) {
+    @JsonCreator
+    public JobRoleResponse(
+            @JsonProperty("id") int id,
+            @JsonProperty("name") String name,
+            @JsonProperty("specificationDescription") String specificationDescription,
+            @JsonProperty("url") String url,
+            @JsonProperty("capability") String capability,
+            @JsonProperty("bandLevel") String bandLevel) {
         setId(id);
         setName(name);
-        setSpecificationDesc(specificationDesc);
-        setUrlLink(urlLink);
+        setSpecificationDesc(specificationDescription);
+        setUrl(url);
         setBandLevel(bandLevel);
         setCapability(capability);
     }
-    public String getUrlLink() {
-        return urlLink;
-    }
-
-    public void setUrlLink(String urlLink) {
-        this.urlLink = urlLink;
-    }
-
     public int getId() {
         return id;
     }
@@ -57,7 +57,6 @@ public class JobRoleResponse {
     public void setBandLevel(String bandLevel) {
         this.bandLevel = bandLevel;
     }
-
     public String getCapability() {
         return capability;
     }
@@ -66,13 +65,20 @@ public class JobRoleResponse {
         this.capability = capability;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String urlLink) {
+        this.url = urlLink;
+    }
     @Override
     public String toString() {
         return "JobRoleResponse{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", specificationDesc='" + specificationDesc + '\'' +
-                ", url_link='" + urlLink + '\'' +
+                ", url='" + url + '\'' +
                 ", bandLevel='" + bandLevel + '\'' +
                 ", capability='" + capability + '\'' +
                 '}';

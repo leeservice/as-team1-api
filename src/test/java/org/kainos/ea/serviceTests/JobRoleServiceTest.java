@@ -1,5 +1,6 @@
 package org.kainos.ea.serviceTests;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -26,13 +27,11 @@ public class JobRoleServiceTest {
     DatabaseConnector databaseConnector = mock(DatabaseConnector.class);
     JobRoleService jobRoleService = new JobRoleService(jobRoleDao, databaseConnector);
     Connection conn;
-
     @Test
     void getAllJobRoles_shouldThrowFailedToGetJobRoleException_whenDaoThrowsSQLException()
             throws SQLException, DatabaseConnectionException {
         when(databaseConnector.getConnection()).thenReturn(conn);
         when(jobRoleDao.getAllJobRoles(conn)).thenThrow(SQLException.class);
-
         assertThrows(FailedToGetJobRoleException.class, () -> jobRoleService.getAllJobRoles());
     }
 
@@ -77,4 +76,5 @@ public class JobRoleServiceTest {
         JobRole result = jobRoleDao.getJobRoleByIdO(1,conn);
         assertEquals(jobRole, result);
     }
+
 }

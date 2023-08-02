@@ -7,9 +7,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 public class trueConfiguration extends Configuration {
-    @Valid
-    @NotNull
-    private final SwaggerBundleConfiguration swagger = new SwaggerBundleConfiguration();
+  @Valid
+  @NotNull
+  private final SwaggerBundleConfiguration swagger = new SwaggerBundleConfiguration();
 
     @JsonProperty("swagger")
     public SwaggerBundleConfiguration getSwagger() {

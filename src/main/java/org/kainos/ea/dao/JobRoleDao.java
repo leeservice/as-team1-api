@@ -14,26 +14,26 @@ public class JobRoleDao {
     public List<JobRoleResponse> getAllJobRoles(Connection c) throws SQLException {
         Statement st = c.createStatement();
 
-        ResultSet rs = st.executeQuery("SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name', specification_description AS 'Specification Description'," +
-                "url_link AS 'URL Link'," +
-                " level_of_band AS 'Band Level', Capability.`name` AS 'Capability'" +
-                " FROM Job_Roles" +
-                " INNER JOIN Banding ON Job_Roles.band_id = Banding.id"
-                +
-                " INNER JOIN Capability ON Job_Roles.capability_id = Capability.id");
+        ResultSet rs =
+                st.executeQuery(
+                        "SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name',Capability.id AS"
+                                + " 'Capability ID', "
+                                + " Job_Roles.specification_description AS 'Job Description',"
+                                + " Job_Roles.url_link AS 'URL', Banding.level_of_band as 'Band Level',  Capability.`name` AS 'Capability Name' FROM Job_Roles INNER JOIN Capability ON Job_Roles.capability_id = Capability.id "
+                                +" INNER JOIN Banding ON Job_Roles.BAND_ID = Banding.id;");
 
-        List<JobRoleResponse> jobRoleList = new ArrayList<>();
+        List<JobRoleResponse> jobRoleList = new ArrayList();
 
         while (rs.next()) {
-            JobRoleResponse jobRoleRequest = new JobRoleResponse(
-                    rs.getInt("ID"),
-                    rs.getString("Name"),
-                    rs.getString("Specification Description"),
-                    rs.getString("URL Link"),
-                    rs.getString("Band Level"),
-                    rs.getString("Capability")
-            );
-            jobRoleList.add(jobRoleRequest);
+            JobRoleResponse jobRoleResponse =
+                    new JobRoleResponse(
+                            rs.getInt("ID"),
+                            rs.getString("Name"),
+                            rs.getString("Job Description"),
+                            rs.getString("URL"),
+                            rs.getString("Capability Name"),
+                            rs.getString("Band Level"));
+            jobRoleList.add(jobRoleResponse);
         }
         return jobRoleList;
     }
@@ -43,7 +43,6 @@ public class JobRoleDao {
         st.setInt(1, id);
         st.executeUpdate();
     }
-
     public JobRole getJobRoleByIdO(int id, Connection c) throws SQLException {
         Statement st = c.createStatement();
 
