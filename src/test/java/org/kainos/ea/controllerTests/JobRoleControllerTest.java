@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.kainos.ea.controller.JobRoleController;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
+import org.kainos.ea.exceptions.JobRoleDoesNotExistException;
 import org.kainos.ea.service.JobRoleService;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -21,5 +22,10 @@ public class JobRoleControllerTest {
             throws FailedToGetJobRoleException {
         when(jobRoleService.getAllJobRoles()).thenThrow(FailedToGetJobRoleException.class);
         assertEquals(500, jobRoleController.getAllJobRoles().getStatus());
+    }
+    @Test
+    void DeleteJobRoles_shouldReturn500_whenJobRoleServiceThrowsFailedToGetJobRoleException() throws FailedToGetJobRoleException, JobRoleDoesNotExistException {
+        when(jobRoleService.deleteJob(1)).thenThrow(FailedToGetJobRoleException.class);
+        assertEquals(500, jobRoleController.deleteJobRole(1).getStatus());
     }
 }

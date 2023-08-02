@@ -11,10 +11,15 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.kainos.ea.model.JobRoleRequest;
+import org.kainos.ea.dao.JobRoleDao;
+import org.kainos.ea.exceptions.DatabaseConnectionException;
+
 import org.kainos.ea.model.JobRoleResponse;
 import org.kainos.ea.trueApplication;
 import org.kainos.ea.trueConfiguration;
+import org.kainos.ea.utility.DatabaseConnector;
+import java.sql.SQLException;
+import org.kainos.ea.model.JobRoleRequest;
 
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,7 +27,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ExtendWith(DropwizardExtensionsSupport.class)
 public class JobRoleControllerTest {
     static final DropwizardAppExtension<trueConfiguration> APP = new DropwizardAppExtension<>(trueApplication.class, null, new ResourceConfigurationSourceProvider());
+    @Test
+    void DeleteJobRole_shouldReturnDeletionJobRoles() throws DatabaseConnectionException, SQLException {
+        JobRoleRequest job = new JobRoleRequest("Engineer", "Amazing",
+                1, 1, "https://kainossoftwareltd.sharepoint.com/people/Job%20Specifications/Forms/AllItems.aspx?id=%2Fpeople%2FJob%20Specifications%2FEngineering%2FJob%20Profile%20%2D%20Principal%20Architect%20%28Principal%29%2Epdf&parent=%2Fpeople%2FJob%20Specifications%2FEngineering&p=true&ga=1");
+        DatabaseConnector databaseConnector = new DatabaseConnector();
+        JobRoleDao dao = new JobRoleDao();
+        int JobID = dao.createJobRole(job, databaseConnector.getConnection());
+        Response response = APP.client().target("http://localhost:8080/api/job-roles/" + JobID).request().delete();
 
+        assertEquals(200, response.getStatus());
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+    }
     @Test
     void getAllJobRoles_shouldReturnListOfJobRoles() {
         Response response =

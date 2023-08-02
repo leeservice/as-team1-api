@@ -39,7 +39,6 @@ public class DatabaseConnector {
                                     + "?allowPublicKeyRetrieval=true&useSSL=false",
                             user,
                             password);
-
             return conn;
         } catch (Exception e) {
             throw new DatabaseConnectionException();
