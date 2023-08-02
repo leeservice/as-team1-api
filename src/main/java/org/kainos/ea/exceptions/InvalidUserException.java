@@ -10,6 +10,6 @@ private String message;
 
     @Override
     public String getMessage() {
-        return "Invalid user - " + message + ".";
+        return "Invalid user - " + message;
     }
 }

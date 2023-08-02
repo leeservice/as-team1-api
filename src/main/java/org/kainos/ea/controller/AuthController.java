@@ -49,7 +49,7 @@ public class AuthController {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         } catch (InvalidUserException e) {
             System.err.println(e.getMessage());
-            return Response.status(Response.Status.BAD_REQUEST).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
         }
     }
 
