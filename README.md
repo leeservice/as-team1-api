@@ -15,6 +15,7 @@ This repository covers all backend code required within a two-week sprint. </p>
 <h2>Running application</h2>
 Running the trueApplication main class will start the application.
 
+<
 
 <h2>Testing</h2>
 Tests can be ran locally by running the series of
