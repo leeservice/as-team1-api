@@ -56,7 +56,7 @@ public class JobRoleController {
         }
     }
     @GET
-    @Path("/products/{id}")
+    @Path("/job-roles/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductById(@PathParam("id") int id)
     {
