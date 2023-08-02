@@ -6,23 +6,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class JobRoleResponse {
     private int id;
     private String name;
-    private String capability;
-    private String url;
     private String specificationDesc;
-  
+    private String url;
+    private String bandLevel;
+    private String capability;
+
     @JsonCreator
-    public JobRoleResponse(@JsonProperty("id") int id,
-                           @JsonProperty("name") String name,
-                           @JsonProperty("capability") String capability,
-                           @JsonProperty("url") String url,
-                           @JsonProperty("specificationDescription") String specificationDesc) {
+    public JobRoleResponse(
+            @JsonProperty("id") int id,
+            @JsonProperty("name") String name,
+            @JsonProperty("specificationDescription") String specificationDescription,
+            @JsonProperty("url") String url,
+            @JsonProperty("capability") String capability,
+            @JsonProperty("bandLevel") String bandLevel) {
         setId(id);
         setName(name);
-        setCapability(capability);
-        setSpecificationDesc(specificationDesc);
+        setSpecificationDesc(specificationDescription);
         setUrl(url);
+        setBandLevel(bandLevel);
+        setCapability(capability);
     }
-
     public int getId() {
         return id;
     }
@@ -39,6 +42,21 @@ public class JobRoleResponse {
         this.name = name;
     }
 
+    public String getSpecificationDesc() {
+        return specificationDesc;
+    }
+
+    public void setSpecificationDesc(String specificationDesc) {
+        this.specificationDesc = specificationDesc;
+    }
+
+    public String getBandLevel() {
+        return bandLevel;
+    }
+
+    public void setBandLevel(String bandLevel) {
+        this.bandLevel = bandLevel;
+    }
     public String getCapability() {
         return capability;
     }
@@ -50,21 +68,20 @@ public class JobRoleResponse {
     public String getUrl() {
         return url;
     }
-
     public void setUrl(String url) {
         this.url = url;
     }
 
-    public String getSpecificationDesc() {
-        return specificationDesc;
-    }
-
-    public void setSpecificationDesc(String specificationDesc) {
-        this.specificationDesc = specificationDesc;
-    }
 
     @Override
     public String toString() {
-        return "JobRoleResponse{" + "id=" + id + ", name='" + name + '\'' + ", capability='" + capability + '\'' + ", url='" + url + '\'' + ", specificationDescription='" + specificationDesc + '\'' + '}';
+        return "JobRoleResponse{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", specificationDesc='" + specificationDesc + '\'' +
+                ", url='" + url + '\'' +
+                ", bandLevel='" + bandLevel + '\'' +
+                ", capability='" + capability + '\'' +
+                '}';
     }
 }

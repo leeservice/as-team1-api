@@ -1,5 +1,7 @@
 package org.kainos.ea.serviceTests;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -18,22 +20,24 @@ import org.kainos.ea.model.JobRoleResponse;
 import org.kainos.ea.service.JobRoleService;
 import org.kainos.ea.utility.DatabaseConnector;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 @ExtendWith(MockitoExtension.class)
 public class JobRoleServiceTest {
     JobRoleDao jobRoleDao = mock(JobRoleDao.class);
     DatabaseConnector databaseConnector = mock(DatabaseConnector.class);
     JobRoleService jobRoleService = new JobRoleService(jobRoleDao, databaseConnector);
     Connection conn;
+<<<<<<< HEAD
     JobRoleRequest jobRoleRequest = new JobRoleRequest("Test Job Role", "This is a description.", 1, 1, "https://kainos.com");
 
+=======
+>>>>>>> main
     @Test
     void getAllJobRoles_shouldThrowFailedToGetJobRoleException_whenDaoThrowsSQLException() throws SQLException, DatabaseConnectionException {
         when(databaseConnector.getConnection()).thenReturn(conn);
         when(jobRoleDao.getAllJobRoles(conn)).thenThrow(SQLException.class);
-
         assertThrows(FailedToGetJobRoleException.class, () -> jobRoleService.getAllJobRoles());
     }
+
 
     @Test
     void getAllJobRoles_shouldThrowFailedToGetJobRoleException_whenDatabaseConnectorThrowsDatabaseConnectionException() throws SQLException, DatabaseConnectionException {
@@ -50,6 +54,7 @@ public class JobRoleServiceTest {
         assertEquals(jobRoleResponseList, result);
     }
 
+<<<<<<< HEAD
     @Test
     void createJobRole_shouldReturnId_whenDaoReturnsId() throws DatabaseConnectionException, SQLException, InvalidJobRoleException, FailedToCreateJobRoleException {
         int expectedResult = 1;
@@ -96,4 +101,6 @@ public class JobRoleServiceTest {
         when(databaseConnector.getConnection()).thenThrow(DatabaseConnectionException.class);
         assertThrows(FailedToCreateJobRoleException.class, () -> jobRoleService.updateJobRole(id,jobRoleRequest));
     }
+=======
+>>>>>>> main
 }

@@ -13,8 +13,15 @@ recruitment admin to retrieve and update job roles and their relevant informatio
 This repository covers all backend code required within a two-week sprint. </p>
 
 <h2>Running application</h2>
-Running the trueApplication main class will start the application.
+On downloading the repo, running the trueApplication main class will start the application.
 
+<h2>Deployment</h2>
+The service is deployed to production via github actions.
+These actions takes the code from this repo, logs into amazon ECS and using Docker, builds then pushes a docker container to the ECS instance.
+
+<h2>Seeing the live service in production</h2>
+You can visit the URL below to see our endpoints running on an amazon ECS instance:
+https://ebbxsctpj8.eu-west-1.awsapprunner.com/swagger#/Commit%20Connoisseurs%20API/getAllJobRoles
 
 <h2>Testing</h2>
 Tests can be ran locally by running the series of

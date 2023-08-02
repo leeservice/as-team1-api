@@ -4,22 +4,24 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CapabilityResponse {
-    private int id;
     private String name;
+
+    private int capabilityId;
 
     @JsonCreator
     public CapabilityResponse(@JsonProperty("id") int id,
                               @JsonProperty("name") String name) {
-        setId(id);
+        setCapabilityId(id);
         setName(name);
     }
 
-    public int getId() {
-        return id;
+
+    public int getCapabilityId() {
+        return capabilityId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCapabilityId(int capabilityId) {
+        this.capabilityId = capabilityId;
     }
 
     public String getName() {
@@ -28,10 +30,5 @@ public class CapabilityResponse {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "CapabilityResponse{" + "id=" + id + ", name='" + name + '\'' + '}';
     }
 }
