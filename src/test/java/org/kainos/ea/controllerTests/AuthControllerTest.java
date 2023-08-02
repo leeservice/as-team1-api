@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-// Tests for the AuthController class
 @ExtendWith(MockitoExtension.class)
 public class AuthControllerTest {
     AuthService authService = mock(AuthService.class);
