@@ -13,19 +13,11 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-<<<<<<< HEAD
-=======
-
->>>>>>> c42ba9ac65a91f8ba3eb550ae719fbe249f2f073
 env:
   DB_NAME: ${{ secrets.DB_NAME }}
   DB_USERNAME: ${{ secrets.DB_USERNAME }}
   DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
   DB_HOST: ${{ secrets.DB_HOST }}
-<<<<<<< HEAD
-=======
-
->>>>>>> c42ba9ac65a91f8ba3eb550ae719fbe249f2f073
 jobs:
   build:
     runs-on: ubuntu-latest
