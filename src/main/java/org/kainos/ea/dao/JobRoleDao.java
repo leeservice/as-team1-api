@@ -30,15 +30,11 @@ public class JobRoleDao {
         }
         return jobRoleList;
     }
-
     public JobRoleResponse getJobRoleById(int id, Connection c) throws SQLException
     {
         Statement st = c.createStatement();
 
-        ResultSet rs = st.executeQuery("SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name',Capability.id AS" + " 'Capability ID', "
-                + " Job_Roles.specification_description AS 'Job Description',"
-                + " Job_Roles.url_link AS 'URL', Banding.level_of_band as 'Band Level',  Capability.`name` AS 'Capability Name' FROM Job_Roles INNER JOIN Capability ON Job_Roles.capability_id = Capability.id "
-                + " INNER JOIN Banding ON Job_Roles.BAND_ID = Banding.id FROM Job_Roles where Job_Roles.id = " + id);
+        ResultSet rs = st.executeQuery("SELECT ProductId, Name, Description, Price  FROM Product where ProductId = " + id);
         while (rs.next())
         {
             return  new JobRoleResponse(
@@ -48,7 +44,6 @@ public class JobRoleDao {
                     rs.getString("URL"),
                     rs.getString("Capability Name"),
                     rs.getString("Band Level"));
-
 
         }
         return  null;
