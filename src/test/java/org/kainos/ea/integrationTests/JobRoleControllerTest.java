@@ -5,24 +5,18 @@ import io.dropwizard.configuration.ResourceConfigurationSourceProvider;
 import io.dropwizard.testing.junit5.DropwizardAppExtension;
 import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
 import java.util.List;
-<<<<<<< HEAD
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
-=======
->>>>>>> main
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.model.JobRoleResponse;
 import org.kainos.ea.trueApplication;
 import org.kainos.ea.trueConfiguration;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.Response;
 
-import java.util.List;
-
+import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 @ExtendWith(DropwizardExtensionsSupport.class)
