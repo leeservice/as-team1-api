@@ -23,7 +23,12 @@ public class AuthController {
     AuthService authService;
 
     public AuthController() {
-         authService= new AuthService(new AuthDao(), new DatabaseConnector());
+
+        authService= new AuthService(new AuthDao(), new DatabaseConnector());
+    }
+
+    public AuthController(AuthService auth) {
+        authService = auth;
     }
 
     @POST
@@ -37,7 +42,7 @@ public class AuthController {
         catch (FailedToRegisterUserException e) {
 
             System.err.println(e.getMessage());
-            return Response.status(Response.Status.BAD_REQUEST).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         } catch (DatabaseConnectionException e) {
             System.err.println(e.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
