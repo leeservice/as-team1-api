@@ -32,6 +32,6 @@ public class JobRoleControllerTest {
         JobRoleRequest jobRoleRequest = new JobRoleRequest("Test job role", "This is a description.", 1, 9,"https://kainos.com" );
 
         when(jobRoleService.updateJobRole(1, jobRoleRequest)).thenThrow(FailedToCreateJobRoleException.class);
-        assertEquals(500, jobRoleController.getAllJobRoles().getStatus());
+        assertEquals(500, jobRoleController.updateJobRole(1,jobRoleRequest).getStatus());
     }
 }
