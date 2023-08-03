@@ -4,7 +4,6 @@ package org.kainos.ea.controller;
 import io.swagger.annotations.Api;
 import org.kainos.ea.dao.AuthDao;
 import org.kainos.ea.exceptions.DatabaseConnectionException;
-import org.kainos.ea.exceptions.FailedToGetJobRoleException;
 import org.kainos.ea.exceptions.FailedToRegisterUserException;
 import org.kainos.ea.exceptions.InvalidUserException;
 import org.kainos.ea.model.RegisterUser;
@@ -38,7 +37,7 @@ public class AuthController {
     public Response createLogin(RegisterUser log)
     {
         try {
-            return Response.status(Response.Status.CREATED).entity(authService.Register(log)).build();
+            return Response.status(Response.Status.CREATED).entity(authService.register(log)).build();
         }
         catch (FailedToRegisterUserException e) {
 

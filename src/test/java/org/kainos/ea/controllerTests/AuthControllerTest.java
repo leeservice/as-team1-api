@@ -3,15 +3,12 @@ package org.kainos.ea.controllerTests;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.kainos.ea.controller.AuthController;
-import org.kainos.ea.controller.JobRoleController;
 import org.kainos.ea.exceptions.DatabaseConnectionException;
-import org.kainos.ea.exceptions.FailedToGetJobRoleException;
 import org.kainos.ea.exceptions.FailedToRegisterUserException;
 import org.kainos.ea.exceptions.InvalidUserException;
 import org.kainos.ea.model.RegisterUser;
 import org.kainos.ea.model.enums.UserRole;
 import org.kainos.ea.service.AuthService;
-import org.kainos.ea.service.JobRoleService;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.sql.Connection;
@@ -32,14 +29,14 @@ public class AuthControllerTest {
     @Test
     void registerUser_shouldReturn500_whenAuthServiceThrowsFailedToRegisterUserException()
             throws FailedToRegisterUserException, DatabaseConnectionException, InvalidUserException {
-        when(authService.Register(login)).thenThrow(FailedToRegisterUserException.class);
+        when(authService.register(login)).thenThrow(FailedToRegisterUserException.class);
         assertEquals(500, authController.createLogin(login).getStatus());
     }
 
     @Test
     void registerUser_shouldReturn400_whenAuthServiceThrowsInvalidUserException()
             throws FailedToRegisterUserException, DatabaseConnectionException, InvalidUserException {
-        when(authService.Register(login)).thenThrow(InvalidUserException.class);
+        when(authService.register(login)).thenThrow(InvalidUserException.class);
         assertEquals(400, authController.createLogin(login).getStatus());
     }
 

@@ -23,7 +23,7 @@ public class AuthService {
     }
 
 
-    public int Register(RegisterUser log) throws FailedToRegisterUserException, DatabaseConnectionException, InvalidUserException {
+    public int register(RegisterUser log) throws FailedToRegisterUserException, DatabaseConnectionException, InvalidUserException {
 
         if(validator.isValidRegisterUser(log) != "") {
             throw new InvalidUserException(validator.isValidRegisterUser(log));

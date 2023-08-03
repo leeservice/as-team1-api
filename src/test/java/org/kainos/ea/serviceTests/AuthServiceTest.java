@@ -36,13 +36,13 @@ public class AuthServiceTest {
     void registerUser_shouldThrowFailedToRegisterUser_whenDaoThrowsSQLException() throws DatabaseConnectionException, SQLException {
         when(databaseConnector.getConnection()).thenReturn(conn);
         when(authDao.register(login, conn)).thenThrow(SQLException.class);
-        assertThrows(FailedToRegisterUserException.class, () -> authService.Register(login));
+        assertThrows(FailedToRegisterUserException.class, () -> authService.register(login));
     }
 
     @Test
     void registerUser_shouldThrowFailedToRegisterUser_whenDatabaseConnectorThrowsDatabaseConnectionException() throws DatabaseConnectionException, SQLException {
         when(databaseConnector.getConnection()).thenThrow(DatabaseConnectionException.class);
-        assertThrows(FailedToRegisterUserException.class, () -> authService.Register(login));
+        assertThrows(FailedToRegisterUserException.class, () -> authService.register(login));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class AuthServiceTest {
         int id = 1;
         when(databaseConnector.getConnection()).thenReturn(conn);
         when(authDao.register(login, conn)).thenReturn(id);
-        assertEquals(id, authService.Register(login));
+        assertEquals(id, authService.register(login));
     }
 
 
