@@ -1,17 +1,14 @@
 USE Team1_RyanB;
-DELIMITER $$ 
-DROP PROCEDURE IF EXISTS add_jobRoleTestData_001 $$ 
-CREATE PROCEDURE add_jobRoleTestData_001() 
+DELIMITER $$
+DROP PROCEDURE IF EXISTS add_userTestData_040 $$
+CREATE PROCEDURE add_userTestData_040()
 BEGIN
 
 START TRANSACTION;
 
-INSERT INTO Job_Roles(`name`)
-VALUES('Technology Leader'),
-('Principal Architect'),
-('Principal Test Architect'),
-('Solution Architect'),
-('Test Architect');
+INSERT INTO User(id, email, `password`, role_id)
+VALUES (1, 'admin@kainos.com', 'admin', 1),
+(2, 'user@kainos.com', 'user', 2);
 
 -- Check the number of affected rows
 GET DIAGNOSTICS @rows = ROW_COUNT;
@@ -22,8 +19,8 @@ COMMIT;
 SELECT 'Transaction committed successfully.';
 END IF;
 
-END $$ 
+END $$
 DELIMITER ;
 
 -- Runs the Procedure
-CALL add_jobRoleTestData_001();
+CALL add_userTestData_040();

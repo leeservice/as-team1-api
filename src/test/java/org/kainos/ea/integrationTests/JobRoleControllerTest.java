@@ -34,7 +34,7 @@ public class JobRoleControllerTest {
         String expected = "Engineering";
         String actual = jobRoleResponse.getCapability();
         assertEquals(expected, actual);
-        String expected2 = "Apprentice";
+        String expected2 = "Trainee";
         String actual2 = jobRoleResponse.getBandLevel();
         assertEquals(expected2, actual2);
 
