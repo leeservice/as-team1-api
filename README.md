@@ -3,7 +3,7 @@
 <h2>PROBLEM STATEMENT</h2>
 <p>Currently, within Kainos there is not one source of truth
 to view job roles and the relevant information attached
-(e.g. job descriptions, capability, competencies, banding etc)
+(e.g. job descriptions, capabilityResponse, competencies, banding etc)
 this can be confusing and time-consuming for employees to retrieve
 the relevant job role information.</p>
 
