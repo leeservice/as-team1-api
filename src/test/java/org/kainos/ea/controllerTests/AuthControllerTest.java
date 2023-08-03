@@ -20,7 +20,9 @@ import static org.mockito.Mockito.when;
 public class AuthControllerTest {
     AuthService authService = mock(AuthService.class);
     AuthController authController = new AuthController(authService);
-    LoginRequest loginRequest = new LoginRequest("user@kainos.com", "password");
+    String username = System.getenv("TEST_USERNAME");
+    String password = System.getenv("TEST_PASSWORD");
+    LoginRequest loginRequest = new LoginRequest(username, password);
 
     @Test
     void login_shouldReturn500_whenAuthServiceThrowsFailedToGenerateTokenException() throws DatabaseConnectionException, SQLException, FailedToLoginException, FailedToGenerateTokenException {

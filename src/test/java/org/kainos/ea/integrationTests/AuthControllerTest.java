@@ -24,7 +24,9 @@ public class AuthControllerTest {
 
     @Test
     void login_shouldReturnToken() {
-        LoginRequest loginRequest = new LoginRequest("user@kainos.com", "user");
+        String username = System.getenv("TEST_USERNAME");
+        String password = System.getenv("TEST_PASSWORD");
+        LoginRequest loginRequest = new LoginRequest(username, password);
         Response response =
                 APP.client().target("http://localhost:8080/api/login").request().post(Entity.entity(loginRequest, MediaType.APPLICATION_JSON_TYPE));
         assertEquals(200, response.getStatus());
