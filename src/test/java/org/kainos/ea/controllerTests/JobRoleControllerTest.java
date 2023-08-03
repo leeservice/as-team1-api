@@ -33,5 +33,6 @@ public class JobRoleControllerTest {
 
         when(jobRoleService.updateJobRole(1, jobRoleRequest)).thenThrow(FailedToCreateJobRoleException.class);
         assertEquals(500, jobRoleController.updateJobRole(1,jobRoleRequest).getStatus());
+
     }
 }
