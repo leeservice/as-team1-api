@@ -48,7 +48,7 @@ public class JobRoleService {
     public  JobRoleResponse getJobRoleById(int id) throws FailedToGetJobRoleException, JobRoleDoesNotExistException {
         try
         {
-            JobRoleResponse product = jobRoleDao.getJobRoleById(id, databaseConnector.getConnection());
+            JobRoleResponse jobRole = jobRoleDao.getJobRoleById(id, databaseConnector.getConnection());
             if(product == null)
             {
                 throw new JobRoleDoesNotExistException();
