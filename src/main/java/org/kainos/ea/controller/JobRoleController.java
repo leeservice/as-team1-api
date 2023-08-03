@@ -83,9 +83,9 @@ public class JobRoleController {
         } catch (InvalidJobRoleException e) {
             System.err.println(e.getMessage());
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
-        } catch (JobRoleDoesNotExistException e) {
+        }  catch (JobRoleDoesNotExistException e) {
             System.err.println(e.getMessage());
-            return Response.serverError().build();
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
 }

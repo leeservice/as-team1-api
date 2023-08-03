@@ -14,7 +14,7 @@ public class JobRoleDao {
                             + " 'Capability ID', "
                                 + " Job_Roles.specification_description AS 'Job Description',"
                                 + " Job_Roles.url_link AS 'URL', Banding.level_of_band as 'Band Level',  Capability.`name` AS 'Capability Name' FROM Job_Roles INNER JOIN Capability ON Job_Roles.capability_id = Capability.id "
-                                + " INNER JOIN Banding ON Job_Roles.BAND_ID = Banding.id;");
+                                + " INNER JOIN Banding ON Job_Roles.band_id = Banding.id;");
 
         List<JobRoleResponse> jobRoleList = new ArrayList<>();
 
@@ -38,7 +38,7 @@ public class JobRoleDao {
         ResultSet rs = st.executeQuery("SELECT Job_Roles.id AS 'ID', Job_Roles.`name` AS 'Name',Capability.id AS" + " 'Capability ID', "
                                              + " Job_Roles.specification_description AS 'Job Description',"
                                               + " Job_Roles.url_link AS 'URL', Banding.level_of_band as 'Band Level',  Capability.`name` AS 'Capability Name' FROM Job_Roles INNER JOIN Capability ON Job_Roles.capability_id = Capability.id "
-                                                + " INNER JOIN Banding ON Job_Roles.BAND_ID = Banding.id  where Job_Roles.id = " + id);
+                                                + " INNER JOIN Banding ON Job_Roles.band_id = Banding.id  where Job_Roles.id = " + id);
         while (rs.next())
         {
             return  new JobRoleResponse(

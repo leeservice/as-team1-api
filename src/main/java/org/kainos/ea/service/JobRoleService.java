@@ -49,12 +49,12 @@ public class JobRoleService {
         try
         {
             JobRoleResponse jobRole = jobRoleDao.getJobRoleById(id, databaseConnector.getConnection());
-            if(product == null)
+            if(jobRole == null)
             {
                 throw new JobRoleDoesNotExistException();
 
             }
-            return  product;
+            return  jobRole;
         }
         catch (SQLException | DatabaseConnectionException e) {
             System.err.println(e.getMessage());

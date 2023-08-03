@@ -28,7 +28,7 @@ public class BandResponseControllerTest {
         });
         assertTrue(bandResponseList.size() > 0);
         BandResponse bandResponse = bandResponseList.get(0);
-        String expected = "Manager";
+        String expected = "Apprentice";
         String actual = bandResponse.getBandLevel();
         assertEquals(expected, actual);
     }

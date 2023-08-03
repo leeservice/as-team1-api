@@ -34,7 +34,7 @@ public class JobRoleControllerTest {
         String expected = "Engineering";
         String actual = jobRoleResponse.getCapability();
         assertEquals(expected, actual);
-        String expected2 = "Manager";
+        String expected2 = "Apprentice";
         String actual2 = jobRoleResponse.getBandLevel();
         assertEquals(expected2, actual2);
 
@@ -42,13 +42,42 @@ public class JobRoleControllerTest {
   
     @Test
     void createJobRole_shouldReturnIdOfJobRole() {
-        JobRoleRequest jobRoleRequest = new JobRoleRequest("Test job role", "This is a description.", 1, 1, "https://kainos.com");
+        JobRoleRequest jobRoleRequest = new JobRoleRequest("Test job role", "This is a description.", 1, 9, "https://kainos.com");
         Response response = APP.client().target("http://localhost:8080/api/job-roles").request().post(Entity.entity(jobRoleRequest, MediaType.APPLICATION_JSON_TYPE));
         // Check for 201 response code
         assertEquals(201, response.getStatus());
         int id = response.readEntity(Integer.class);
         // Check an integer is returned
         assertNotNull(id);
+    }
+    @Test
+    void updateJobRole_shouldReturnJobRole() {
+        JobRoleRequest jobRoleRequest = new JobRoleRequest("Test job role", "This is a description.", 1, 9,"https://kainos.com" );
+        Response response = APP.client().target("http://localhost:8080/api/job-roles/120").request().put(Entity.entity(jobRoleRequest, MediaType.APPLICATION_JSON_TYPE));
+        // Check for 201 response code
+        assertEquals(200, response.getStatus());
+    }
+    @Test
+    void updateJobRole_shouldReturn400_whenNameTooLong() {
+        String longName = "name".repeat(1000);
+        JobRoleRequest jobRoleRequest = new JobRoleRequest(longName, "This is a description.", 1, 1, "https://kainos.com");
+        Response response = APP.client().target("http://localhost:8080/api/job-roles/120").request().put(Entity.entity(jobRoleRequest, MediaType.APPLICATION_JSON_TYPE));
+        assertEquals(400, response.getStatus());
+    }
+
+    @Test
+    void updateJobRole_shouldReturn400_whenNameIsEmpty() {
+        JobRoleRequest jobRoleRequest = new JobRoleRequest("", "This is a description.", 1, 1, "https://kainos.com");
+        Response response = APP.client().target("http://localhost:8080/api/job-roles/120").request().put(Entity.entity(jobRoleRequest, MediaType.APPLICATION_JSON_TYPE));
+        assertEquals(400, response.getStatus());
+    }
+
+    @Test
+    void updateJobRole_shouldReturn400_whenUrlTooLong() {
+        String longUrl = "https://" + "a".repeat(1000) + ".com";
+        JobRoleRequest jobRoleRequest = new JobRoleRequest("Test Job Role", "This is a description.", 1, 1, longUrl);
+        Response response = APP.client().target("http://localhost:8080/api/job-roles/120").request().put(Entity.entity(jobRoleRequest, MediaType.APPLICATION_JSON_TYPE));
+        assertEquals(400, response.getStatus());
     }
 
     @Test
