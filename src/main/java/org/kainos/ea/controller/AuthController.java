@@ -27,8 +27,8 @@ public class AuthController {
         authService= new AuthService(new AuthDao(), new DatabaseConnector());
     }
 
-    public AuthController(AuthService auth) {
-        authService = auth;
+    public AuthController(AuthService service) {
+        authService = service;
     }
 
     @POST
