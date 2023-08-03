@@ -66,7 +66,8 @@ public class JobRoleController {
             System.err.println(e.getMessage());
             return Response.status(Response.Status.BAD_REQUEST).build();
         } catch (JobRoleDoesNotExistException e) {
-            throw new RuntimeException(e);
+            System.err.println(e.getMessage());
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
     @PUT
