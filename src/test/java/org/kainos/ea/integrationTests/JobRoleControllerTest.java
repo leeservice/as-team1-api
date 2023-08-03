@@ -64,7 +64,6 @@ public class JobRoleControllerTest {
         Response response = APP.client().target("http://localhost:8080/api/job-roles/120").request().put(Entity.entity(jobRoleRequest, MediaType.APPLICATION_JSON_TYPE));
         assertEquals(400, response.getStatus());
     }
-
     @Test
     void updateJobRole_shouldReturn400_whenNameIsEmpty() {
         JobRoleRequest jobRoleRequest = new JobRoleRequest("", "This is a description.", 1, 1, "https://kainos.com");
