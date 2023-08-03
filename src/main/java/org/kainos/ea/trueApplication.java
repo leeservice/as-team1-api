@@ -31,7 +31,6 @@ public class trueApplication extends Application<trueConfiguration> {
                     }
                 });
     }
-
     @Override
     public void run(final trueConfiguration configuration, final Environment environment) {
         environment.jersey().register(new JobRoleController());
@@ -39,3 +38,4 @@ public class trueApplication extends Application<trueConfiguration> {
         environment.jersey().register(new BandController());
     }
 }
+
