@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class AuthDao {
 
-    public int Register(RegisterUser login, Connection c) throws SQLException {
+    public int register(RegisterUser login, Connection c) throws SQLException {
         String insertStatement = "INSERT INTO `User` (email, password, role_id) VALUES (?,?,?)";
         PreparedStatement st = c.prepareStatement(insertStatement, Statement.RETURN_GENERATED_KEYS);
         st.setString(1, login.getEmail());

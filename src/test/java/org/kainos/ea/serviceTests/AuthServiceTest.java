@@ -35,7 +35,7 @@ public class AuthServiceTest {
     @Test
     void registerUser_shouldThrowFailedToRegisterUser_whenDaoThrowsSQLException() throws DatabaseConnectionException, SQLException {
         when(databaseConnector.getConnection()).thenReturn(conn);
-        when(authDao.Register(login, conn)).thenThrow(SQLException.class);
+        when(authDao.register(login, conn)).thenThrow(SQLException.class);
         assertThrows(FailedToRegisterUserException.class, () -> authService.Register(login));
     }
 
@@ -49,7 +49,7 @@ public class AuthServiceTest {
     void registerUser_shouldReturnId_whenUserRegisteredSuccessfully() throws DatabaseConnectionException, SQLException, FailedToRegisterUserException, InvalidUserException {
         int id = 1;
         when(databaseConnector.getConnection()).thenReturn(conn);
-        when(authDao.Register(login, conn)).thenReturn(id);
+        when(authDao.register(login, conn)).thenReturn(id);
         assertEquals(id, authService.Register(login));
     }
 
