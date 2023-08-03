@@ -30,7 +30,7 @@ public class AuthService {
         }
 
         try {
-            int id = authDao.Register(log, databaseConnector.getConnection());
+            int id = authDao.register(log, databaseConnector.getConnection());
             if (id == -1) {
                 throw new FailedToRegisterUserException();
 
