@@ -2,8 +2,8 @@ package org.kainos.ea.controller;
 
 import io.swagger.annotations.Api;
 
+import javax.ws.rs.*;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -12,6 +12,7 @@ import org.kainos.ea.dao.JobRoleDao;
 import org.kainos.ea.exceptions.FailedToCreateJobRoleException;
 import org.kainos.ea.exceptions.FailedToGetJobRoleException;
 import org.kainos.ea.exceptions.InvalidJobRoleException;
+import org.kainos.ea.exceptions.JobRoleDoesNotExistException;
 import org.kainos.ea.model.JobRoleRequest;
 import org.kainos.ea.service.JobRoleService;
 import org.kainos.ea.utility.DatabaseConnector;
@@ -52,6 +53,40 @@ public class JobRoleController {
         } catch (InvalidJobRoleException e) {
             System.err.println(e.getMessage());
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }
+    }
+    @GET
+    @Path("/job-roles/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getJobRoleById(@PathParam("id") int id)
+    {
+        try {
+            return Response.ok(jobRoleService.getJobRoleById(id)).build();
+        } catch (FailedToGetJobRoleException e) {
+            System.err.println(e.getMessage());
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (JobRoleDoesNotExistException e) {
+            System.err.println(e.getMessage());
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
+    @PUT
+    @Path("/job-roles/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateJobRole(@PathParam("id") int id, JobRoleRequest jobRoleRequest)
+    {
+        try {
+            jobRoleService.updateJobRole(id,jobRoleRequest);
+            return Response.ok().build();
+        }catch (FailedToCreateJobRoleException e) {
+            System.err.println(e.getMessage());
+            return Response.serverError().build();
+        } catch (InvalidJobRoleException e) {
+            System.err.println(e.getMessage());
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }  catch (JobRoleDoesNotExistException e) {
+            System.err.println(e.getMessage());
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
 }

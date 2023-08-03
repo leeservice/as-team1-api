@@ -71,8 +71,6 @@ public class JobRoleResponse {
     public void setSpecificationDesc(String specificationDesc) {
         this.specificationDesc = specificationDesc;
     }
-
-
     @Override
     public String toString() {
         return "JobRoleResponse{" +
