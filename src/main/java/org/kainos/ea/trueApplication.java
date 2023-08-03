@@ -5,6 +5,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.federecio.dropwizard.swagger.SwaggerBundle;
 import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
+import org.kainos.ea.controller.AuthController;
 import org.kainos.ea.controller.BandController;
 import org.kainos.ea.controller.CapabilityController;
 import org.kainos.ea.controller.JobRoleController;
@@ -35,7 +36,10 @@ public class trueApplication extends Application<trueConfiguration> {
     @Override
     public void run(final trueConfiguration configuration, final Environment environment) {
         environment.jersey().register(new JobRoleController());
+        environment.jersey().register(new AuthController());
+
         environment.jersey().register(new CapabilityController());
         environment.jersey().register(new BandController());
     }
+
 }
